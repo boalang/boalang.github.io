@@ -1,0 +1,220 @@
+#
+# find potentially converted uses for Java language features
+# Section 5.5, Figure 16
+#
+# author: Robert Dyer <rdyer@iastate.edu>
+#
+# Copyright 2013-2014 Iowa State University. All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 
+# 1. Redistributions of source code must retain the above copyright notice, this
+#    list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
+# 
+# THIS SOFTWARE IS PROVIDED BY IOWA STATE UNIVERSITY ``AS IS'' AND ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+# EVENT SHALL IOWA STATE UNIVERSITY OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+# INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 
+# The views and conclusions contained in the software and documentation are those
+# of the authors and should not be interpreted as representing official policies,
+# either expressed or implied, of Iowa State University.
+#
+Converted: output collection[string][string] of int;
+ConvertedCount: output sum[string] of int;
+ConvertedFiles: output sum[string] of int;
+ConvertedProjects: output sum[string] of int;
+p: Project = input;
+
+newPotential: map[string] of int;
+oldPotential: map[string] of int;
+newUses: map[string] of int;
+oldUses: map[string] of int;
+
+seen: map[string] of bool;
+
+initialize := function(s: string) {
+	newPotential[s] = 0;
+	oldPotential[s] = 0;
+	newUses[s] = 0;
+	oldUses[s] = 0;
+};
+
+record_potential := function(s: string) {
+	newPotential[s] = newPotential[s] + 1;
+};
+
+record_use := function(s: string) {
+	newUses[s] = newUses[s] + 1;
+};
+
+swap := function(s: string) {
+	oldPotential[s] = newPotential[s];
+	newPotential[s] = 0;
+	oldUses[s] = newUses[s];
+	newUses[s] = 0;
+};
+
+out := function(f: ChangedFile, s: string) {
+	if (oldPotential[s] == 0 || newPotential[s] >= oldPotential[s])
+		return;
+	if (newUses[s] <= oldUses[s])
+		return;
+
+	potential := oldPotential[s] - newPotential[s];
+	uses := newUses[s] - oldUses[s];
+	if (potential != uses)
+		return;
+
+	Converted[s][string(f)] << uses;
+	ConvertedCount[s] << uses;
+	ConvertedFiles[s] << 1;
+	if (!haskey(seen, s)) {
+		ConvertedProjects[s] << 1;
+		seen[s] = true;
+	}
+};
+
+files: map[string] of ChangedFile;
+
+visit(p, visitor {
+	before node: CodeRepository ->
+		clear(files);
+	before node: ChangedFile -> {
+		if (node.change == ChangeKind.DELETED)
+			remove(files, node.name);
+		if (!iskind("SOURCE_JAVA_JLS", node.kind) || node.change == ChangeKind.DELETED)
+			stop;
+
+		if (haskey(files, node.name)) {
+			initialize("Varargs");
+			initialize("Assert");
+			initialize("BinaryLit");
+			initialize("Diamond");
+			initialize("MultiCatch");
+			initialize("TryResources");
+			initialize("Underscore");
+
+			visit(getast(files[node.name]));
+			files[node.name] = node;
+
+			swap("Varargs");
+			swap("Assert");
+			swap("BinaryLit");
+			swap("Diamond");
+			swap("MultiCatch");
+			swap("TryResources");
+			swap("Underscore");
+		} else {
+			files[node.name] = node;
+			stop;
+		}
+	}
+	after node: ChangedFile -> {
+		out(node, "Varargs");
+		out(node, "Assert");
+		out(node, "BinaryLit");
+		out(node, "Diamond");
+		out(node, "MultiCatch");
+		out(node, "TryResources");
+		out(node, "Underscore");
+	}
+	before node: Method -> {
+		if (len(node.arguments) > 0 && match(`\[\]$`, node.arguments[len(node.arguments) - 1].variable_type.name))
+			record_potential("Varargs");
+		if (len(node.statements) > 0)
+			visit(node.statements[0], visitor {
+				before node: Statement ->
+					if (node.kind == StatementKind.IF)
+						if (node.statements[0].kind == StatementKind.THROW)
+							if (match(`^IllegalArgumentException$`, node.statements[0].expression.new_type.name))
+								record_potential("Assert");
+			});
+		if (len(node.arguments) > 0 && strfind("...", node.arguments[len(node.arguments) - 1].variable_type.name) > -1)
+			record_use("Varargs");
+	}
+	before node: Expression -> {
+		if (node.kind == ExpressionKind.BIT_LSHIFT && len(node.expressions) == 2)
+			if (node.expressions[0].kind == ExpressionKind.LITERAL && node.expressions[1].kind == ExpressionKind.LITERAL)
+				if (def(node.expressions[0].literal) && def(node.expressions[1].literal))
+					if (match(`^1$`, node.expressions[0].literal) && match(`^[0-9]+$`, node.expressions[1].literal))
+						record_potential("BinaryLit");
+		if (node.kind == ExpressionKind.NEW && def(node.new_type)
+				&& strfind("<", node.new_type.name) > -1 && strfind("<>", node.new_type.name) == -1)
+			record_potential("Diamond");
+		if (node.kind == ExpressionKind.LITERAL && def(node.literal) && strfind("_", node.literal) == -1)
+			if ((len(node.literal) > 6 && match(`[0-9]+[Ll]?`, node.literal))
+					|| (len(node.literal) > 5 && match(`0[x][0-9A-Fa-f]+[Ll]?`, node.literal))
+					|| (len(node.literal) > 17 && match(`0[bB][01]+[Ll]?`, node.literal)))
+				record_potential("Underscore");
+		if (node.kind == ExpressionKind.LITERAL && def(node.literal)) {
+			if (match(`^0[bB][01][01_]*[01][L]?$`, node.literal))
+				record_use("BinaryLit");
+			if (strfind("_", node.literal) > -1 && match(`^(0[bBx])?([0-9]+.[0-9]+)?[0-9A-Fa-f]([0-9A-Fa-f_])*[0-9A-Fa-f][FL]?$`, node.literal))
+				record_use("Underscore");
+		} else if (node.kind == ExpressionKind.NEW && def(node.new_type) && strfind("<>", node.new_type.name) > -1)
+			record_use("Diamond");
+	}
+	before node: Statement -> {
+		if (node.kind == StatementKind.TRY) {
+			if (len(node.statements) > 2)
+				for (i := 1; i < len(node.statements) - 1; i++) {
+					found := false;
+					left := node.statements[i];
+					for (j := i + 1; j < len(node.statements); j++) {
+						right := node.statements[j];
+						if (left.kind != StatementKind.CATCH || right.kind != StatementKind.CATCH)
+							continue;
+						if (len(left.statements) != len(right.statements))
+							continue;
+
+						equal := true;
+						for (k := 0; k < len(left.statements); k++)
+							if (left.statements[k] != right.statements[k]) {
+								equal = false;
+								break;
+							}
+
+						if (equal) {
+							record_potential("MultiCatch");
+							found = true;
+							break;
+						}
+					}
+					if (found)
+						break;
+				}
+			if (len(node.statements) > 1 && node.statements[len(node.statements) - 1].kind == StatementKind.BLOCK)
+				visit(node.statements[len(node.statements) - 1], visitor {
+					before node: Expression ->
+						if (node.kind == ExpressionKind.METHODCALL && def(node.method) && node.method == "close" && len(node.method_args) == 0)
+							record_potential("TryResources");
+				});
+		}
+		switch (node.kind) {
+		case StatementKind.ASSERT:
+			record_use("Assert");
+			break;
+		case StatementKind.CATCH:
+			if (strfind("|", node.variable_declaration.variable_type.name) > -1)
+				record_use("MultiCatch");
+			break;
+		case StatementKind.TRY:
+			if (len(node.initializations) > 0)
+				record_use("TryResources");
+			break;
+		default:
+			break;
+		}
+	}
+});

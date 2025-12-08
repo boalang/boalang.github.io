@@ -1,0 +1,10 @@
+AllProjects[] = 699331
+AstNodes[] = 18323905323
+FileSnapshots[] = 86411272
+Files[] = 41733495
+JavaFileSnapshots[] = 28747948
+JavaFiles[] = 9093216
+JavaProjects[] = 35341
+Repositories[] = 32555
+Revisions[] = 9557448
+StudiedProjects[] = 31432

@@ -1,0 +1,99 @@
+Converted[TryResources][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8248!!/trunk/makagiga/src/org/makagiga/editors/link/LinkEditor.java] = 1
+http://sourceforge.net/p/makagiga/code/8261/
+http://sourceforge.net/p/makagiga/code/8261/
+Converted[TryResources][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8413!!/trunk/makagiga/src/org/makagiga/feeds/archive/Archive.java] = 1
+http://sourceforge.net/p/makagiga/code/8418/
+http://sourceforge.net/p/makagiga/code/8418/
+http://sourceforge.net/p/makagiga/code/8424/
+http://sourceforge.net/p/makagiga/code/8424/
+Converted[TryResources][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8425!!/trunk/makagiga/src/org/makagiga/chart/ChartModel.java] = 2
+http://sourceforge.net/p/makagiga/code/8434/
+http://sourceforge.net/p/makagiga/code/8434/
+Converted[TryResources][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8438!!/trunk/makagiga/src/org/makagiga/search/Index.java] = 1
+Converted[TryResources][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8468!!/trunk/makagiga/src/org/makagiga/commons/about/MAboutDialog.java] = 1
+http://sourceforge.net/p/makagiga/code/8486/
+http://sourceforge.net/p/makagiga/code/8487/
+http://sourceforge.net/p/makagiga/code/8487/
+http://sourceforge.net/p/makagiga/code/8487/
+http://sourceforge.net/p/makagiga/code/8487/
+http://sourceforge.net/p/makagiga/code/8487/
+http://sourceforge.net/p/makagiga/code/8487/
+http://sourceforge.net/p/makagiga/code/8487/
+http://sourceforge.net/p/makagiga/code/8487/
+http://sourceforge.net/p/makagiga/code/8519/
+Converted[TryResources][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8635!!/trunk/plugins/bbtfont/src/org/makagiga/plugins/bbtfont/Plugin.java] = 1
+Converted[TryResources][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8719!!/trunk/makagiga/src/org/makagiga/test/Tester.java] = 4
+http://sourceforge.net/p/makagiga/code/8863/
+Converted[TryResources][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8886!!/trunk/makagiga/src/org/makagiga/todo/TaskModel.java] = 2
+Converted[TryResources][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8956!!/trunk/makagiga/src/org/makagiga/commons/ImageTransferHandler.java] = 1
+http://sourceforge.net/p/makagiga/code/9066/
+http://sourceforge.net/p/makagiga/code/9066/
+Converted[TryResources][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!9109!!/trunk/plugins/retro/src/org/makagiga/retro/RetroLookAndFeel.java] = 1
+http://sourceforge.net/p/schemacrawler/code/2622
+http://sourceforge.net/p/schemacrawler/code/2622
+http://sourceforge.net/p/schemacrawler/code/2622
+http://sourceforge.net/p/schemacrawler/code/2624
+http://sourceforge.net/p/schemacrawler/code/2626
+http://sourceforge.net/p/schemacrawler/code/2626
+http://sourceforge.net/p/schemacrawler/code/2627
+Converted[TryResources][sf:185516!!http://gcs-java.svn.sourceforge.net/svnroot/gcs-java!!550!!/trunk/com/trollworks/gcs/character/CharacterSheet.java] = 2
+Converted[TryResources][sf:206158!!http://jenetics.svn.sourceforge.net/svnroot/jenetics!!1500!!/trunk/src/test/java/org/jenetics/util/PermutationIndexStreamTest.java] = 1
+http://javapx.cvs.sourceforge.net/viewvc/javapx/JPX/1.0/Source/JpxFoundation/src/org/cybernetic/jpx/dynaload/JpxPlugin.java?r1=1.12&r2=1.13
+http://javapx.cvs.sourceforge.net/viewvc/javapx/JPX/1.0/Source/JpxFoundation/src/org/cybernetic/jpx/dynaload/JpxPluginManager.java?r1=1.30&r2=1.31
+http://javapx.cvs.sourceforge.net/viewvc/javapx/JPX/1.0/Source/JpxFoundation/src/org/cybernetic/jpx/resource/redirectors/JpxBundleTextFileRedirector.java?r1=1.6&r2=1.7
+http://javapx.cvs.sourceforge.net/viewvc/javapx/JPX/1.0/Source/JpxFoundation/src/org/cybernetic/jpx/resource/redirectors/JpxBundleImageFileRedirector.java?r1=1.7&r2=1.8
+http://javapx.cvs.sourceforge.net/viewvc/javapx/JPX/1.0/Source/JpxFoundation/src/org/cybernetic/jpx/resource/redirectors/JpxBundleIconFileRedirector.java?r1=1.7&r2=1.8
+http://javapx.cvs.sourceforge.net/viewvc/javapx/JPX/1.0/Source/JpxFoundation/src/org/cybernetic/jpx/resource/redirectors/JpxBundleCursorRedirector.java?r1=1.6&r2=1.7
+-- Converted[TryResources][sf:210099!!http://cereon.cvs.sourceforge.net/cereon!!12!!/trunk/Cereon/JaCE/Source/GenericRom/src/org/cybernetic/jace/components/memory/physical/rom/generic/JaceGenericRomUnit.java] = 1
+Converted[TryResources][sf:210099!!http://cereon.svn.sourceforge.net/svnroot/cereon!!12!!/trunk/Cereon/JaCE/Source/GenericRom/src/org/cybernetic/jace/components/memory/physical/rom/generic/JaceGenericRomUnit.java] = 1
+Converted[TryResources][sf:210597!!http://jsidplay2.cvs.sourceforge.net/jsidplay2!!93!!/trunk/jsidplay2/src/applet/download/DownloadThread.java] = 2
+http://sourceforge.net/p/jsidplay2/code/93#diff-2
+Converted[TryResources][sf:218530!!http://ttk.svn.sourceforge.net/svnroot/ttk!!164!!/trunk/com/trollworks/ttk/utility/LocalizedMessages.java] = 1
+http://sourceforge.net/p/kalypso/code/20439
+http://sourceforge.net/p/kalypso/code/20439
+Converted[TryResources][sf:232368!!http://kalypsobase.svn.sourceforge.net/svnroot/kalypsobase!!45921!!/trunk/KalypsoCore/src/org/kalypso/ogc/gml/serialize/ShapeSerializer.java] = 1
+Converted[TryResources][sf:232368!!http://kalypsobase.svn.sourceforge.net/svnroot/kalypsobase!!46604!!/trunk/KalypsoKMLExport/src/org/kalypso/kml/export/wizard/KMLExporter.java] = 1
+!! Converted[TryResources][sf:232368!!http://kalypsobase.svn.sourceforge.net/svnroot/kalypsobase!!47739!!/trunk/KalypsoGmlUI/src/org/kalypso/gml/ui/commands/importshape/ImportShapeWizardPage.java] = 1
+!! Converted[TryResources][sf:232368!!http://kalypsobase.svn.sourceforge.net/svnroot/kalypsobase!!47799!!/trunk/KalypsoModelWspmUI/src/org/kalypso/model/wspm/ui/profil/wizard/classification/landuse/model/ALSSelectedShapeFileChangedListener.java] = 1
+Converted[TryResources][sf:287098!!http://dukesoftutilsja.svn.sourceforge.net/svnroot/dukesoftutilsja!!412!!/trunk/src/main/java/com/dukesoftware/utils/xml/XMLUtils.java] = 1
+http://sourceforge.net/p/dukesoftutilsja/code/413
+Converted[TryResources][sf:287098!!http://dukesoftutilsja.svn.sourceforge.net/svnroot/dukesoftutilsja!!414!!/trunk/src/main/java/com/dukesoftware/utils/io/IOUtils.java] = 5
+Converted[TryResources][sf:287098!!http://dukesoftutilsja.svn.sourceforge.net/svnroot/dukesoftutilsja!!416!!/trunk/src/main/java/com/dukesoftware/utils/xml/XMLUtils.java] = 1
+http://sourceforge.net/p/dukesoftutilsja/code/417
+Converted[TryResources][sf:287098!!http://dukesoftutilsja.svn.sourceforge.net/svnroot/dukesoftutilsja!!419!!/trunk/src/main/java/com/dukesoftware/utils/io/IOUtils.java] = 1
+http://sourceforge.net/p/dukesoftutilsja/code/435
+http://sourceforge.net/p/dukesoftutilsja/code/435
+Converted[TryResources][sf:287098!!http://dukesoftutilsja.svn.sourceforge.net/svnroot/dukesoftutilsja!!444!!/trunk/src/main/java/com/dukesoftware/ongakumusou3d/data/primitive/XMLDataExporter.java] = 3
+Converted[TryResources][sf:287098!!http://dukesoftutilsja.svn.sourceforge.net/svnroot/dukesoftutilsja!!454!!/trunk/src/main/java/com/dukesoftware/utils/io/IOUtils.java] = 1
+http://sourceforge.net/p/dukesoftutilsja/code/467
+Converted[TryResources][sf:287098!!http://dukesoftutilsja.svn.sourceforge.net/svnroot/dukesoftutilsja!!490!!/trunk/src/main/java/com/dukesoftware/utils/io/IOUtils.java] = 2
+Converted[TryResources][sf:287098!!http://dukesoftutilsja.svn.sourceforge.net/svnroot/dukesoftutilsja!!503!!/trunk/src/main/java/com/dukesoftware/software/mymetrics/Test.java] = 2
+http://sourceforge.net/p/img-browse-sort/code/961
+Converted[TryResources][sf:31289!!http://img-browse-sort.svn.sourceforge.net/svnroot/img-browse-sort!!974!!/src/main/java/org/gerhardb/jibs/textPad/ranker/ScoreARow.java] = 1
+Converted[TryResources][sf:31289!!http://img-browse-sort.svn.sourceforge.net/svnroot/img-browse-sort!!974!!/src/main/java/org/gerhardb/jibs/textPad/ranker/WordCount.java] = 1
+http://sourceforge.net/p/img-browse-sort/code/976
+Converted[TryResources][sf:31289!!http://img-browse-sort.svn.sourceforge.net/svnroot/img-browse-sort!!979!!/src/main/java/org/gerhardb/jibs/concatenater/PanGroupSplitter.java] = 1
+Converted[TryResources][sf:325487!!http://jadoth.svn.sourceforge.net/svnroot/jadoth!!1515!!/Jadoth_SqlEngine2_DBMS_H2/src/net/jadoth/sqlengine/dbms/h2/H2TableManager.java] = 1
+http://sourceforge.net/p/trupdater/code/92
+Converted[TryResources][sf:376815!!http://docsharepoint.svn.sourceforge.net/svnroot/docsharepoint!!261!!/trunk/src/DocSharePoint/src/docsharepoint/lib/files/FileManager.java] = 2
+Converted[TryResources][sf:531139!!http://geoloc4d.svn.sourceforge.net/svnroot/geoloc4d!!37!!/trunk/src/main/java/eu/esonia/but/geoloc4d/type/MapOfNodes.java] = 3
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib/trunk/jaxlib-ant/test/jaxlib/ant/taskdefs/TarTestUtil.java?r1=3016&r2=3015&pathrev=3016
+?? Converted[TryResources][sf:54897!!http://jaxlib.svn.sourceforge.net/svnroot/jaxlib!!3016!!/trunk/jaxlib-core/src/jaxlib/io/file/Files.java] = 3
+Converted[TryResources][sf:54897!!http://jaxlib.svn.sourceforge.net/svnroot/jaxlib!!3017!!/trunk/jaxlib-core/src/jaxlib/net/URLs.java] = 1
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib/trunk/jaxlib-ant/src/jaxlib/ant/taskdefs/ReJar.java?r1=3027&r2=3026&pathrev=3027
+Converted[TryResources][sf:54897!!http://jaxlib.svn.sourceforge.net/svnroot/jaxlib!!3029!!/trunk/jaxlib-lang/src/jaxlib/lang/classpath/Classpath.java] = 1
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib/trunk/jaxlib-sql/src/jaxlib/sql/meta/DbColumnInfo.java?r1=3033&r2=3032&pathrev=3033
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib/trunk/jaxlib-sql/src/jaxlib/sql/meta/DbForeignKeyInfo.java?r1=3033&r2=3032&pathrev=3033
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib/trunk/jaxlib-sql/src/jaxlib/sql/meta/DbIndexInfo.java?r1=3033&r2=3032&pathrev=3033
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib/trunk/jaxlib-sql/src/jaxlib/sql/meta/DbPrimaryKeyInfo.java?r1=3033&r2=3032&pathrev=3033
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib/trunk/jaxlib-sql/src/jaxlib/sql/meta/DbTypeInfo.java?r1=3033&r2=3032&pathrev=3033
+Converted[TryResources][sf:54897!!http://jaxlib.svn.sourceforge.net/svnroot/jaxlib!!3055!!/trunk/jaxlib-lang/src/jaxlib/lang/javac/ManifestProcessor.java] = 2
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib/trunk/jaxlib-sql/src/jaxlib/sql/meta/DbForeignKeyInfo.java?r1=3094&r2=3093&pathrev=3094
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib/trunk/jaxlib-persistence/src/jaxlib/persistence/model/EntityClass.java?r1=3094&r2=3093&pathrev=3094
+Converted[TryResources][sf:54897!!http://jaxlib.svn.sourceforge.net/svnroot/jaxlib!!3100!!/trunk/jaxlib-core/src/jaxlib/io/stream/BufferedXInputStream.java] = 1
+Converted[TryResources][sf:54897!!http://jaxlib.svn.sourceforge.net/svnroot/jaxlib!!3101!!/trunk/jaxlib-core/src/jaxlib/io/stream/BufferedXOutputStream.java] = 1
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib/trunk/jaxlib-maven/compiler/src/jaxlib/maven/compiler/javac/JavaxCompiler.java?r1=3167&r2=3166&pathrev=3167
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib/trunk/jaxlib-maven/compiler/src/jaxlib/maven/compiler/javac/JavacCompiler.java?r1=3167&r2=3166&pathrev=3167
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib/trunk/jaxlib-maven/compiler/src/jaxlib/maven/compiler/javac/JavacExternal.java?r1=3167&r2=3166&pathrev=3167
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib/trunk/jaxlib-lang/src/jaxlib/lang/classpath/Classpath.java?r1=3174&r2=3173&pathrev=3174
+Converted[TryResources][sf:54897!!http://jaxlib.svn.sourceforge.net/svnroot/jaxlib!!3199!!/trunk/jaxlib-jdbc/src/jaxlib/jdbc/tds/TdsInputStream.java] = 1

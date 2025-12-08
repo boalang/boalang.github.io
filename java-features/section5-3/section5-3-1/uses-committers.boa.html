@@ -1,0 +1,138 @@
+#
+# computing feature uses by committer
+# Section 5.3.1, Figures 10-11
+#
+# author: Robert Dyer <rdyer@iastate.edu>
+#
+# Copyright 2013-2014 Iowa State University. All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 
+# 1. Redistributions of source code must retain the above copyright notice, this
+#    list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
+# 
+# THIS SOFTWARE IS PROVIDED BY IOWA STATE UNIVERSITY ``AS IS'' AND ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+# EVENT SHALL IOWA STATE UNIVERSITY OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+# INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 
+# The views and conclusions contained in the software and documentation are those
+# of the authors and should not be interpreted as representing official policies,
+# either expressed or implied, of Iowa State University.
+#
+p:Project = input;
+
+CommitterUses: output sum[string][time][string][string] of int;
+
+cur_time: time;
+cur_name: string;
+in_field: bool;
+
+record_feature_use := function(s: string) {
+	CommitterUses[s][cur_time][cur_name][p.id] << 1;
+};
+
+visit(p, visitor {
+	before node: Revision -> {
+		cur_time = node.commit_date;
+		cur_name = node.committer.real_name;
+	}
+	before node: ChangedFile ->
+		if (!iskind("SOURCE_JAVA_JLS", node.kind) || node.change == ChangeKind.DELETED)
+			stop;
+	before node: Declaration -> {
+        if (node.kind == TypeKind.ANNOTATION)
+			record_feature_use("AnnotDefine");
+		if (len(node.generic_parameters) > 0)
+			record_feature_use("GenDefType");
+		if (node.kind == TypeKind.ENUM)
+			record_feature_use("Enums");
+
+		in_field = true;
+		foreach (i: int; def(node.fields[i]))
+			visit(node.fields[i]);
+		in_field = false;
+	}
+	before node: Type -> {
+		if (strfind("?", node.name) > -1 && !match(`\?\s*super\s+.+`, node.name) && !match(`\?\s*extends\s+.+`, node.name))
+			record_feature_use("GenWildcard");
+		if (match(`\?\s*extends\s+.+`, node.name))
+			record_feature_use("GenExtends");
+		if (match(`\?\s*super\s+.+`, node.name))
+			record_feature_use("GenSuper");
+		if (in_field && strfind("<", node.name) > -1)
+			record_feature_use("GenDefField");
+	}
+	before node: Method -> {
+		if (len(node.generic_parameters) > 0)
+			record_feature_use("GenDefMethod");
+		# @SafeVarargs
+		if (has_annotation(node, "SafeVarargs")) {
+			record_feature_use("SafeVarargs");
+        } else {
+		    # @SuppressWarnings({"unchecked", "varargs"})
+		    mod := get_annotation(node, "SuppressWarnings");
+		    if (def(mod))
+                foreach (i: int; mod.annotation_members[i] == "value") {
+				    e := mod.annotation_values[i];
+				    if (e.kind == ExpressionKind.ARRAYINIT) {
+					    foundUnchecked := false;
+                        foundVarargs := false;
+                        foreach (j: int; e.expressions[j].kind == ExpressionKind.LITERAL) {
+						    if (e.expressions[j].literal == "unchecked")
+							    foundUnchecked = true;
+						    if (e.expressions[j].literal == "varargs")
+							    foundVarargs = true;
+					    }
+					    if (foundUnchecked && foundVarargs)
+							record_feature_use("SafeVarargs");
+				    }
+				    break;
+			    }
+        }
+		if (len(node.arguments) > 0 && strfind("...", node.arguments[len(node.arguments) - 1].variable_type.name) > -1)
+			record_feature_use("Varargs");
+	}
+	before node: Statement -> {
+		switch (node.kind) {
+		case StatementKind.ASSERT:
+			record_feature_use("Assert");
+			break;
+		case StatementKind.CATCH:
+			if (strfind("|", node.variable_declaration.variable_type.name) > -1)
+				record_feature_use("MultiCatch");
+			break;
+		case StatementKind.TRY:
+			if (len(node.initializations) > 0)
+				record_feature_use("TryResources");
+			break;
+		case StatementKind.FOR:
+			if (def(node.variable_declaration))
+				record_feature_use("EnhancedFor");
+			break;
+		default:
+			break;
+		}
+	}
+	before node: Expression ->
+		if (node.kind == ExpressionKind.LITERAL && def(node.literal)) {
+			if (match(`^0[bB][01][01_]*[01][L]?$`, node.literal))
+				record_feature_use("BinaryLit");
+			if (strfind("_", node.literal) > -1 && match(`^(0[bBx])?([0-9]+.[0-9]+)?[0-9A-Fa-f]([0-9A-Fa-f_])*[0-9A-Fa-f][FL]?$`, node.literal))
+				record_feature_use("UnderscoreLit");
+		} else if (node.kind == ExpressionKind.NEW && def(node.new_type) && strfind("<>", node.new_type.name) > -1)
+			record_feature_use("Diamond");
+	before node: Modifier ->
+		if (node.kind == ModifierKind.ANNOTATION)
+			record_feature_use("AnnotUse");
+});

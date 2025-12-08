@@ -1,0 +1,100 @@
+#
+# compute dataset metrics
+# Section 4.2, Figure 2
+#
+# author: Robert Dyer <rdyer@iastate.edu>
+#
+# Copyright 2013-2014 Iowa State University. All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 
+# 1. Redistributions of source code must retain the above copyright notice, this
+#    list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
+# 
+# THIS SOFTWARE IS PROVIDED BY IOWA STATE UNIVERSITY ``AS IS'' AND ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+# EVENT SHALL IOWA STATE UNIVERSITY OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+# INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 
+# The views and conclusions contained in the software and documentation are those
+# of the authors and should not be interpreted as representing official policies,
+# either expressed or implied, of Iowa State University.
+#
+p: Project = input;
+AllProjects: output sum of int;
+JavaProjects: output sum of int;
+StudiedProjects: output sum of int;
+Repositories: output sum of int;
+Revisions: output sum of int;
+Files: output sum of int;
+FileSnapshots: output sum of int;
+JavaFiles: output sum of int;
+JavaFileSnapshots: output sum of int;
+AstNodes: output sum of int;
+
+AllProjects << 1;
+
+exists (i: int; match(`^java$`, lowercase(p.programming_languages[i])))
+	exists (j: int; p.code_repositories[j].kind == RepositoryKind.CVS
+		|| p.code_repositories[j].kind == RepositoryKind.SVN)
+	JavaProjects << 1;
+
+repos := 0;
+revs := 0;
+snapshots := 0;
+javaSnapshots := 0;
+
+javaProjectEmpty := true;
+
+paths: map[string] of bool;
+javaPaths: map[string] of bool;
+
+foreach (i: int; def(p.code_repositories[i])) {
+	repos++;
+	revs = revs + len(p.code_repositories[i].revisions);
+
+	foreach (j: int; def(p.code_repositories[i].revisions[j])) {
+		rev: = p.code_repositories[i].revisions[j];
+
+		foreach (k: int; def(rev.files[k])) {
+			paths[rev.files[k].name] = true;
+
+			if (rev.files[k].change != ChangeKind.DELETED) {
+				snapshots++;
+
+				if (rev.files[k].kind == FileKind.SOURCE_JAVA_JLS2
+						|| rev.files[k].kind == FileKind.SOURCE_JAVA_JLS3
+						|| rev.files[k].kind == FileKind.SOURCE_JAVA_JLS4) {
+					javaProjectEmpty = false;
+
+					javaSnapshots++;
+					AstNodes << ast_len(getast(rev.files[k]));
+
+					javaPaths[rev.files[k].name] = true;
+				} else if (rev.files[k].kind == FileKind.SOURCE_JAVA_ERROR) {
+					javaPaths[rev.files[k].name] = true;
+				}
+			}
+		}
+	}
+}
+
+if (!javaProjectEmpty) {
+	StudiedProjects << 1;
+	Repositories << repos;
+	Revisions << revs;
+	Files << len(paths);
+	FileSnapshots << snapshots;
+	JavaFiles << len(javaPaths);
+	JavaFileSnapshots << javaSnapshots;
+}

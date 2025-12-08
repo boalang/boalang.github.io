@@ -1,0 +1,78 @@
+#
+# find potential resource use bugs
+# Section 5.4
+#
+# author: Robert Dyer <rdyer@iastate.edu>
+#
+# Copyright 2013-2014 Iowa State University. All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 
+# 1. Redistributions of source code must retain the above copyright notice, this
+#    list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
+# 
+# THIS SOFTWARE IS PROVIDED BY IOWA STATE UNIVERSITY ``AS IS'' AND ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+# EVENT SHALL IOWA STATE UNIVERSITY OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+# INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 
+# The views and conclusions contained in the software and documentation are those
+# of the authors and should not be interpreted as representing official policies,
+# either expressed or implied, of Iowa State University.
+#
+p: Project = input;
+ResourceViolation: output sum of int;
+
+t: stack of bool;
+curT := false;
+
+close: stack of bool;
+curClose := false;
+
+isIOEx := function (s: string) : bool {
+    return s == "IOException" || s == "java.io.IOException";
+};
+
+isEx := function (s: string) : bool {
+    return s == "Exception" || s == "java.lang.Exception" || s == "Throwable" || s == "java.lang.Throwable";
+};
+
+visit(p, visitor {
+    before node: CodeRepository -> {
+        snapshot := getsnapshot(node, "SOURCE_JAVA_JLS");
+        foreach (i: int; snapshot[i])
+            visit(snapshot[i]);
+        stop;
+    }
+    before node: Method -> {
+        ifall (i: int; !isIOEx(node.exception_types[i].name))
+            stop;
+        push(t, curT);
+        push(close, curClose);
+        curT = false;
+        curClose = false;
+    }
+    after Method -> {
+        if (!curT && curClose)
+            ResourceViolation << 1;
+        curT = pop(t);
+        curClose = pop(close);
+    }
+    before node: Statement ->
+        if (node.kind == StatementKind.CATCH && def(node.variable_declaration))
+            if (isIOEx(node.variable_declaration.variable_type.name) || isEx(node.variable_declaration.variable_type.name))
+                curT = true;
+    before node: Expression ->
+        if (node.kind == ExpressionKind.METHODCALL && node.method == "close")
+            curClose = true;
+});

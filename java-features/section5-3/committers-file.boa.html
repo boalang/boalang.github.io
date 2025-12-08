@@ -1,0 +1,54 @@
+#
+# mining number of committers per file
+# Section 5.3, Figure 9b
+#
+# author: Robert Dyer <rdyer@iastate.edu>
+#
+# Copyright 2013-2014 Iowa State University. All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 
+# 1. Redistributions of source code must retain the above copyright notice, this
+#    list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
+# 
+# THIS SOFTWARE IS PROVIDED BY IOWA STATE UNIVERSITY ``AS IS'' AND ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+# EVENT SHALL IOWA STATE UNIVERSITY OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+# INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 
+# The views and conclusions contained in the software and documentation are those
+# of the authors and should not be interpreted as representing official policies,
+# either expressed or implied, of Iowa State University.
+#
+p:Project = input;
+
+Committers: output sum[int] of int;
+
+names: map[string] of bool;
+
+visit(p, visitor {
+	before cr: CodeRepository -> {
+		foreach (i: int; cr.revisions[i])
+			foreach (j: int; cr.revisions[i].files[j].change == ChangeKind.ADDED && iskind("SOURCE_JAVA_JLS", cr.revisions[i].files[j].kind)) {
+				clear(names);
+
+				foreach (k: int; cr.revisions[k])
+					foreach (l: int; cr.revisions[k].files[l].change != ChangeKind.DELETED && cr.revisions[k].files[l].name == cr.revisions[i].files[j].name)
+						names[cr.revisions[k].committer.real_name] = true;
+
+				Committers[len(names)] << 1;
+			}
+
+		stop;
+	}
+});

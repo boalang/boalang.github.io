@@ -1,0 +1,88 @@
+Converted[Assert][sf:101202!!http://pavlov.cvs.sourceforge.net/pavlov!!49!!/trunk/net/sourceforge/pavlov/main/standalone/SwingUIFactory.java] = 3
+http://xmage.cvs.sourceforge.net/viewvc/xmage/xmage/xmage/vector/GeneralShape.java?hideattic=0&r1=1.2&r2=1.3
+http://xmage.cvs.sourceforge.net/viewvc/xmage/xmage/xmage/vector/PolyShape.java?hideattic=0&r1=1.3&r2=1.4
+http://xmage.cvs.sourceforge.net/viewvc/xmage/xmage/xmage/vector/Polygon.java?hideattic=0&r1=1.10&r2=1.11
+Converted[Assert][sf:107358!!http://jabak.cvs.sourceforge.net/jabak!!195!!/jabak/branches/devel2009/src/net/diet_rich/util/sql/Sql.java] = 1
+-- Converted[Assert][sf:116381!!http://javaseis.cvs.sourceforge.net/javaseis!!1123!!/javaseis/trunk/src/beta/javaseis/distributed/DistributedArray.java] = 1
+http://sourceforge.net/p/javaseis/svn/1552
+Converted[Assert][sf:116381!!http://javaseis.cvs.sourceforge.net/javaseis!!263!!/javaseis/trunk/src/org/javaseis/grid/BinGrid.java] = 6
+-- Converted[Assert][sf:116381!!http://javaseis.cvs.sourceforge.net/javaseis!!270!!/javaseis/trunk/src/org/javaseis/io/ExtentList.java] = 2
+-- Converted[Assert][sf:116381!!http://javaseis.svn.sourceforge.net/svnroot/javaseis!!1123!!/javaseis/trunk/src/beta/javaseis/distributed/DistributedArray.java] = 1
+http://sourceforge.net/p/javaseis/svn/1552
+-- Converted[Assert][sf:116381!!http://javaseis.svn.sourceforge.net/svnroot/javaseis!!263!!/javaseis/trunk/src/org/javaseis/grid/BinGrid.java] = 6
+Converted[Assert][sf:116381!!http://javaseis.svn.sourceforge.net/svnroot/javaseis!!270!!/javaseis/trunk/src/org/javaseis/io/ExtentList.java] = 2
+?? Converted[Assert][sf:117196!!http://euromath2.svn.sourceforge.net/svnroot/euromath2!!604!!/sk.uniba.euromath.fop/src/main/java/sk/uniba/euromath/foRenderer/draw2d/FOPFigureFactory.java] = 1
+http://edam-enchilada.cvs.sourceforge.net/viewvc/edam-enchilada/edam-enchilada/database/CreateTestDatabase.java?r1=1.4&r2=1.4.2.1
+Converted[Assert][sf:136029!!http://jebl.svn.sourceforge.net/svnroot/jebl!!385!!/trunk/jebl/src/jebl/evolution/coalescent/Expansion.java] = 1
+Converted[Assert][sf:13833!!http://crossfire.svn.sourceforge.net/svnroot/crossfire!!8508!!/jxclient/trunk/src/jxclient/com/realtime/crossfire/jxclient/items/ItemsManager.java] = 1
+?? Converted[Assert][sf:157189!!http://jfire.svn.sourceforge.net/svnroot/jfire!!4278!!/trunk/org.nightlabs.jfire.update.admin.ui/src/org/nightlabs/jfire/update/admin/ui/editor/ClientElementRequirementsSection.java] = 1
+http://sourceforge.net/p/jfire/code/4278
+Converted[Assert][sf:159812!!http://essential.svn.sourceforge.net/svnroot/essential!!429!!/trunk/workspace/de.berlios.rcpviewer.gui/src/de/berlios/rcpviewer/gui/editors/exts/BooleanFieldBuilder.java] = 1
+Converted[Assert][sf:159812!!http://essential.svn.sourceforge.net/svnroot/essential!!451!!/trunk/workspace/de.berlios.rcpviewer.gui/src/de/berlios/rcpviewer/gui/fieldbuilders/PrimitiveFieldBuilder.java] = 1
+-- Converted[Assert][sf:167309!!http://iris-reasoner.cvs.sourceforge.net/iris-reasoner!!35!!/iris/trunk/src/org/deri/iris/terms/concrete/BooleanTerm.java] = 1
+Converted[Assert][sf:167309!!http://iris-reasoner.svn.sourceforge.net/svnroot/iris-reasoner!!35!!/iris/trunk/src/org/deri/iris/terms/concrete/BooleanTerm.java] = 1
+Converted[Assert][sf:177230!!http://xith3d.svn.sourceforge.net/svnroot/xith3d!!1019!!/trunk/src/org/xith3d/ui/hud/HUD.java] = 1
+Converted[Assert][sf:181861!!http://tinyhorrorsql.svn.sourceforge.net/svnroot/tinyhorrorsql!!437!!/trunk/0.08/src_middleend/org/sqlsplatter/tinyhorror/actions/clauses/OrderBy.java] = 1
+http://sourceforge.net/p/osgi/code/125
+http://sourceforge.net/p/osgi/code/20
+http://sourceforge.net/p/osgi/code/20
+http://sourceforge.net/p/osgi/code/20
+http://sourceforge.net/p/osgi/code/20
+http://sourceforge.net/p/osgi/code/20
+http://sourceforge.net/p/osgi/code/20
+http://sourceforge.net/p/osgi/code/20
+-- Converted[Assert][sf:184039!!http://muf.svn.sourceforge.net/svnroot/muf!!169!!/src/main/java/swingmuf/model/SurfacePhrase.java] = 1
+Converted[Assert][sf:191861!!http://bigdata.svn.sourceforge.net/svnroot/bigdata!!2009!!/branches/BTREE_BUFFER_BRANCH/lgpl-utils/src/java/it/unimi/dsi/fastutil/bytes/CustomByteArrayFrontCodedList.java] = 1
+Converted[Assert][sf:191861!!http://bigdata.svn.sourceforge.net/svnroot/bigdata!!2230!!/branches/BTREE_BUFFER_BRANCH/bigdata/src/java/com/bigdata/cache/WeakReferenceGlobalLRU.java] = 1
+Converted[Assert][sf:191861!!http://bigdata.svn.sourceforge.net/svnroot/bigdata!!272!!/trunk/bigdata-rdf/src/java/com/bigdata/rdf/model/OptimizedValueFactory.java] = 1
+-- Converted[Assert][sf:191861!!http://bigdata.svn.sourceforge.net/svnroot/bigdata!!4235!!/branches/QUADS_QUERY_BRANCH/bigdata/src/java/com/bigdata/bop/joinGraph/rto/JGraph.java] = 1
+Converted[Assert][sf:191861!!http://bigdata.svn.sourceforge.net/svnroot/bigdata!!522!!/trunk/bigdata/src/java/com/bigdata/resources/UpdateIndexPartition.java] = 1
+Converted[Assert][sf:191861!!http://bigdata.svn.sourceforge.net/svnroot/bigdata!!682!!/trunk/bigdata/src/java/com/bigdata/resources/IndexManager.java] = 1
+http://sourceforge.net/p/jace/code/24
+Converted[Assert][sf:200887!!http://loom.svn.sourceforge.net/svnroot/loom!!663!!/trunk/src/java/org/loom/binding/SetNode.java] = 1
+http://sourceforge.net/p/jquant/code/1119
+http://sourceforge.net/p/jquant/code/1119
+http://sourceforge.net/p/jquant/code/1122
+http://sourceforge.net/p/jquant/code/1122
+http://sourceforge.net/p/jquant/code/1123
+http://sourceforge.net/p/jquant/code/1123
+http://sourceforge.net/p/jquant/code/1123
+http://sourceforge.net/p/jquant/code/1123
+http://sourceforge.net/p/jquant/code/1123
+http://sourceforge.net/p/jquant/code/1123
+http://sourceforge.net/p/jquant/code/1123
+http://sourceforge.net/p/jquant/code/1123
+http://sourceforge.net/p/jquant/code/1132
+http://sourceforge.net/p/jquant/code/1132
+http://sourceforge.net/p/jquant/code/1132
+http://sourceforge.net/p/jquant/code/1132
+http://sourceforge.net/p/jquant/code/1133
+http://sourceforge.net/p/jquant/code/1133
+http://sourceforge.net/p/jquant/code/1133
+Converted[Assert][sf:205911!!http://jquant.svn.sourceforge.net/svnroot/jquant!!1136!!/trunk/jquantlib/src/main/java/org/jquantlib/cashflow/FloatingRateCoupon.java] = 1
+Converted[Assert][sf:207074!!http://cadi.svn.sourceforge.net/svnroot/cadi!!116!!/src/CADI/Client/ClientLogicalTarget/JPEG2000/MultiComponentDetransform.java] = 1
+Converted[Assert][sf:207074!!http://cadi.svn.sourceforge.net/svnroot/cadi!!154!!/src/CADI/Common/Cache/DataBin.java] = 1
+-- Converted[Assert][sf:207074!!http://cadi.svn.sourceforge.net/svnroot/cadi!!186!!/src/CADI/Common/Core/Prefetching.java] = 2
+Converted[Assert][sf:214103!!http://qtitools.svn.sourceforge.net/svnroot/qtitools!!628!!/trunk/src/ValidationTool/src/main/java/uk/ac/soton/ecs/asdel/validator/model/DefaultValidatorModel.java] = 1
+Converted[Assert][sf:218562!!http://statechum.svn.sourceforge.net/svnroot/statechum!!454!!/XMachineTool/trunk/statechum/analysis/learning/rpnicore/Transform.java] = 1
+Converted[Assert][sf:294468!!http://fetlar.svn.sourceforge.net/svnroot/fetlar!!628!!/trunk/src/ValidationTool/src/main/java/uk/ac/soton/ecs/asdel/validator/model/DefaultValidatorModel.java] = 1
+http://xdoclet.cvs.sourceforge.net/viewvc/xdoclet/xdoclet2/core/src/java/xdoclet/Generator.java?hideattic=0&r1=1.15&r2=1.16
+Converted[Assert][sf:316802!!http://lillytab.svn.sourceforge.net/svnroot/lillytab!!5!!/trunk/LillyTab/src/de/uniba/wiai/kinf/pw/projects/lillytab/reasoner/abox/ABoxNode.java] = 1
+Converted[Assert][sf:386712!!http://threeten.svn.sourceforge.net/svnroot/threeten!!760!!/branches/TIMESCALE/ref-UTC/src/main/java/javax/time/scale/AbstractUTC.java] = 1
+Converted[Assert][sf:395715!!http://systemetest.svn.sourceforge.net/svnroot/systemetest!!178!!/v1.08b/dev/IHM/src/utils/controles/domaine/ComboSujets.java] = 1
+http://sourceforge.net/p/drjava/code/3265
+Converted[Assert][sf:510301!!http://ogp-project.svn.sourceforge.net/svnroot/ogp-project!!68!!/Square/src/ogp/TransparentTeleportSquare.java] = 1
+Converted[Assert][sf:55583!!http://gumbo.cvs.sourceforge.net/gumbo!!982!!/bombsight/src/com/jmbaai/bombsight/graphic/shape/impl/GeodeticLocalShape.java] = 1
+Converted[Assert][sf:55583!!http://gumbo.svn.sourceforge.net/svnroot/gumbo!!982!!/bombsight/src/com/jmbaai/bombsight/graphic/shape/impl/GeodeticLocalShape.java] = 1
+-- Converted[Assert][sf:561236!!http://loggifier.svn.sourceforge.net/svnroot/loggifier!!174!!/trunk/de.unkrig.find/src/de/unkrig/find/Main.java] = 1
+Converted[Assert][sf:56385!!http://drftpd.svn.sourceforge.net/svnroot/drftpd!!172!!/trunk/src/net/sf/drftpd/remotefile/LinkedRemoteFile.java] = 1
+Converted[Assert][sf:57510!!http://seda.cvs.sourceforge.net/seda!!212!!/trunk/seda3/sandstorm/src/seda/sandstorm/core/DynamicArrayBlockingQueue.java] = 1
+Converted[Assert][sf:588!!http://jedit.cvs.sourceforge.net/jedit!!13260!!/plugins/SpellCheck/trunk/src/main/cswilly/jeditPlugins/spell/SpellCheckPlugin.java] = 1
+-- Converted[Assert][sf:588!!http://jedit.svn.sourceforge.net/svnroot/jedit!!13260!!/plugins/SpellCheck/trunk/src/main/cswilly/jeditPlugins/spell/SpellCheckPlugin.java] = 1
+Converted[Assert][sf:65346!!http://jmlspecs.cvs.sourceforge.net/jmlspecs!!2298!!/OpenJML/trunk/OpenJDK/trunk/langtools/src/share/classes/com/sun/tools/javac/util/AbstractDiagnosticFormatter.java] = 1
+Converted[Assert][sf:65346!!http://jmlspecs.svn.sourceforge.net/svnroot/jmlspecs!!2298!!/OpenJML/trunk/OpenJDK/trunk/langtools/src/share/classes/com/sun/tools/javac/util/AbstractDiagnosticFormatter.java] = 1
+Converted[Assert][sf:66895!!http://j-wings.svn.sourceforge.net/svnroot/j-wings!!4172!!/wings3/trunk/wings/src/java/org/wings/SFileChooser.java] = 1
+http://jung.cvs.sourceforge.net/viewvc/jung/jung2/api/src/main/java/edu/uci/ics/graph/util/Pair.java?hideattic=0&r1=1.1&r2=1.2
+Converted[Assert][sf:73840!!http://jung.cvs.sourceforge.net/jung!!3447!!/trunk/jung2/algorithms/src/main/java/edu/uci/ics/jung/algorithms/importance/VoltageRanker.java] = 2
+Converted[Assert][sf:73840!!http://jung.cvs.sourceforge.net/jung!!3447!!/trunk/jung2/graph-impl/src/main/java/edu/uci/ics/jung/graph/BarabasiAlbertGenerator.java] = 2
+Converted[Assert][sf:89961!!http://gamescrafters.svn.sourceforge.net/svnroot/gamescrafters!!6746!!/GamesmanJava_Optimized/GamesmanJava-parallel/src/main/java/edu/berkeley/gamesman/parallel/game/connect4/Connect4.java] = 1

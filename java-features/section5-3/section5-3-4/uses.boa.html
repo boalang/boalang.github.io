@@ -1,0 +1,196 @@
+#
+# mining if committers use all features
+# Section 5.3.4, Figure 14
+#
+# author: Robert Dyer <rdyer@iastate.edu>
+#
+# Copyright 2013-2014 Iowa State University. All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 
+# 1. Redistributions of source code must retain the above copyright notice, this
+#    list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
+# 
+# THIS SOFTWARE IS PROVIDED BY IOWA STATE UNIVERSITY ``AS IS'' AND ANY EXPRESS OR
+# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+# EVENT SHALL IOWA STATE UNIVERSITY OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+# INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 
+# The views and conclusions contained in the software and documentation are those
+# of the authors and should not be interpreted as representing official policies,
+# either expressed or implied, of Iowa State University.
+#
+p:Project = input;
+
+Committers: output sum of int;
+Uses: output minimum(1)[string][string] of int weight int;
+
+filtered: map[string] of bool;
+lastDate: map[string] of int;
+
+filter := function(name: string, now: time) {
+	# stop if we already filtered the user
+	if (haskey(filtered, name))
+		return;
+
+	last := 1096563600000000;
+	if (haskey(lastDate, name))
+		last = lastDate[name];
+
+	lastDate[name] = int(now);
+
+	# must be within 6 months (180 days)
+	if (int(now) > last + 6 * 30 * 86400000000) {
+		filtered[name] = true;
+		remove(lastDate, name);
+		return;
+	}
+};
+
+visit(p, visitor {
+	before node: CodeRepository -> {
+		clear(filtered);
+		clear(lastDate);
+	}
+	before node: Revision -> {
+		# only keep commits between JLS3 and JLS4 releases
+		if (int(node.commit_date) < 1096563600000000 || int(node.commit_date) > 1311872400000000)
+			stop;
+
+		# only analyze revisions with at least 1 valid Java source file
+		exists (i: int; iskind("SOURCE_JAVA_JLS", node.files[i].kind))
+			# test if this commit is within allowed time range, and filter if it isnt
+			filter(node.committer.real_name, node.commit_date);
+
+		stop;
+	}
+});
+
+# fake a commit on the JLS4 date, to ensure they committed until the end
+k := keys(lastDate);
+foreach (i: int; def(k[i]))
+	filter(k[i], time(1311872400000000));
+
+Committers << len(lastDate);
+
+cur_name: string;
+cur_time: time;
+in_field: bool;
+files: map[string] of bool;
+
+record_feature_use := function(feature: string) {
+	Uses[cur_name][feature] << 1 weight int(cur_time);
+};
+
+visit(p, visitor {
+	before node: CodeRepository -> {
+		clear(files);
+		for (i := len(node.revisions) - 1; i >= 0; i--)
+			visit(node.revisions[i]);
+		stop;
+	}
+	before node: Revision -> {
+		cur_name = node.committer.real_name;
+		cur_time = node.commit_date;
+	}
+	before node: ChangedFile -> {
+		if (!iskind("SOURCE_JAVA_JLS", node.kind) || haskey(files, node.name))
+			stop;
+		files[node.name] = true;
+	}
+	before node: Declaration -> {
+        if (node.kind == TypeKind.ANNOTATION)
+			record_feature_use("AnnotDefine");
+		if (len(node.generic_parameters) > 0)
+			record_feature_use("GenDefType");
+		if (node.kind == TypeKind.ENUM)
+			record_feature_use("Enums");
+
+		in_field = true;
+		foreach (i: int; def(node.fields[i]))
+			visit(node.fields[i]);
+		in_field = false;
+	}
+	before node: Type -> {
+		if (strfind("?", node.name) > -1 && !match(`\?\s*super\s+.+`, node.name) && !match(`\?\s*extends\s+.+`, node.name))
+			record_feature_use("GenWildcard");
+		if (match(`\?\s*extends\s+.+`, node.name))
+			record_feature_use("GenExtends");
+		if (match(`\?\s*super\s+.+`, node.name))
+			record_feature_use("GenSuper");
+		if (in_field && strfind("<", node.name) > -1)
+			record_feature_use("GenDefField");
+	}
+	before node: Method -> {
+		if (len(node.generic_parameters) > 0)
+			record_feature_use("GenDefMethod");
+		# @SafeVarargs
+		if (has_annotation(node, "SafeVarargs")) {
+			record_feature_use("SafeVarargs");
+        } else {
+		    # @SuppressWarnings({"unchecked", "varargs"})
+		    mod := get_annotation(node, "SuppressWarnings");
+		    if (def(mod))
+                foreach (i: int; mod.annotation_members[i] == "value") {
+				    e := mod.annotation_values[i];
+				    if (e.kind == ExpressionKind.ARRAYINIT) {
+					    foundUnchecked := false;
+                        foundVarargs := false;
+                        foreach (j: int; e.expressions[j].kind == ExpressionKind.LITERAL) {
+						    if (e.expressions[j].literal == "unchecked")
+							    foundUnchecked = true;
+						    if (e.expressions[j].literal == "varargs")
+							    foundVarargs = true;
+					    }
+					    if (foundUnchecked && foundVarargs)
+							record_feature_use("SafeVarargs");
+				    }
+				    break;
+			    }
+        }
+		if (len(node.arguments) > 0 && strfind("...", node.arguments[len(node.arguments) - 1].variable_type.name) > -1)
+			record_feature_use("Varargs");
+	}
+	before node: Statement -> {
+		switch (node.kind) {
+		case StatementKind.ASSERT:
+			record_feature_use("Assert");
+			break;
+		case StatementKind.CATCH:
+			if (strfind("|", node.variable_declaration.variable_type.name) > -1)
+				record_feature_use("MultiCatch");
+			break;
+		case StatementKind.TRY:
+			if (len(node.initializations) > 0)
+				record_feature_use("TryResources");
+			break;
+		case StatementKind.FOR:
+			if (def(node.variable_declaration))
+				record_feature_use("EnhancedFor");
+			break;
+		default:
+			break;
+		}
+	}
+	before node: Expression ->
+		if (node.kind == ExpressionKind.LITERAL && def(node.literal)) {
+			if (match(`^0[bB][01][01_]*[01][L]?$`, node.literal))
+				record_feature_use("BinaryLit");
+			if (strfind("_", node.literal) > -1 && match(`^(0[bBx])?([0-9]+.[0-9]+)?[0-9A-Fa-f]([0-9A-Fa-f_])*[0-9A-Fa-f][FL]?$`, node.literal))
+				record_feature_use("UnderscoreLit");
+		} else if (node.kind == ExpressionKind.NEW && def(node.new_type) && strfind("<>", node.new_type.name) > -1)
+			record_feature_use("Diamond");
+	before node: Modifier ->
+		if (node.kind == ModifierKind.ANNOTATION)
+			record_feature_use("AnnotUse");
+});

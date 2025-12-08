@@ -1,0 +1,125 @@
+http://sourceforge.net/p/makagiga/code/8235
+Converted[MultiCatch][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8240!!/trunk/makagiga/src/org/makagiga/plugins/AppletPanel.java] = 1
+Converted[MultiCatch][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8248!!/trunk/makagiga/src/org/makagiga/editors/link/LinkEditorPlugin.java] = 1
+Converted[MultiCatch][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8249!!/trunk/makagiga/src/org/makagiga/todo/TaskTable.java] = 1
+http://sourceforge.net/p/makagiga/code/8253
+http://sourceforge.net/p/makagiga/code/8253
+Converted[MultiCatch][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8261!!/trunk/makagiga/src/org/makagiga/editors/image/ImageEditorCore.java] = 1
+Converted[MultiCatch][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8274!!/trunk/makagiga/src/org/makagiga/web/xmlrpc/XMLRPCClient.java] = 1
+http://sourceforge.net/p/makagiga/code/8286
+Converted[MultiCatch][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8288!!/trunk/makagiga/src/org/makagiga/commons/autocompletion/AutoCompletionData.java] = 1
+Converted[MultiCatch][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8338!!/trunk/makagiga/src/org/makagiga/commons/FS.java] = 1
+Converted[MultiCatch][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8338!!/trunk/makagiga/src/org/makagiga/plugins/PluginManager.java] = 1
+http://sourceforge.net/p/makagiga/code/8391
+Converted[MultiCatch][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8418!!/trunk/makagiga/src/org/makagiga/internetsearch/InternetSearchPlugin.java] = 1
+Converted[MultiCatch][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8434!!/trunk/makagiga/src/org/makagiga/commons/MIcon.java] = 1
+Converted[MultiCatch][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8534!!/trunk/plugins/templates/src/org/makagiga/plugins/templates/Plugin.java] = 1
+http://sourceforge.net/p/makagiga/code/8635
+Converted[MultiCatch][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!8952!!/trunk/makagiga/src/org/makagiga/feeds/Feed.java] = 1
+Converted[MultiCatch][sf:140641!!http://makagiga.svn.sourceforge.net/svnroot/makagiga!!9067!!/trunk/plugins/spellchecker/src/com/swabunga/spell/engine/Configuration.java] = 1
+Converted[MultiCatch][sf:148383!!http://schemacrawler.svn.sourceforge.net/svnroot/schemacrawler!!2622!!/trunk/schemacrawler-api/src/main/java/schemacrawler/crawl/RoutineRetriever.java] = 2
+http://sourceforge.net/p/schemacrawler/code/2628
+http://sourceforge.net/p/schemacrawler/code/2628
+Converted[MultiCatch][sf:148383!!http://schemacrawler.svn.sourceforge.net/svnroot/schemacrawler!!2629!!/trunk/schemacrawler-tools/src/main/java/schemacrawler/tools/integration/graph/ProcessExecutor.java] = 1
+Converted[MultiCatch][sf:148383!!http://schemacrawler.svn.sourceforge.net/svnroot/schemacrawler!!2630!!/trunk/schemacrawler-test/src/main/java/schemacrawler/utility/JavaSqlTypesGenerationUtility.java] = 1
+http://sourceforge.net/p/iwii-organizer/code/202/
+http://sourceforge.net/p/iwii-organizer/code/202/
+http://sourceforge.net/p/iwii-organizer/code/202/
+http://intcom.cvs.sourceforge.net/viewvc/intcom/JDataCom/src/com/jdcm/common/C_TransferHandler.java?r1=1.2&r2=1.3
+http://intcom.cvs.sourceforge.net/viewvc/intcom/JDataCom/src/com/jdcm/common/CharSequenceCompiler.java?r1=1.2&r2=1.3
+Converted[MultiCatch][sf:200005!!http://ossobook.cvs.sourceforge.net/ossobook!!1036!!/trunk/ossobook/src/xbook/Start.java] = 1
+Converted[MultiCatch][sf:200005!!http://ossobook.cvs.sourceforge.net/ossobook!!803!!/trunk/latest/src/ossobook2010/controller/GuiController.java] = 3
+Converted[MultiCatch][sf:200005!!http://ossobook.cvs.sourceforge.net/ossobook!!803!!/trunk/latest/src/ossobook2010/gui/components/content/entry/section2/Measurements.java] = 1
+Converted[MultiCatch][sf:200005!!http://ossobook.cvs.sourceforge.net/ossobook!!812!!/trunk/latest/src/ossobook2010/gui2012/SplashScreen2012.java] = 1
+Converted[MultiCatch][sf:200005!!http://ossobook.cvs.sourceforge.net/ossobook!!972!!/trunk/xbook/src/xbook/gui2012/components2012/Content2012/entry2012/inputFields2012/InputComboIdBox2012.java] = 1
+Converted[MultiCatch][sf:200005!!http://ossobook.cvs.sourceforge.net/ossobook!!972!!/trunk/xbook/src/xbook/gui2012/components2012/Content2012/entry2012/inputFields2012/InputComboTextBox2012.java] = 1
+Converted[MultiCatch][sf:200005!!http://ossobook.svn.sourceforge.net/svnroot/ossobook!!1036!!/trunk/ossobook/src/xbook/Start.java] = 1
+http://ossobook.svn.sourceforge.net/viewvc/ossobook?view=revision&revision=803
+http://ossobook.svn.sourceforge.net/viewvc/ossobook?view=revision&revision=803
+http://ossobook.svn.sourceforge.net/viewvc/ossobook?view=revision&revision=812
+http://ossobook.svn.sourceforge.net/viewvc/ossobook?view=revision&revision=972
+http://ossobook.svn.sourceforge.net/viewvc/ossobook?view=revision&revision=972
+Converted[MultiCatch][sf:216345!!http://evoker.cvs.sourceforge.net/evoker!!226!!/trunk/src/evoker/Genoplot.java] = 1
+Converted[MultiCatch][sf:227951!!http://kalypso.svn.sourceforge.net/svnroot/kalypso!!20255!!/trunk/KalypsoModelWspmPdbCore/src/org/kalypso/model/wspm/pdb/internal/wspm/Waterlevel2dWorker.java] = 1
+Converted[MultiCatch][sf:227951!!http://kalypso.svn.sourceforge.net/svnroot/kalypso!!20268!!/trunk/Kalypso1d2dProject/src/org/kalypso/kalypso1d2d/pjt/map/ImportHydrographWizard.java] = 2
+http://sourceforge.net/p/josef/code/4070/
+http://sourceforge.net/p/josef/code/4070/
+http://sourceforge.net/p/josef/code/4070/
+http://sourceforge.net/p/josef/code/4070/
+http://sourceforge.net/p/josef/code/4070/
+http://sourceforge.net/p/josef/code/4070/
+http://sourceforge.net/p/josef/code/4070/
+http://sourceforge.net/p/josef/code/4070/
+http://sourceforge.net/p/josef/code/4071
+Converted[MultiCatch][sf:245660!!http://zet-evacuation.svn.sourceforge.net/svnroot/zet-evacuation!!2453!!/zet/src/ds/z/PlanPolygon.java] = 2
+Converted[MultiCatch][sf:245660!!http://zet-evacuation.svn.sourceforge.net/svnroot/zet-evacuation!!2576!!/zet/src/gui/GUIControl.java] = 1
+Converted[MultiCatch][sf:245660!!http://zet-evacuation.svn.sourceforge.net/svnroot/zet-evacuation!!2584!!/zet/src/de/tu_berlin/math/coga/zet/converter/cellularAutomaton/CellularAutomatonAssignmentConverter.java] = 1
+http://sourceforge.net/p/zet-evacuation/code/2632
+Converted[MultiCatch][sf:268123!!http://scadabr.svn.sourceforge.net/svnroot/scadabr!!1239!!/trunk/scadabr/scadabr/src/main/java/com/serotonin/mango/web/dwr/DataSourceEditDwr.java] = 2
+Converted[MultiCatch][sf:268123!!http://scadabr.svn.sourceforge.net/svnroot/scadabr!!1239!!/trunk/scadabr/scadabr/src/main/java/com/serotonin/mango/web/dwr/EmportDwr.java] = 2
+Converted[MultiCatch][sf:268123!!http://scadabr.svn.sourceforge.net/svnroot/scadabr!!1244!!/trunk/scadabr/scadabr/src/main/java/com/serotonin/mango/web/dwr/BaseDwr.java] = 1
+http://sourceforge.net/p/acapulco/code/109
+Converted[MultiCatch][sf:273844!!http://jmagazzino.svn.sourceforge.net/svnroot/jmagazzino!!463!!/client-java/src/globali/jcFunzioni.java] = 1
+Converted[MultiCatch][sf:273844!!http://jmagazzino.svn.sourceforge.net/svnroot/jmagazzino!!465!!/client-java/src/clienti/jfCliente.java] = 1
+Converted[MultiCatch][sf:273844!!http://jmagazzino.svn.sourceforge.net/svnroot/jmagazzino!!467!!/client-java/src/clienti/jfCliente.java] = 1
+http://sourceforge.net/p/jmagazzino/code/475
+Converted[MultiCatch][sf:273844!!http://jmagazzino.svn.sourceforge.net/svnroot/jmagazzino!!480!!/client-java/src/servizi/jfListaIP.java] = 1
+Converted[MultiCatch][sf:273844!!http://jmagazzino.svn.sourceforge.net/svnroot/jmagazzino!!493!!/client-java/src/asterisk/jcAsterisk.java] = 1
+Converted[MultiCatch][sf:273977!!http://paj-framework.svn.sourceforge.net/svnroot/paj-framework!!148!!/bridge/jmonkeynengine/eu/cherrytree/jme3/utilities/SerializableAuthenticator.java] = 1
+http://sourceforge.net/p/paj-framework/code/149
+Converted[MultiCatch][sf:325487!!http://jadoth.svn.sourceforge.net/svnroot/jadoth!!1515!!/Jadoth_SqlEngine2/src/net/jadoth/sqlengine/types/SqlExecutor.java] = 1
+Converted[MultiCatch][sf:349118!!http://j661.svn.sourceforge.net/svnroot/j661!!2818!!/j661/branches/javafx/src/swing/arinc661/server/swing/parser/SwingUIDefinitionParser.java] = 1
+http://sourceforge.net/p/j661/code/2844/
+http://sourceforge.net/p/j661/code/2844/
+Converted[MultiCatch][sf:349118!!http://j661.svn.sourceforge.net/svnroot/j661!!2847!!/j661/branches/javafx/src/lookModel/plugin/editor/look/action/SynthConverterAction.java] = 1
+Converted[MultiCatch][sf:349118!!http://j661.svn.sourceforge.net/svnroot/j661!!2847!!/j661/branches/javafx/src/lookModel/plugin/editor/look/synth/fromsynth/parser/UIComponentsFactory.java] = 1
+Converted[MultiCatch][sf:349118!!http://j661.svn.sourceforge.net/svnroot/j661!!2849!!/j661/branches/javafx/src/jfx/arinc661/server/jfx/parser/JFXRenderersHandler.java] = 1
+http://sourceforge.net/p/j661/code/2850/
+http://sourceforge.net/p/j661/code/2850/
+Converted[MultiCatch][sf:349118!!http://j661.svn.sourceforge.net/svnroot/j661!!2864!!/j661/branches/javafx/src/client/arinc661/client/ClientWrapper.java] = 1
+http://sourceforge.net/p/j661/code/2866
+http://sourceforge.net/p/j661/code/2866
+Converted[MultiCatch][sf:349118!!http://j661.svn.sourceforge.net/svnroot/j661!!2866!!/j661/branches/javafx/src/server/arinc661/server/parser/ServerXMLDFHandler.java] = 1
+http://sourceforge.net/p/j661/code/2870
+http://sourceforge.net/p/j661/code/2870
+http://sourceforge.net/p/j661/code/2870
+Converted[MultiCatch][sf:349118!!http://j661.svn.sourceforge.net/svnroot/j661!!2870!!/j661/branches/javafx/src/editor/arinc661/appli/editor/helpers/TreeEditorHelper.java] = 2
+Converted[MultiCatch][sf:349118!!http://j661.svn.sourceforge.net/svnroot/j661!!2870!!/j661/branches/javafx/src/editor/arinc661/appli/editor/widgets/WidgetDefaultsParser.java] = 1
+http://sourceforge.net/p/j661/code/2872
+http://sourceforge.net/p/j661/code/2872
+Converted[MultiCatch][sf:349118!!http://j661.svn.sourceforge.net/svnroot/j661!!2873!!/j661/branches/javafx/src/swing/arinc661/server/swing/gui/StandAloneServerGUI.java] = 1
+Converted[MultiCatch][sf:349118!!http://j661.svn.sourceforge.net/svnroot/j661!!2873!!/j661/branches/javafx/src/swing/arinc661/server/swing/ui/SwingUIDefinition.java] = 1
+Converted[MultiCatch][sf:349118!!http://j661.svn.sourceforge.net/svnroot/j661!!2873!!/j661/branches/javafx/src/swing/arinc661/server/swing/ui/SwingUIManager.java] = 1
+http://sourceforge.net/p/j661/code/2879
+Converted[MultiCatch][sf:349118!!http://j661.svn.sourceforge.net/svnroot/j661!!2887!!/j661/branches/javafx/src/server/arinc661/server/model/painter/RendererFactory.java] = 1
+Converted[MultiCatch][sf:349118!!http://j661.svn.sourceforge.net/svnroot/j661!!2887!!/j661/branches/javafx/src/swing/arinc661/server/swing/SwingServerWrapper.java] = 1
+Converted[MultiCatch][sf:349118!!http://j661.svn.sourceforge.net/svnroot/j661!!2887!!/j661/branches/javafx/src/swingutils/arinc661/swingutils/gui/LoggerArea.java] = 2
+http://sourceforge.net/p/trclasslibrary/code/118
+Converted[MultiCatch][sf:355175!!http://trclasslibrary.svn.sourceforge.net/svnroot/trclasslibrary!!88!!/trunk/source/trstudio/classlibrary/drivers/ResourceManager.java] = 1
+Converted[MultiCatch][sf:355175!!http://trclasslibrary.svn.sourceforge.net/svnroot/trclasslibrary!!88!!/trunk/source/trstudio/classlibrary/sound/SoundManager.java] = 1
+Converted[MultiCatch][sf:376815!!http://docsharepoint.svn.sourceforge.net/svnroot/docsharepoint!!252!!/trunk/src/DocSharePoint/src/docsharepoint/app/DocSharePointApp.java] = 1
+http://sourceforge.net/p/codapack/code/193
+Converted[MultiCatch][sf:513573!!http://gts-abcdef.svn.sourceforge.net/svnroot/gts-abcdef!!53!!/trunk/BaselineWelcomeUI/src/org/netbeans/modules/welcome/content/RSSFeed.java] = 1
+Converted[MultiCatch][sf:513573!!http://gts-abcdef.svn.sourceforge.net/svnroot/gts-abcdef!!54!!/trunk/BaselineDialogs/src/org/gts/abcdef/dialogs/DialogInfo.java] = 1
+Converted[MultiCatch][sf:513573!!http://gts-abcdef.svn.sourceforge.net/svnroot/gts-abcdef!!54!!/trunk/BaselineDialogs/src/org/gts/abcdef/dialogs/ExceptionDialog.java] = 1
+http://sourceforge.net/p/swooosh/git/ci/4530e536adb48da1b625459c06f0d350796e8bb2/log/
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib?view=revision&revision=3016
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib?view=revision&revision=3016
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib?view=revision&revision=3016
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib?view=revision&revision=3016
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib?view=revision&revision=3016
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib?view=revision&revision=3016
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib?view=revision&revision=3016
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib?view=revision&revision=3020
+Converted[MultiCatch][sf:54897!!http://jaxlib.svn.sourceforge.net/svnroot/jaxlib!!3029!!/trunk/jaxlib-core/src/jaxlib/reflect/JavaProperty.java] = 4
+Converted[MultiCatch][sf:54897!!http://jaxlib.svn.sourceforge.net/svnroot/jaxlib!!3033!!/trunk/jaxlib-sql/src/jaxlib/sql/rowset/SparseRowSet.java] = 1
+Converted[MultiCatch][sf:54897!!http://jaxlib.svn.sourceforge.net/svnroot/jaxlib!!3079!!/trunk/jaxlib-ee/jaxlib-ee-core/src/jaxlib/ee/transaction/TransactionContext.java] = 1
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib?view=revision&revision=3094
+Converted[MultiCatch][sf:54897!!http://jaxlib.svn.sourceforge.net/svnroot/jaxlib!!3151!!/trunk/jaxlib-core/src/jaxlib/net/URIs.java] = 2
+Converted[MultiCatch][sf:54897!!http://jaxlib.svn.sourceforge.net/svnroot/jaxlib!!3151!!/trunk/jaxlib-core/src/jaxlib/net/URLs.java] = 1
+Converted[MultiCatch][sf:54897!!http://jaxlib.svn.sourceforge.net/svnroot/jaxlib!!3161!!/trunk/jaxlib-core/src/jaxlib/text/AbstractFormat.java] = 1
+http://jaxlib.svn.sourceforge.net/viewvc/jaxlib?view=revision&revision=3167
+Converted[MultiCatch][sf:556002!!http://projectcommons.svn.sourceforge.net/svnroot/projectcommons!!180!!/trunk/commons/suite_app/module_cef/src/cef/command/listener/CommandTemplateWriter.java] = 1
+Converted[MultiCatch][sf:556002!!http://projectcommons.svn.sourceforge.net/svnroot/projectcommons!!180!!/trunk/commons/suite_app/module_pui/src/cef/pui/EventImpl.java] = 1
+Converted[MultiCatch][sf:556002!!http://projectcommons.svn.sourceforge.net/svnroot/projectcommons!!68!!/trunk/commons/pui_client/src/cef/pui/client/PUIClient.java] = 2
+!! Converted[MultiCatch][sf:722872!!http://cnscommonutils.svn.sourceforge.net/svnroot/cnscommonutils!!4!!/trunk/src/com/cellsnetwork/sideprojects/utils/resources/StringPropertiesLoader.java] = 1

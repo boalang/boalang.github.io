@@ -1,0 +1,1 @@
+http://sourceforge.net/p/jadoth/code/2291/tree//Jadoth_PersistenceEngine/src/net/jadoth/persistence/Persistence.java?diff=515b0221271846344f1c0dae:2290
