@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Boa Programming Guide - Output Aggregators - Boa - Iowa State University</title>
+<link href="../css/base.css" media="all" rel="stylesheet">
+<link href="../css/style.css" media="all" rel="stylesheet">
+<!--[if lt IE 9]>
+		<style>
+			ul.left > li, ul.right > li{ *display: inline; }
+			#ribbon form > input[type="submit"]{ *vertical-align: baseline; }
+		</style>
+	<![endif]-->
+<!-- SYNTAX HIGHLIGHTING -->
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/ace.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/theme-crimson_editor.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-boa.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-java.js"></script>
+<link href="https://boa.cs.iastate.edu/boa/sites/all/themes/boa/css/boa-style.css" media="screen" rel="stylesheet" type="text/css"/>
+<!-- END SYTNAX HIGHLIGHTING -->
+</head>
+<body>
+<div class="skip"><a accesskey="2" href="aggregators.php.html#container">Skip
+Navigation</a></div>
+<div class="hwrapper" id="header">
+<div id="top-strip">
+<div class="grids-24">
+<div class="grid-8">
+&nbsp;
+</div>
+<div class="grid-16">
+&nbsp;
+</div>
+</div>
+</div>
+<div id="ribbon">
+<div class="grids-24">
+<div class="grid-16">
+<h1 class="nameplate"><a accesskey="1" href="../index.html"><img src="../img/boa-white.png"></a></h1>
+</div>
+<div class="grid-8">
+<form action="http://www.google.com/search" method="GET">
+	<input name="as_sitesearch" type="hidden" value="boa.cs.iastate.edu" />
+	<input accesskey="s" name="as_q" placeholder="Search" tabindex="1" type="text" />
+	<input name="btnG" title="Search" type="submit" value="" />
+</form>
+</div>
+</div>
+<div class="grids-24">
+<div class="grid-12">
+<h2 class="site-title">Mining Ultra-Large-Scale Software Repositories</h2>
+</div>
+<div class="grid-12">
+<h2 style="text-align: right;" class="site-title"><a href="mailto:boasupport@iastate.edu">Contact Us</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div id="container">
+<div class="grids-24">
+<div class="grid-5 sidebar" id="left-sidebar">
+<ul class="navigation"><li><a href="../examples/index.php.html">Examples</a></li>
+<li class="selected"><a href="index.php.html">Programming Guide</a><ul><li><a href="dsl-types.php.html">Domain-Specific Types</a></li>
+<li><a href="types.php.html">Other Built-In Types</a></li>
+<li><a href="dsl-functions.php.html">Domain-Specific Functions</a></li>
+<li><a href="functions.php.html">Other Built-In Functions</a></li>
+<li><a href="user-functions.php.html">User-Defined Functions</a></li>
+<li class="selected"><a href="aggregators.php.html">Output Aggregators</a><ul><li><a href="aggregators.php.html#params">Parameters</a></li>
+<li><a href="aggregators.php.html#indices">Indices</a></li>
+<li><a href="aggregators.php.html#weights">Weights</a></li>
+<li><a href="aggregators.php.html#examples">Examples</a></li>
+</ul></li>
+<li><a href="vars.php.html">Built-In Variables</a></li>
+<li><a href="consts.php.html">Constants</a></li>
+<li><a href="quantifiers.php.html">Using Quantifiers</a></li>
+<li><a href="visitors.php.html">Using Visitors</a></li>
+<li><a href="program-analysis.php.html">Program Analysis</a></li>
+</ul></li>
+<li><a href="../stats/index.php.html">Dataset Statistics</a></li>
+<li><a href="../papers/index.php.html">Publications</a></li>
+<li><a href="https://groups.google.com/g/boa-user">User Forum</a></li>
+<li><a href="../ide/index.php.html">IDE Support</a></li>
+<li><a href="../api/index.php.html">Client API</a></li>
+<li><a href="https://boa.cs.iastate.edu/boa/index.php">User Login (MSR)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boac/index.php">User Login (COVID-19)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boag/index.php">User Login (Genomics)</a></li>
+<li><a href="../index.php.html">About</a></li>
+<li><a href="../policies/index.php.html">Privacy &amp; Terms</a></li>
+</ul>
+<div id="news-widget" class="sidebar-item"><h4 class="title">News</h4>
+<b>Aug '22</b>: New <a href="../ide/vscode/index.html">VSCode extension</a> available<br />
+<b>Jun '22</b>: New <a href="https://www.npmjs.com/package/@boalang/boa-api">Boa API for JavaScript</a> available<br />
+<b>Mar '20</b>: New Boa site for CORD-19 available<br />
+<b>Sep '19</b>: New <a href="https://pypi.org/project/boa-api/">Boa API for Python</a> available<br />
+</div>
+</div>
+<div class="grid-19" id="content">
+<div class="header gutter"><h1>The Boa Programming Guide - Output Aggregators</h1>
+<p>
+To generate output, Boa provides a specific type called output types.
+Logically, an output variable can be thought of as a process running in the
+system that collects and aggregates data.  When processing a single project,
+Boa code emits values which are sent to output variables.  After all projects
+are processed (in parallell), the output variables aggregate the data and
+produces the final output of the query.
+</p>
+<p>
+Output types specify an aggregator function to use.  Users select from one of
+the predefined aggregators shown below.  When defining aggregators users can
+specify one or more indices.  If an aggregator contains indices, this is a
+grouping operation.  All values sent to the output variable will be grouped by
+their indices and then each group will be aggregated.
+</p>
+<p>
+Some aggregators also specify parameters.  These allow controlling the
+aggregation, for example by setting limits on the output it generates.
+</p>
+<table id="0" class="types aggregator">
+	<tr><th class="fieldname">Aggregator</th><th class="fieldtype">Type</th></tr>
+	<tr class="field odd"><td class="fieldname">bottom</td><td class="fieldtype">output bottom [param] [indices] of T [weight T2]</td></tr><tr class="field even"><td colspan="2" class="fielddesc">A statistical sampling that records the bottom <code>[param]</code> number of elements, of type <code>T</code>.</td></tr>
+	<tr class="field odd"><td class="fieldname">collection</td><td class="fieldtype">output collection [indices] of T</td></tr><tr class="field even"><td colspan="2" class="fielddesc">A collection of data points.  No aggregation is performed and every value appears in the output.</td></tr>
+	<tr class="field odd"><td class="fieldname">maximum</td><td class="fieldtype">output maximum [param] [indices] of T [weight T2]</td></tr><tr class="field even"><td colspan="2" class="fielddesc">A precise sample of the <code>[param]</code> highest weighted elements, of type <code>T</code>.</td></tr>
+	<tr class="field odd"><td class="fieldname">mean</td><td class="fieldtype">output mean [indices] of T</td></tr><tr class="field even"><td colspan="2" class="fielddesc">An arithmetic mean of the data, of type <code>T</code>. Types supported currently are: int, float.</td></tr>
+	<tr class="field odd"><td class="fieldname">minimum</td><td class="fieldtype">output minimum [param] [indices] of T [weight T2]</td></tr><tr class="field even"><td colspan="2" class="fielddesc">A precise sample of the <code>[param]</code> lowest weighted elements, of type <code>T</code>.</td></tr>
+	<tr class="field odd"><td class="fieldname">set</td><td class="fieldtype">output <a href="types.php.html#Set+Types">set</a> [param] [indices] of T</td></tr><tr class="field even"><td colspan="2" class="fielddesc">A set of the data, of type <code>T</code>. If <code>[param]</code> is specified, the set can have at most that many elements.</td></tr>
+	<tr class="field odd"><td class="fieldname">sum</td><td class="fieldtype">output sum [indices] of T</td></tr><tr class="field even"><td colspan="2" class="fielddesc">An arithmetic sum of the data, of type <code>T</code>. Types supported currently are: int, float.</td></tr>
+	<tr class="field odd"><td class="fieldname">top</td><td class="fieldtype">output top [param] [indices] of T [weight T2]</td></tr><tr class="field even"><td colspan="2" class="fielddesc">A statistical sampling that records the top <code>[param]</code> number of elements, of type <code>T</code>.</td></tr>
+</table>
+
+<h3 id="params">Parameters</h3>
+<p>
+Some aggregators are parameterized (look for <code>[param]</code> above).  The
+syntax for parameters is to give parentheses with the parameter value inside.
+For example, the top aggregator requires a parameter to indicate how many
+values it should keep.  
+</p>
+<div class="sourcecode" id="code_1" style="position: relative; width: 60em;">var: output top(10) of string weight int;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_1");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+computes the top-10 values of type string, using integers as weights (see below
+for more description of weights).
+</p>
+
+<h3 id="indices">Indices</h3>
+<p>
+Aggregators optionally take 1 or more indices.  This allows grouping data sent
+to the aggregator and performing aggregation on each group.  For example, if
+you wanted to compute the sum of something for each Project, you could add an
+index of project id:
+</p>
+<div class="sourcecode" id="code_2" style="position: relative; width: 60em;">var: output sum[string] of int;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_2");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+The aggregator will group all values with the same index, and then perform
+aggregation (in this case sum) for each grouping.  To use such an aggregator,
+you must specify the concrete value for each index when emitting values to the
+output variable:
+</p>
+<div class="sourcecode" id="code_3" style="position: relative; width: 60em;">var[input.id] &lt;&lt; 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_3");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+So in this case, the values 1 are being sent to the output variable.  They will
+be grouped by each project ID and then for each project ID a separate
+aggregation is performed.  In the final output, there will be 1 result per
+unique index.
+</p>
+
+<h3 id="weights">Weights</h3>
+<p>
+Some aggregators support item weights.  Aggregation is first done by taking
+values sent to the output variable, grouping by each unique value, and then
+summing their total weights.  Then aggregation is performed based on that total
+weight.  For example,
+</p>
+<div class="sourcecode" id="code_4" style="position: relative; width: 60em;">var: output top(10) of string weight int;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_4");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+will take values of type <code>string</code> with associated integer weights.
+It will group by each unique string, sum the weights, and then take the 10 with
+the highest total weight.
+</p>
+
+<h3 id="examples">Example 1 - Counting Features</h3>
+<p>
+Now we will provide a few examples, showing how to define and use output
+variables for a few sample tasks.
+</p>
+
+<p>
+First consider a simple task: let's count how often a particular feature
+appears.  For this we would want to use the sum aggregator to sum integer
+values:
+</p>
+<div class="sourcecode" id="code_5" style="position: relative; width: 60em;">var: output sum of int;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_5");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+We can use this variable by emitting integer values to it:
+</p>
+<div class="sourcecode" id="code_6" style="position: relative; width: 60em;">var << 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_6");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+The final result in the output will be a single integer value that adds all the
+integer values emitted to the variable, for all projects analyzed.  Thus the
+output looks something like:
+</p>
+<pre>
+var[] = 3983920
+</pre>
+<p>
+Note the name of the variable appears in the output.  Also note the empty
+square brackets, indicating there were no indices used.
+</p>
+
+<h3>Example 2 - Grouping by Project/Revision</h3>
+<p>
+Now instead let's assume we wanted to sum all values, but group them by each
+project analyzed.  For this we need to use an index (of type string):
+</p>
+<div class="sourcecode" id="code_7" style="position: relative; width: 60em;">var: output sum[string] of int;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_7");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+To use this output variable, we again emit integers to it.  However we also
+indicate what the index value is:
+</p>
+<div class="sourcecode" id="code_8" style="position: relative; width: 60em;">var[input.id] << 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_8");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+In this case we used the project ID to group values.  The final output here
+will include one sum, per unique project ID (indicated as the index):
+</p>
+<pre>
+..
+var[1000] = 3983920
+var[1001] = 84832
+var[1002] = 947174
+var[1003] = 4859
+..
+</pre>
+
+<p>
+We could go further and group not just by project, but by unique revision in
+each project:
+</p>
+<div class="sourcecode" id="code_9" style="position: relative; width: 60em;">var: output sum[string][string] of int;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_9");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><div class="sourcecode" id="code_10" style="position: relative; width: 60em;">var[input.id][rev.id] << 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_10");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><pre>
+..
+var[1000][1] = 3983920
+var[1000][2] = 84832
+var[1001][1] = 947174
+var[1001][2] = 4859
+..
+</pre>
+<p>
+This allows fine-grained grouping with as many indices as you need.
+</p>
+
+<h3>Example 3 - Top-N</h3>
+<p>
+Finally, consider the case where you may want to find the top-N weighted
+elements, perhaps the top-10.  You can define an output variable:
+</p>
+<div class="sourcecode" id="code_11" style="position: relative; width: 60em;">var: output top(10) of string weight int;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_11");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+In this case, we are defining a variable that will produce the top-10 string
+values, based on the total weight seen for each unique value.  To use the
+variable, we need to emit both a value and a weight:
+</p>
+<div class="sourcecode" id="code_12" style="position: relative; width: 60em;">var << "foo" weight 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_12");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+The aggregator will group by all unique string values, then sum the weights,
+sort by total weight, and keep the top-10 based on highest total weight. The
+output will contain 10 entries, with the value and their total weight listed:
+</p>
+<pre>
+var[] = java, 240943.0
+var[] = c++, 200384.0
+var[] = scheme, 103910.0
+..
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fwrapper grids-24">
+<div class="grids-24" id="footer">
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1547227-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<div class="grid-3 first"><a class="nameplate" href="http://www.iastate.edu/"><img alt="Iowa State University" src="../img/sprite.png"></a></div>
+<div class="grid-21 last">
+<span><a href="http://design.cs.iastate.edu/">Laboratory of Software Design</a>, <a href="http://www.cs.iastate.edu/">Department of Computer Science</a>, </span><script type="text/javascript"><!--
+	document.write('<a href="mailto:' + (['hridesh', 'iastate.edu'].join('@'))
+			+ '">' + (['hridesh', 'iastate.edu'].join('@')) + '<\/a>');
+// --></script>
+<ins><noscript><div><code>hridesh (at) iastate (dot) edu</code></div></noscript></ins>
+<p>Copyright &#169; 2012&ndash;2015, Iowa State University of Science and Technology. All rights reserved.</p>
+<p>
+&nbsp;
+</p>
+<p>
+This material is based upon work supported by the US National Science
+Foundation (NSF) under grants CCF-19-34884, CNS-15-13263, CNS-15-12947,
+CCF-14-23370, CCF-13-49153, CCF-11-17937, CCF-10-17334, and CCF-10-18600.
+</p>
+<p>
+Any opinions, findings, and conclusions or recommendations expressed in this
+material are those of the author(s) and do not necessarily reflect the views of
+the National Science Foundation.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

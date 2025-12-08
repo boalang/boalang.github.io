@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Boa Programming Guide - Built-In Types - Boa - Iowa State University</title>
+<link href="../css/base.css" media="all" rel="stylesheet">
+<link href="../css/style.css" media="all" rel="stylesheet">
+<!--[if lt IE 9]>
+		<style>
+			ul.left > li, ul.right > li{ *display: inline; }
+			#ribbon form > input[type="submit"]{ *vertical-align: baseline; }
+		</style>
+	<![endif]-->
+<!-- SYNTAX HIGHLIGHTING -->
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/ace.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/theme-crimson_editor.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-boa.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-java.js"></script>
+<link href="https://boa.cs.iastate.edu/boa/sites/all/themes/boa/css/boa-style.css" media="screen" rel="stylesheet" type="text/css"/>
+<!-- END SYTNAX HIGHLIGHTING -->
+</head>
+<body>
+<div class="skip"><a accesskey="2" href="types.php.html#container">Skip
+Navigation</a></div>
+<div class="hwrapper" id="header">
+<div id="top-strip">
+<div class="grids-24">
+<div class="grid-8">
+&nbsp;
+</div>
+<div class="grid-16">
+&nbsp;
+</div>
+</div>
+</div>
+<div id="ribbon">
+<div class="grids-24">
+<div class="grid-16">
+<h1 class="nameplate"><a accesskey="1" href="../index.html"><img src="../img/boa-white.png"></a></h1>
+</div>
+<div class="grid-8">
+<form action="http://www.google.com/search" method="GET">
+	<input name="as_sitesearch" type="hidden" value="boa.cs.iastate.edu" />
+	<input accesskey="s" name="as_q" placeholder="Search" tabindex="1" type="text" />
+	<input name="btnG" title="Search" type="submit" value="" />
+</form>
+</div>
+</div>
+<div class="grids-24">
+<div class="grid-12">
+<h2 class="site-title">Mining Ultra-Large-Scale Software Repositories</h2>
+</div>
+<div class="grid-12">
+<h2 style="text-align: right;" class="site-title"><a href="mailto:boasupport@iastate.edu">Contact Us</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div id="container">
+<div class="grids-24">
+<div class="grid-5 sidebar" id="left-sidebar">
+<ul class="navigation"><li><a href="../examples/index.php.html">Examples</a></li>
+<li class="selected"><a href="index.php.html">Programming Guide</a><ul><li><a href="dsl-types.php.html">Domain-Specific Types</a></li>
+<li class="selected"><a href="types.php.html">Other Built-In Types</a><ul><li><a href="types.php.html#Basic+Types">Basic Types</a></li>
+<li><a href="types.php.html#Array+Types">Array Types</a></li>
+<li><a href="types.php.html#Map+Types">Map Types</a></li>
+<li><a href="types.php.html#Stack+Types">Stack Types</a></li>
+<li><a href="types.php.html#Set+Types">Set Types</a></li>
+<li><a href="types.php.html#Queue+Types">Queue Types</a></li>
+<li><a href="types.php.html#Enum+Types">Enum Types</a></li>
+<li><a href="types.php.html#Tuple+Types">Tuple Types</a></li>
+<li><a href="types.php.html#Type+Conversions">Type Conversions</a></li>
+<li><a href="types.php.html#Type+Synonyms">Type Synonyms</a></li>
+</ul></li>
+<li><a href="dsl-functions.php.html">Domain-Specific Functions</a></li>
+<li><a href="functions.php.html">Other Built-In Functions</a></li>
+<li><a href="user-functions.php.html">User-Defined Functions</a></li>
+<li><a href="aggregators.php.html">Output Aggregators</a></li>
+<li><a href="vars.php.html">Built-In Variables</a></li>
+<li><a href="consts.php.html">Constants</a></li>
+<li><a href="quantifiers.php.html">Using Quantifiers</a></li>
+<li><a href="visitors.php.html">Using Visitors</a></li>
+<li><a href="program-analysis.php.html">Program Analysis</a></li>
+</ul></li>
+<li><a href="../stats/index.php.html">Dataset Statistics</a></li>
+<li><a href="../papers/index.php.html">Publications</a></li>
+<li><a href="https://groups.google.com/g/boa-user">User Forum</a></li>
+<li><a href="../ide/index.php.html">IDE Support</a></li>
+<li><a href="../api/index.php.html">Client API</a></li>
+<li><a href="https://boa.cs.iastate.edu/boa/index.php">User Login (MSR)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boac/index.php">User Login (COVID-19)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boag/index.php">User Login (Genomics)</a></li>
+<li><a href="../index.php.html">About</a></li>
+<li><a href="../policies/index.php.html">Privacy &amp; Terms</a></li>
+</ul>
+<div id="news-widget" class="sidebar-item"><h4 class="title">News</h4>
+<b>Aug '22</b>: New <a href="../ide/vscode/index.html">VSCode extension</a> available<br />
+<b>Jun '22</b>: New <a href="https://www.npmjs.com/package/@boalang/boa-api">Boa API for JavaScript</a> available<br />
+<b>Mar '20</b>: New Boa site for CORD-19 available<br />
+<b>Sep '19</b>: New <a href="https://pypi.org/project/boa-api/">Boa API for Python</a> available<br />
+</div>
+</div>
+<div class="grid-19" id="content">
+<div class="header gutter"><h1>The Boa Programming Guide - Built-In Types</h1>
+<p>
+This page describes the basic types built into the Boa language.
+</p>
+<table id="Basic+Types" class="types builtin">
+	<tr><td colspan="2"><span class="typename">Basic Types</span></td></tr>
+	<tr><th class="fieldtype">Type</th><th class="fielddesc">Description</th></tr>
+	<tr class="field odd"><td class="fieldtype">bool</td><td class="fielddesc">Boolean values (<code>true</code>, <code>false</code>)</td></tr>
+	<tr class="field even"><td class="fieldtype">float</td><td class="fielddesc">64-bit IEEE floating point values</td></tr>
+	<tr class="field odd"><td class="fieldtype">int</td><td class="fielddesc">64-bit signed integer values</td></tr>
+	<tr class="field even"><td class="fieldtype">string</td><td class="fielddesc">Array of Unicode characters</td></tr>
+	<tr class="field odd"><td class="fieldtype">time</td><td class="fielddesc">Unix-like timestamp, unsigned integer representing number of microseconds since <code>January 1, 1970, 12:00:00 AM UTC</code>. Note that you can specify a time literal value as either microseconds (as an int) or a string literal prefixed with the letter <code>T</code>, e.g. <code>T"June 30, 2009, 7:03:47 AM PDT"</code>. The format of the string follows any of the standard formats provided by Java's DateFormat. See: <a href="https://docs.oracle.com/javase/tutorial/i18n/format/dateFormat.html">Using Predefined Formats</a> for more details.</td></tr>
+</table>
+<table id="Array+Types" class="types builtin">
+	<tr><td ><span class="typename">Array Types</span> <span class="typedesc">This section not completed yet.</span><br/><span class="typedetails"><code>array of basic_type</code><br/><br/>Arrays are containers that hold values all of the same type.  They are fixed size.  There are some <a href="functions.php.html#Array+Functions">built-in functions for working with arrays</a>.<br/><br/>To allocate an array, you must either initialize it when declaring the variable or use the <code>new</code> function.  Here are some examples:<div class="sourcecode" id="code_1" style="position: relative; width: 60em;"># allocate an directly initialize
+a1: array of int = { 1, 2, 3 };
+
+# allocate an initialize to the same empty string
+a2: array of string;
+a2 = new(a2, 30, "");</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_1");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><span></td></tr>
+</table>
+<table id="Map+Types" class="types builtin">
+	<tr><td ><span class="typename">Map Types</span> <span class="typedesc">@since 2013-05 - This section not completed yet.</span><br/><span class="typedetails"><code>map[basic_type] of basic_type</code><br/><br/>Maps are containers that associate keys of a given type with values of another type.  They are can grow dynamically.  There are some <a href="functions.php.html#Map+Functions">built-in functions for working with maps</a>.<br/><br/>To allocate a map, you simply declare a variable of that type.  Note that you can not initialize maps with any data, they are always created empty.  Here are some examples:<div class="sourcecode" id="code_2" style="position: relative; width: 60em;"># allocate an directly initialize
+m1: map[string] of int;
+
+m1["k1"] = 3;
+m1["k2"] = 7;
+
+if (haskey(m1, "k1") && m1["k1"] > 2)
+    remove(m1, "k2");
+
+vs := values(m1);
+ks := keys(m1);</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_2");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><span></td></tr>
+</table>
+<table id="Stack+Types" class="types builtin">
+	<tr><td ><span class="typename">Stack Types</span> <span class="typedesc">@since 2013-05 - This section not completed yet.</span><br/><span class="typedetails"><code>stack of basic_type</code><br/><br/>Stacks are containers that have a last in first out (LIFO) behavior to them.  They are can grow dynamically.  There are some <a href="functions.php.html#Stack+Functions">built-in functions for working with stacks</a>.<br/><br/>To allocate a stack, you simply declare a variable of that type.  Note that you can not initialize stacks with any data, they are always created empty.  Here are some examples:<div class="sourcecode" id="code_3" style="position: relative; width: 60em;"># allocate an directly initialize
+s1: stack of int;
+
+push(s1, 5);
+push(s1, 2);
+push(s1, 9);
+
+vs := values(s1); # all values in stack, without removing them
+
+v1 := pop(s1); # v1 gets 9
+v2 := pop(s1); # v2 gets 2
+v3 := peek(s1); # v2 gets 5
+
+if (len(s1) > 0)
+    v4 := pop(s1); # v4 gets 5</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_3");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><span></td></tr>
+</table>
+<table id="Set+Types" class="types builtin">
+	<tr><td ><span class="typename">Set Types</span> <span class="typedesc">@since 2013-05 - This section not completed yet.</span><br/><span class="typedetails"><code>set of basic_type</code><br/><br/>Sets are containers that only store the unique values they have seen.  They are can grow dynamically.  There are some <a href="functions.php.html#Set+Functions">built-in functions for working with sets</a>.<br/><br/>To allocate a set, you simply declare a variable of that type.  Note that you can not initialize sets with any data, they are always created empty.  Here are some examples:<div class="sourcecode" id="code_4" style="position: relative; width: 60em;"># allocate an directly initialize
+s1: set of int;
+s2: set of int;
+
+add(s1, 5);
+add(s1, 2);
+add(s1, 5);
+add(s2, 5);
+
+s3 := union(s1, s2); # has 5 and 2 in it
+s4 := intersect(s1, s2); # has 5 in it
+
+vs := values(s1); # all values in set, without removing them
+
+if (len(s1) == 3) # false
+    clear(s1);
+else
+    if (contains(s1, 5))
+        remove(s1, 5);</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_4");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><span></td></tr>
+</table>
+<table id="Queue+Types" class="types builtin">
+	<tr><td ><span class="typename">Queue Types</span> <span class="typedesc">@since 2019-10 - This section not completed yet.</span><br/><span class="typedetails"><code>queue of basic_type</code><br/><br/>Queues are containers that have a first in first out (FIFO) behavior to them.  They are can grow dynamically.  There are some <a href="functions.php.html#Queue+Functions">built-in functions for working with queues</a>.<br/><br/>To allocate a queue, you simply declare a variable of that type.  Note that you can not initialize queues with any data, they are always created empty.  Here are some examples:<div class="sourcecode" id="code_5" style="position: relative; width: 60em;"># allocate an directly initialize
+q1: queue of int;
+
+offer(q1, 5);
+offer(q1, 2);
+offer(q1, 9);
+
+vs := values(q1); # all values in queue, without removing them
+
+v1 := poll(q1); # v1 gets 5
+v2 := poll(q1); # v2 gets 2
+v3 := peek(q1); # v2 gets 9
+
+if (len(q1) > 0)
+    v4 := poll(q1); # v4 gets 9</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_5");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><span></td></tr>
+</table>
+<table id="Enum+Types" class="types builtin">
+	<tr><td ><span class="typename">Enum Types</span> <span class="typedesc">@since 2019-10 - This section not completed yet.</span><br/><span class="typedetails">Enumerated types allow providing a fixed set of named values.  Variables can take on any of the named values, and can be compared against each other.<div class="sourcecode" id="code_6" style="position: relative; width: 60em;">type T1 = enum { A = "true", B = "false" };
+e1: T1 = T1.A;
+e2: T1 = T1.B;
+
+type T2 = enum { A = "true", C = "false" };
+e3: T2 = T2.A;
+
+if (e1 == e2) # false
+    ..
+
+if (e1 == e3) # compile error - not the same types!
+    ..</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_6");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><span></td></tr>
+</table>
+<table id="Tuple+Types" class="types builtin">
+	<tr><td ><span class="typename">Tuple Types</span><br/><span class="typedetails">Tuples are containers of other basic types.  They are declared by listing the types they contain, optionally with names to access each component.  Tuple fields can also be accessed positionally with an underscore and the offset, starting from 0.<br/><br/><div class="sourcecode" id="code_7" style="position: relative; width: 60em;"># declare a tuple type named t, that holds an int, string, and bool value
+type t = { i: int, s: string, b: bool };
+
+# create an instance of the tuple type t, and initialize it with some data
+# you must initialize all fields if assigning directly to a tuple
+tup: t = { 5, "string", false };
+
+# set the value of individual fields
+tup._1 = "foo"; # by position
+tup.b = true; # or by name</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_7");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><span></td></tr>
+</table>
+<h2 id="Type+Conversions">Type Conversions</h2>
+<p>
+Each basic type can be converted to each other using <a
+href="functions.php.html#Type+Conversion+Functions">built-in functions with the same
+name as the destination type</a>.  For example, to convert a string to an int:
+<code>int("123")</code> or to convert a string to a time: <code>time("Wed Jul
+30 23:49:55 PDT 2003")</code>.
+</p>
+<p>
+Note that these are type <em>conversions</em> and not type <em>casts</em>.  Not
+only will the type change, but the value might change in the conversion as
+well.
+</p>
+<h2 id="Type+Synonyms">Type Synonyms</h2>
+<p>
+Boa allows declaring type synonyms, similar to the <code>type</code> keyword in
+Haskell or <code>typedef</code> in C/C++.  The syntax is to use the keyword
+<code>type</code> followed by the new name, then an equals and the type you are
+creating a synonym for.
+</p>
+<div class="sourcecode" id="code_8" style="position: relative; width: 60em;">type foo = int;
+v: foo = 3;
+
+type myfunc = function(i: int, j: bool) : bool;
+f := myfunc {
+    if (j && i < 5) return true;
+    return false;
+};</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_8");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+This can be useful to both avoid having to type out complex types (such as
+<code>set of map[string] of int</code>) repeatedly, and also to provide a
+semantic name for the type to make your code more readable.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fwrapper grids-24">
+<div class="grids-24" id="footer">
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1547227-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<div class="grid-3 first"><a class="nameplate" href="http://www.iastate.edu/"><img alt="Iowa State University" src="../img/sprite.png"></a></div>
+<div class="grid-21 last">
+<span><a href="http://design.cs.iastate.edu/">Laboratory of Software Design</a>, <a href="http://www.cs.iastate.edu/">Department of Computer Science</a>, </span><script type="text/javascript"><!--
+	document.write('<a href="mailto:' + (['hridesh', 'iastate.edu'].join('@'))
+			+ '">' + (['hridesh', 'iastate.edu'].join('@')) + '<\/a>');
+// --></script>
+<ins><noscript><div><code>hridesh (at) iastate (dot) edu</code></div></noscript></ins>
+<p>Copyright &#169; 2012&ndash;2015, Iowa State University of Science and Technology. All rights reserved.</p>
+<p>
+&nbsp;
+</p>
+<p>
+This material is based upon work supported by the US National Science
+Foundation (NSF) under grants CCF-19-34884, CNS-15-13263, CNS-15-12947,
+CCF-14-23370, CCF-13-49153, CCF-11-17937, CCF-10-17334, and CCF-10-18600.
+</p>
+<p>
+Any opinions, findings, and conclusions or recommendations expressed in this
+material are those of the author(s) and do not necessarily reflect the views of
+the National Science Foundation.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

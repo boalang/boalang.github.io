@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Boa Programming Guide - Program Analysis - Boa - Iowa State University</title>
+<link href="../css/base.css" media="all" rel="stylesheet">
+<link href="../css/style.css" media="all" rel="stylesheet">
+<!--[if lt IE 9]>
+		<style>
+			ul.left > li, ul.right > li{ *display: inline; }
+			#ribbon form > input[type="submit"]{ *vertical-align: baseline; }
+		</style>
+	<![endif]-->
+<!-- SYNTAX HIGHLIGHTING -->
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/ace.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/theme-crimson_editor.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-boa.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-java.js"></script>
+<link href="https://boa.cs.iastate.edu/boa/sites/all/themes/boa/css/boa-style.css" media="screen" rel="stylesheet" type="text/css"/>
+<!-- END SYTNAX HIGHLIGHTING -->
+</head>
+<body>
+<div class="skip"><a accesskey="2" href="program-analysis.php.html#container">Skip
+Navigation</a></div>
+<div class="hwrapper" id="header">
+<div id="top-strip">
+<div class="grids-24">
+<div class="grid-8">
+&nbsp;
+</div>
+<div class="grid-16">
+&nbsp;
+</div>
+</div>
+</div>
+<div id="ribbon">
+<div class="grids-24">
+<div class="grid-16">
+<h1 class="nameplate"><a accesskey="1" href="../index.html"><img src="../img/boa-white.png"></a></h1>
+</div>
+<div class="grid-8">
+<form action="http://www.google.com/search" method="GET">
+	<input name="as_sitesearch" type="hidden" value="boa.cs.iastate.edu" />
+	<input accesskey="s" name="as_q" placeholder="Search" tabindex="1" type="text" />
+	<input name="btnG" title="Search" type="submit" value="" />
+</form>
+</div>
+</div>
+<div class="grids-24">
+<div class="grid-12">
+<h2 class="site-title">Mining Ultra-Large-Scale Software Repositories</h2>
+</div>
+<div class="grid-12">
+<h2 style="text-align: right;" class="site-title"><a href="mailto:boasupport@iastate.edu">Contact Us</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div id="container">
+<div class="grids-24">
+<div class="grid-5 sidebar" id="left-sidebar">
+<ul class="navigation"><li><a href="../examples/index.php.html">Examples</a></li>
+<li class="selected"><a href="index.php.html">Programming Guide</a><ul><li><a href="dsl-types.php.html">Domain-Specific Types</a></li>
+<li><a href="types.php.html">Other Built-In Types</a></li>
+<li><a href="dsl-functions.php.html">Domain-Specific Functions</a></li>
+<li><a href="functions.php.html">Other Built-In Functions</a></li>
+<li><a href="user-functions.php.html">User-Defined Functions</a></li>
+<li><a href="aggregators.php.html">Output Aggregators</a></li>
+<li><a href="vars.php.html">Built-In Variables</a></li>
+<li><a href="consts.php.html">Constants</a></li>
+<li><a href="quantifiers.php.html">Using Quantifiers</a></li>
+<li><a href="visitors.php.html">Using Visitors</a></li>
+<li class="selected"><a href="program-analysis.php.html">Program Analysis</a><ul><li><a href="program-analysis.php.html#graphs">Building Graphs</a></li>
+<li><a href="program-analysis.php.html#traversals">Graph Traversals</a></li>
+<li><a href="program-analysis.php.html#fixedpoint">Fixed Point Analysis</a></li>
+<li><a href="program-analysis.php.html#liveness">Example: Liveness Analysis</a></li>
+</ul></li>
+</ul></li>
+<li><a href="../stats/index.php.html">Dataset Statistics</a></li>
+<li><a href="../papers/index.php.html">Publications</a></li>
+<li><a href="https://groups.google.com/g/boa-user">User Forum</a></li>
+<li><a href="../ide/index.php.html">IDE Support</a></li>
+<li><a href="../api/index.php.html">Client API</a></li>
+<li><a href="https://boa.cs.iastate.edu/boa/index.php">User Login (MSR)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boac/index.php">User Login (COVID-19)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boag/index.php">User Login (Genomics)</a></li>
+<li><a href="../index.php.html">About</a></li>
+<li><a href="../policies/index.php.html">Privacy &amp; Terms</a></li>
+</ul>
+<div id="news-widget" class="sidebar-item"><h4 class="title">News</h4>
+<b>Aug '22</b>: New <a href="../ide/vscode/index.html">VSCode extension</a> available<br />
+<b>Jun '22</b>: New <a href="https://www.npmjs.com/package/@boalang/boa-api">Boa API for JavaScript</a> available<br />
+<b>Mar '20</b>: New Boa site for CORD-19 available<br />
+<b>Sep '19</b>: New <a href="https://pypi.org/project/boa-api/">Boa API for Python</a> available<br />
+</div>
+</div>
+<div class="grid-19" id="content">
+<div class="header gutter"><h1>The Boa Programming Guide - Program Analysis</h1>
+<p><em>@since 2019-10</em></p>
+<p>
+Boa supports advanced static analysis capabilities, allowing you to easily
+perform more complex mining tasks on thousands of projects in parallel.  In
+this section we investigate some of these advanced analysis features.
+</p>
+
+<h2 id="graphs">Building Program Graphs</h2>
+<p>
+Boa provides a set of <a
+href="dsl-functions.php.html#Graph+Functions">domain-specific functions to
+automatically generate standard program graphs</a> for you.  These graphs include:
+</p>
+<ul>
+    <li>control-flow graphs (CFGs)
+    <ul>
+        <li>Graph type: <code><a href="dsl-types.php.html#CFG">CFG</a></code></li>
+        <li>Generated by: <code><a href="dsl-functions.php.html#getcfg">getcfg()</a></code></li>
+    </ul></li>
+    <li>control-dependence graphs (CDGs)
+    <ul>
+        <li>Graph type: <code><a href="dsl-types.php.html#CDG">CDG</a></code></li>
+        <li>Generated by: <code><a href="dsl-functions.php.html#getcdg">getcdg()</a></code></li>
+    </ul></li>
+    <li>data-dependence graphs (DDGs)
+    <ul>
+        <li>Graph type: <code><a href="dsl-types.php.html#DDG">DDG</a></code></li>
+        <li>Generated by: <code><a href="dsl-functions.php.html#getddg">getddg()</a></code></li>
+    </ul></li>
+    <li>program-dependence graphs (PDGs)
+    <ul>
+        <li>Graph type: <code><a href="dsl-types.php.html#PDG">PDG</a></code></li>
+        <li>Generated by: <code><a href="dsl-functions.php.html#getpdg">getpdg()</a></code></li>
+    </ul></li>
+</ul>
+<p>
+All of the generator functions take a single <code><a
+href="dsl-types.php.html#Method">Method</a></code> as an argument and return a
+specific kind of graph for that method.  For example, to build CFGs for every
+method you could do this:
+</p>
+<div class="sourcecode" id="code_1" style="position: relative; width: 60em;">visit(input, visitor {
+    before m: Method ->
+        cfg := getcfg(m);
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_1");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+Every graph type has a <code>nodes</code> attribute, that returns the set of
+all nodes in the graph.  This can allow you to manually inspect the nodes.
+Every node in a graph has a unique identifier and indicates what <code><a
+href="dsl-types.php.html#NodeKind">kind</a></code> of node it is: an
+<code>ENTRY</code> node (used to mark nodes added to the graph for entry or
+exit), a <code>CONTROL</code> node to indicate the associated AST node
+contained a control point (if statements, loops, etc), a <code>METHOD</code>
+node indicating the AST node contained a method call, or any <code>OTHER</code>
+kind of node (mostly for sequential nodes).
+</p>
+<p>
+As an example, consider the following code to generate a control-flow graph for
+a simple Java-like method:
+</p>
+<div class="sourcecode" id="code_2" style="position: relative; width: 60em;">G: output collection of string;
+
+code := """public class C {
+	void m(int n) {
+		int j = 0;
+
+		while (n > 0) {
+			if (j % 2 == 0)
+				j++;
+			else
+				j--;
+			n--;
+		}
+		System.out.println("assert 'j is positive'");
+	}
+}""";
+
+tree := parse(code);
+
+visit(tree, visitor {
+	before m: Method -> G << dot(getcfg(m));
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_2");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+This code will generate output that can be fed into a tool such as Graphviz Dot
+to generate the following CFG:
+</p>
+<p style="text-align: center;">
+<img width="100%" src="../img/cfg.png"/>
+</p>
+<p>
+Working directly with the graphs can be a bit cumbersome, so in the next
+section we will describe language features for writing your program analysis
+task that operates on these graph types.
+</p>
+
+
+<h2 id="traversals">Writing Graph Traversals</h2>
+<p>
+Consider a rather simple task, where we simply want to print the names of each
+node in a CFG.  To accomplish this, we need to traverse the graph and visit
+each node in the graph, get the name of the node, and then output that name.
+While this particular analysis is very trivial, it will allow us to investigate
+some of the more advanced features offered by Boa.  The code for the analysis
+follows:
+</p>
+<div class="sourcecode" id="code_3" style="position: relative; width: 60em;">ids: output collection of string;
+
+printNodes := traversal(n: CFGNode) {
+    ids << n.name;
+};
+
+visit(input, visitor {
+    before m: Method -> {
+        cfg := getcfg(m);
+        traverse(cfg, TraversalDirection.FORWARD, TraversalKind.DFS, printNodes);
+    }
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_3");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+In this code, there are 2 important new pieces to note. First, there is now a
+<code>traversal</code> (lines 3-5) named <code>printNodes</code>. This
+traversal operates similar to a function, and takes a single argument named
+<code>n</code> with type <code>CFGNode</code>.  It then grabs the name from
+that node, and outputs it. This is an example of a <em>traversal function</em> in Boa.
+</p>
+<p>
+To use a traversal function, on line 10 we call the <code>traverse()</code>
+function.  This function expects the following arguments: a graph, a traversal
+direction (either FORWARD or BACKWARD), a traversal kind (such as DFS,
+POSTORDER, ITERATIVE, etc), and the name of a traversal function.
+</p>
+<p>
+The general form for a traversal function is similar to a user-defined
+function, but uses the keyword <code>traversal</code>.  It also only takes a
+single argument, which is a node of the graph being traversed.  Traversals can
+optionally return a value.  This value is associated with the node for this
+traversal.  Node values can be retrieved by calling <code>getvalue(n)</code>
+for any node <code>n</code> and can be retrieved from other traversals by also
+specifying the traversal as a second argument <code>getvalue(n, t)</code>.
+</p>
+<p>
+The general form of a traversal is given below:
+</p>
+<div class="sourcecode" id="code_4" style="position: relative; width: 60em;">id := traversal(arg: graph_node_type) [ : retType ] {
+    body
+    [ return retVal; ]
+};</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_4");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script>
+
+<h2 id="fixedpoint">Fixed Point Analysis</h2>
+<p>
+Many program analyses are iterative, and require a notion of reaching a fixed
+point.  In order to know if a traversal has reached its final iteration, users
+must provide a custom fixed point function.  This is a function that takes two
+arguments whose type matches the return type of the traversal, and the function
+returns a boolean to indicate if it has reached a fixed point or not.  This
+function is called on each graph node with the current node value and the
+previous node value.  It must return true for all nodes in order to indicate a
+fixed point and terminate the iterations.  When calling the
+<code>traverse()</code> method, the fixed point function is given as the fifth
+and last argument.
+</p>
+<p>
+The general form of a fixed point function is given below:
+</p>
+<div class="sourcecode" id="code_5" style="position: relative; width: 60em;">id := fixp(arg1, arg2: traversal_ret_type) : bool {
+    body
+    return retVal;
+};</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_5");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script>
+
+<h2 id="liveness">Example: Liveness Analysis</h2>
+<p>
+Let's consider a slightly more complex analysis. This example is a <a
+href="https://en.wikipedia.org/wiki/Live_variable_analysis">liveness
+analysis</a>.  We define a variable as <b>live</b> if it holds a value that
+will/might be used in the future.
+</p>
+<p>
+To compute this analysis, we first define it as a set of dataflow equations.
+Every node needs to define both a <b>gen set</b> and a <b>kill set</b>:
+</p>
+<p style="text-align: center;">
+    <img width="420px" src="../img/gen-set.png"/><br/>
+    <img width="360px" src="../img/kill-set.png"/>
+</p>
+<p>
+Then for each node we compute the in and out sets:
+</p>
+<p style="text-align: center;">
+    <img width="260px" src="../img/in-set.png"/><br/>
+    <img width="160px" src="../img/out-set.png"/>
+</p>
+<p>
+The following traversal handles computing the GEN and KILL sets for every node:
+</p>
+<div class="sourcecode" id="code_6" style="position: relative; width: 60em;">type T_gen_kill = { gen: set of string, kill: string };
+
+# traversal that gets all variable uses in a method
+genkill := traversal(node: CFGNode): T_gen_kill {
+    return { node.useVariables, node.defVariables };
+};</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_6");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+The next traversal will initialize every node's IN and OUT sets to be empty
+sets (the starting point of the analysis):
+</p>
+<div class="sourcecode" id="code_7" style="position: relative; width: 60em;">type T_inout = { in: set of string, out: set of string };
+
+init := traversal(node: CFGNode): T_inout {
+    in_set: set of string;
+    out_set: set of string;
+    val: T_inout = { in_set, out_set };
+    return val;
+};</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_7");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+Finally we come to the third and last traversal.  This is the core of the analysis:
+</p>
+<div class="sourcecode" id="code_8" style="position: relative; width: 60em;"># cfg live variable analysis
+live := traversal(node: CFGNode): T_inout {
+    cur_val: T_inout;
+    if (def(getvalue(node))) cur_val = getvalue(node);
+    else cur_val = getvalue(node, init);
+    gen_kill := getvalue(node, genkill);
+
+    # update out set
+    succs := node.successors;
+    foreach (i: int; def(succs[i])) {
+        succ := getvalue(succs[i]);
+        if (def(succ)) {
+            cur_val.out = union(cur_val.out, succ.in);
+        }
+    }
+
+    # update in set
+    cur_val.in = clone(cur_val.out);
+    remove(cur_val.in, gen_kill.kill);
+    cur_val.in = union(gen_kill.gen, cur_val.in);
+
+    return cur_val;
+};</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_8");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+Note that the above three traversals could actually be combined into a single
+traversal, but we separated them here for clarity.
+</p>
+<p>
+The next piece of code handles determining when the analysis has reached a
+fixed point.  For this analysis, we consider it at a fixed point if the current
+in set for every node is identical to the previous in set for the same node:
+</p>
+<div class="sourcecode" id="code_9" style="position: relative; width: 60em;"># user-defined fix point function that is used for analysis termination.
+fp := fixp(curr, prev: T_inout) : bool {
+    return len(difference(curr.in, prev.in)) == 0;
+};</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_9");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+All that remains is the find methods, build a CFG for the method, and then call
+the three traversals in the proper order.  Note that we also clear out the
+values for the traversals, otherwise the 2nd method we find would start with
+the prior method's node values.
+</p>
+<div class="sourcecode" id="code_10" style="position: relative; width: 60em;">visit(input, visitor {
+    before m: Method -> {
+        clear(genkill);
+        clear(init);
+        clear(live);
+
+        cfg := getcfg(m);
+
+        traverse(cfg, TraversalDirection.BACKWARD, TraversalKind.HYBRID, genkill);
+        traverse(cfg, TraversalDirection.BACKWARD, TraversalKind.HYBRID, init);
+        traverse(cfg, TraversalDirection.BACKWARD, TraversalKind.HYBRID, live, fp);
+    }
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_10");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+If we run this code on the example graph shown at the top of the page, we can
+see the final result:
+</p>
+<p style="text-align: center;">
+<img width="100%" src="../img/liveness.png"/>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fwrapper grids-24">
+<div class="grids-24" id="footer">
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1547227-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<div class="grid-3 first"><a class="nameplate" href="http://www.iastate.edu/"><img alt="Iowa State University" src="../img/sprite.png"></a></div>
+<div class="grid-21 last">
+<span><a href="http://design.cs.iastate.edu/">Laboratory of Software Design</a>, <a href="http://www.cs.iastate.edu/">Department of Computer Science</a>, </span><script type="text/javascript"><!--
+	document.write('<a href="mailto:' + (['hridesh', 'iastate.edu'].join('@'))
+			+ '">' + (['hridesh', 'iastate.edu'].join('@')) + '<\/a>');
+// --></script>
+<ins><noscript><div><code>hridesh (at) iastate (dot) edu</code></div></noscript></ins>
+<p>Copyright &#169; 2012&ndash;2015, Iowa State University of Science and Technology. All rights reserved.</p>
+<p>
+&nbsp;
+</p>
+<p>
+This material is based upon work supported by the US National Science
+Foundation (NSF) under grants CCF-19-34884, CNS-15-13263, CNS-15-12947,
+CCF-14-23370, CCF-13-49153, CCF-11-17937, CCF-10-17334, and CCF-10-18600.
+</p>
+<p>
+Any opinions, findings, and conclusions or recommendations expressed in this
+material are those of the author(s) and do not necessarily reflect the views of
+the National Science Foundation.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

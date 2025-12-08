@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Example BoaC Programs - Boa - Iowa State University</title>
+<link href="../../css/base.css" media="all" rel="stylesheet">
+<link href="../../css/style.css" media="all" rel="stylesheet">
+<!--[if lt IE 9]>
+		<style>
+			ul.left > li, ul.right > li{ *display: inline; }
+			#ribbon form > input[type="submit"]{ *vertical-align: baseline; }
+		</style>
+	<![endif]-->
+<!-- SYNTAX HIGHLIGHTING -->
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/ace.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/theme-crimson_editor.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-boa.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-java.js"></script>
+<link href="https://boa.cs.iastate.edu/boa/sites/all/themes/boa/css/boa-style.css" media="screen" rel="stylesheet" type="text/css"/>
+<!-- END SYTNAX HIGHLIGHTING -->
+</head>
+<body>
+<div class="skip"><a accesskey="2" href="index.php.html#container">Skip
+Navigation</a></div>
+<div class="hwrapper" id="header">
+<div id="top-strip">
+<div class="grids-24">
+<div class="grid-8">
+&nbsp;
+</div>
+<div class="grid-16">
+&nbsp;
+</div>
+</div>
+</div>
+<div id="ribbon">
+<div class="grids-24">
+<div class="grid-16">
+<h1 class="nameplate"><a accesskey="1" href="../../index.html"><img src="../../img/boa-white.png"></a></h1>
+</div>
+<div class="grid-8">
+<form action="http://www.google.com/search" method="GET">
+	<input name="as_sitesearch" type="hidden" value="boa.cs.iastate.edu" />
+	<input accesskey="s" name="as_q" placeholder="Search" tabindex="1" type="text" />
+	<input name="btnG" title="Search" type="submit" value="" />
+</form>
+</div>
+</div>
+<div class="grids-24">
+<div class="grid-12">
+<h2 class="site-title">SARS-CoV-2/COVID-19 Open Research Dataset (CORD-19)</h2>
+</div>
+<div class="grid-12">
+<h2 style="text-align: right;" class="site-title"><a href="mailto:boasupport@iastate.edu">Contact Us</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div id="container">
+<div class="grids-24">
+<div class="grid-5 sidebar" id="left-sidebar">
+<ul class="navigation"><li class="selected"><a href="index.php.html">Examples</a></li>
+<li><a href="../../docs/boac/index.php.html">Programming Guide</a></li>
+<li><a href="../../papers/index.php.html">Publications</a></li>
+<li><a href="https://groups.google.com/g/boa-user">User Forum</a></li>
+<li><a href="../../ide/index.php.html">IDE Support</a></li>
+<li><a href="../../api/index.php.html">Client API</a></li>
+<li><a href="https://boa.cs.iastate.edu/boa/index.php">User Login (MSR)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boac/index.php">User Login (COVID-19)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boag/index.php">User Login (Genomics)</a></li>
+<li><a href="../../index.php.html">About</a></li>
+<li><a href="../../policies/index.php.html">Privacy &amp; Terms</a></li>
+</ul>
+<div id="news-widget" class="sidebar-item"><h4 class="title">News</h4>
+<b>Aug '22</b>: New <a href="../../ide/vscode/index.html">VSCode extension</a> available<br />
+<b>Jun '22</b>: New <a href="https://www.npmjs.com/package/@boalang/boa-api">Boa API for JavaScript</a> available<br />
+<b>Mar '20</b>: New Boa site for CORD-19 available<br />
+<b>Sep '19</b>: New <a href="https://pypi.org/project/boa-api/">Boa API for Python</a> available<br />
+</div>
+</div>
+<div class="grid-19" id="content">
+<div class="header gutter"><h1>Example BoaC Programs</h1>
+<p>
+BoaC is a flexible language, capable of answering a wide variety of questions.
+Here we provide several example questions and BoaC programs to answer those
+questions.
+</p>
+<ol>
+<li><a href="index.php.html#q1">How many papers have empty vs. non-empty title?</a></li>
+<li><a href="index.php.html#q2">What 100 words appear in the most number of paper abstracts?</a></li>
+<li><a href="index.php.html#q3">What 100 words appear in the most number of paper bodies?</a></li>
+<li><a href="index.php.html#q4">What 500 words appear in the least number of paper bodies for papers with vaccine in the title?</a></li>
+<li><a href="index.php.html#q5">What are the most mentioned antivirals?</a></li>
+<li><a href="index.php.html#q6">What do we know about cornavirus risk factors?</a></li>
+<li><a href="index.php.html#q7">What has been published about medical care?</a></li>
+</ol>
+<h3 id="q1">How many papers have empty vs. non-empty title?</h3>
+<div class="sourcecode" id="code_1" style="position: relative; width: 60em;">p: Paper = input;
+empty: output sum of int;
+non_empty: output sum of int;
+
+# check if title is empty or not
+if (p.metadata.title == "")
+	empty << 1;
+else
+	non_empty << 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_1");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boac/?q=boa/query&amp;edit=226&amp;example=q1">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boac/?q=boa/job/public/226">Published Results</a>
+</p><h3 id="q2">What 100 words appear in the most number of paper abstracts?</h3>
+<div class="sourcecode" id="code_2" style="position: relative; width: 60em;"># What 100 words appear in the most number of paper abstracts?
+p: Paper = input;
+o: output top(100) of string weight int;
+
+stopwords: set of string = stop_words();
+# store all words used in this paper's abstract
+abstractWords: set of string;
+
+foreach (i: int; def(p.abstract[i])) {
+	paragraphWords: array of string = splitall(lowercase(p.abstract[i].text), " ");
+
+	foreach (j: int; !contains(stopwords, paragraphWords[j]))
+		add(abstractWords, paragraphWords[j]);
+}
+
+words := values(abstractWords);
+foreach (k: int; def(words[k]))
+	o << words[k] weight 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_2");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boac/?q=boa/query&amp;edit=227&amp;example=q2">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boac/?q=boa/job/public/227">Published Results</a>
+</p><h3 id="q3">What 100 words appear in the most number of paper bodies?</h3>
+<div class="sourcecode" id="code_3" style="position: relative; width: 60em;"># What 100 words appear in the most number of paper bodies?
+p: Paper = input;
+o: output top(100) of string weight int;
+
+stopwords: set of string = stop_words();
+# store all words used in this paper's body
+bodyWords: set of string;
+
+foreach (i: int; def(p.body_text[i])) {
+	foreach (m: int; def(p.body_text[i].body[m])) {
+		paragraphWords: array of string = splitall(lowercase(p.body_text[i].body[m].text), " ");
+
+		foreach (j: int; !contains(stopwords, paragraphWords[j]))
+			add(bodyWords, paragraphWords[j]);
+	}
+}
+
+words := values(bodyWords);
+foreach (k: int; def(words[k]))
+	o << words[k] weight 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_3");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boac/?q=boa/query&amp;edit=228&amp;example=q3">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boac/?q=boa/job/public/228">Published Results</a>
+</p><h3 id="q4">What 500 words appear in the least number of paper bodies for papers with vaccine in the title?</h3>
+<div class="sourcecode" id="code_4" style="position: relative; width: 60em;"># What 500 words appear in the least number of paper bodies for papers with vaccine in the title?
+p: Paper = input;
+o: output bottom(500) of string weight int;
+
+stopwords: set of string = stop_words();
+# store all words used in this paper's body
+bodyWords: set of string;
+
+if (strfind("vaccine", lowercase(p.metadata.title)) >= 0) {
+	foreach (i: int; def(p.body_text[i])) {
+		foreach (m: int; def(p.body_text[i].body[m])) {
+			paragraphWords: array of string = splitall(lowercase(p.body_text[i].body[m].text), " ");
+
+			foreach (j: int; !contains(stopwords, paragraphWords[j]))
+				# match only english words
+				if (match("^[a-z]+$", paragraphWords[j]))
+					add(bodyWords, paragraphWords[j]);
+		}
+	}
+
+	words := values(bodyWords);
+	foreach (k: int; def(words[k]))
+		o << words[k] weight 1;
+}</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_4");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boac/?q=boa/query&amp;edit=229&amp;example=q4">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boac/?q=boa/job/public/229">Published Results</a>
+</p><h3 id="q5">What are the most mentioned antivirals?</h3>
+<div class="sourcecode" id="code_5" style="position: relative; width: 60em;"># What are the most mentioned antivirals?
+p: Paper = input;
+o: output top(500) of string weight int;
+
+stopwords: set of string = stop_words();
+# store all words used in this paper's body
+bodyWords: set of string;
+
+foreach (i: int; def(p.body_text[i])) {
+	foreach (m: int; def(p.body_text[i].body[m])) {
+		paragraphWords: array of string = splitall(lowercase(p.body_text[i].body[m].text), " ");
+
+		foreach (j: int; !contains(stopwords, paragraphWords[j]))
+			# match only english words
+			if (match("^[a-z]*vir$", paragraphWords[j]))
+				add(bodyWords, paragraphWords[j]);
+	}
+}
+
+words := values(bodyWords);
+foreach (k: int; def(words[k]))
+	o << words[k] weight 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_5");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boac/?q=boa/query&amp;edit=230&amp;example=q5">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boac/?q=boa/job/public/230">Published Results</a>
+</p><h3 id="q6">What do we know about cornavirus risk factors?</h3>
+<div class="sourcecode" id="code_6" style="position: relative; width: 60em;">## What do we know about cornavirus risk factors?
+p: Paper = input;
+
+smoke:     output set of string;
+pregnant:  output set of string;
+neonatal:  output set of string;
+pulmonary: output set of string;
+
+foreach (i: int; def(p.abstract[i])) {
+	absStore: string = lowercase(p.abstract[i].text);
+
+	if ((strfind("smoke", absStore) >= 0 || strfind("smoking", absStore) >= 0) && strfind("risk", absStore) >= 0) {
+		smoke << p.metadata.title;
+	}
+	if ((strfind("pregnant", absStore) >= 0 || strfind("pregnancy", absStore) >= 0) && strfind("risk", absStore) >= 0) {
+		pregnant << p.metadata.title;
+	}
+	if ((strfind("neonatal", absStore) >= 0 || strfind("neo-natal", absStore) >= 0) && strfind("risk", absStore) >= 0) {
+		neonatal << p.metadata.title;
+	}
+	if (strfind("pulmonary", absStore) >= 0 && strfind("risk", absStore) >= 0) {
+		pulmonary << p.metadata.title;
+	}
+}</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_6");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boac/?q=boa/query&amp;edit=231&amp;example=q6">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boac/?q=boa/job/public/231">Published Results</a>
+</p><h3 id="q7">What has been published about medical care?</h3>
+<div class="sourcecode" id="code_7" style="position: relative; width: 60em;">## What has been published about medical care?
+p: Paper = input;
+
+nursing:     output set of string;
+ards:        output set of string;
+ecmo:        output set of string;
+ventilation: output set of string;
+n95:         output set of string;
+regulatory:  output set of string;
+medication:  output set of string;
+
+foreach (i: int; def(p.abstract[i])) {
+	absStore: string = lowercase(p.abstract[i].text);
+
+	if (strfind("nursing", absStore) >= 0 || strfind("long term care", absStore) >= 0) {
+		nursing << p.metadata.title;
+	}
+	if (strfind("ards", absStore) >= 0 || strfind("acute respiratory distress syndrome", absStore) >= 0) {
+		ards << p.metadata.title;
+	}
+	if (strfind("ecmo", absStore) >= 0 || strfind("extracorporeal membrane oxygenation", absStore) >= 0) {
+		ecmo << p.metadata.title;
+	}
+	if (strfind("ventilation", absStore) >= 0) {
+		ventilation << p.metadata.title;
+	}
+	if (strfind("n95", absStore) >= 0) {
+		n95 << p.metadata.title;
+	}
+	if (strfind("eua", absStore) >= 0 || strfind("clia", absStore) >= 0) {
+		regulatory << p.metadata.title;
+	}
+	if (strfind("medication", absStore) >= 0 && strfind("oral", absStore) >= 0) {
+		medication << p.metadata.title;
+	}
+}</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_7");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boac/?q=boa/query&amp;edit=232&amp;example=q7">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boac/?q=boa/job/public/232">Published Results</a>
+</p></div>
+</div>
+</div>
+</div>
+<div class="fwrapper grids-24">
+<div class="grids-24" id="footer">
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1547227-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<div class="grid-3 first"><a class="nameplate" href="http://www.iastate.edu/"><img alt="Iowa State University" src="../../img/sprite.png"></a></div>
+<div class="grid-21 last">
+<span><a href="http://design.cs.iastate.edu/">Laboratory of Software Design</a>, <a href="http://www.cs.iastate.edu/">Department of Computer Science</a>, </span><script type="text/javascript"><!--
+	document.write('<a href="mailto:' + (['hridesh', 'iastate.edu'].join('@'))
+			+ '">' + (['hridesh', 'iastate.edu'].join('@')) + '<\/a>');
+// --></script>
+<ins><noscript><div><code>hridesh (at) iastate (dot) edu</code></div></noscript></ins>
+<p>Copyright &#169; 2012&ndash;2015, Iowa State University of Science and Technology. All rights reserved.</p>
+<p>
+&nbsp;
+</p>
+<p>
+This material is based upon work supported by the US National Science
+Foundation (NSF) under grants CCF-19-34884, CNS-15-13263, CNS-15-12947,
+CCF-14-23370, CCF-13-49153, CCF-11-17937, CCF-10-17334, and CCF-10-18600.
+</p>
+<p>
+Any opinions, findings, and conclusions or recommendations expressed in this
+material are those of the author(s) and do not necessarily reflect the views of
+the National Science Foundation.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

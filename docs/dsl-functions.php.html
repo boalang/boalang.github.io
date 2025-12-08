@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Boa Programming Guide - Domain-Specific Functions - Boa - Iowa State University</title>
+<link href="../css/base.css" media="all" rel="stylesheet">
+<link href="../css/style.css" media="all" rel="stylesheet">
+<!--[if lt IE 9]>
+		<style>
+			ul.left > li, ul.right > li{ *display: inline; }
+			#ribbon form > input[type="submit"]{ *vertical-align: baseline; }
+		</style>
+	<![endif]-->
+<!-- SYNTAX HIGHLIGHTING -->
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/ace.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/theme-crimson_editor.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-boa.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-java.js"></script>
+<link href="https://boa.cs.iastate.edu/boa/sites/all/themes/boa/css/boa-style.css" media="screen" rel="stylesheet" type="text/css"/>
+<!-- END SYTNAX HIGHLIGHTING -->
+</head>
+<body>
+<div class="skip"><a accesskey="2" href="dsl-functions.php.html#container">Skip
+Navigation</a></div>
+<div class="hwrapper" id="header">
+<div id="top-strip">
+<div class="grids-24">
+<div class="grid-8">
+&nbsp;
+</div>
+<div class="grid-16">
+&nbsp;
+</div>
+</div>
+</div>
+<div id="ribbon">
+<div class="grids-24">
+<div class="grid-16">
+<h1 class="nameplate"><a accesskey="1" href="../index.html"><img src="../img/boa-white.png"></a></h1>
+</div>
+<div class="grid-8">
+<form action="http://www.google.com/search" method="GET">
+	<input name="as_sitesearch" type="hidden" value="boa.cs.iastate.edu" />
+	<input accesskey="s" name="as_q" placeholder="Search" tabindex="1" type="text" />
+	<input name="btnG" title="Search" type="submit" value="" />
+</form>
+</div>
+</div>
+<div class="grids-24">
+<div class="grid-12">
+<h2 class="site-title">Mining Ultra-Large-Scale Software Repositories</h2>
+</div>
+<div class="grid-12">
+<h2 style="text-align: right;" class="site-title"><a href="mailto:boasupport@iastate.edu">Contact Us</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div id="container">
+<div class="grids-24">
+<div class="grid-5 sidebar" id="left-sidebar">
+<ul class="navigation"><li><a href="../examples/index.php.html">Examples</a></li>
+<li class="selected"><a href="index.php.html">Programming Guide</a><ul><li><a href="dsl-types.php.html">Domain-Specific Types</a></li>
+<li><a href="types.php.html">Other Built-In Types</a></li>
+<li class="selected"><a href="dsl-functions.php.html">Domain-Specific Functions</a><ul><li><a href="dsl-functions.php.html#Basic+Functions">Basic Functions</a></li>
+<li><a href="dsl-functions.php.html#Graph+Functions">Graph Functions</a></li>
+</ul></li>
+<li><a href="functions.php.html">Other Built-In Functions</a></li>
+<li><a href="user-functions.php.html">User-Defined Functions</a></li>
+<li><a href="aggregators.php.html">Output Aggregators</a></li>
+<li><a href="vars.php.html">Built-In Variables</a></li>
+<li><a href="consts.php.html">Constants</a></li>
+<li><a href="quantifiers.php.html">Using Quantifiers</a></li>
+<li><a href="visitors.php.html">Using Visitors</a></li>
+<li><a href="program-analysis.php.html">Program Analysis</a></li>
+</ul></li>
+<li><a href="../stats/index.php.html">Dataset Statistics</a></li>
+<li><a href="../papers/index.php.html">Publications</a></li>
+<li><a href="https://groups.google.com/g/boa-user">User Forum</a></li>
+<li><a href="../ide/index.php.html">IDE Support</a></li>
+<li><a href="../api/index.php.html">Client API</a></li>
+<li><a href="https://boa.cs.iastate.edu/boa/index.php">User Login (MSR)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boac/index.php">User Login (COVID-19)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boag/index.php">User Login (Genomics)</a></li>
+<li><a href="../index.php.html">About</a></li>
+<li><a href="../policies/index.php.html">Privacy &amp; Terms</a></li>
+</ul>
+<div id="news-widget" class="sidebar-item"><h4 class="title">News</h4>
+<b>Aug '22</b>: New <a href="../ide/vscode/index.html">VSCode extension</a> available<br />
+<b>Jun '22</b>: New <a href="https://www.npmjs.com/package/@boalang/boa-api">Boa API for JavaScript</a> available<br />
+<b>Mar '20</b>: New Boa site for CORD-19 available<br />
+<b>Sep '19</b>: New <a href="https://pypi.org/project/boa-api/">Boa API for Python</a> available<br />
+</div>
+</div>
+<div class="grid-19" id="content">
+<div class="header gutter"><h1>The Boa Programming Guide - Domain-Specific Functions</h1>
+<p>
+Boa provides several useful built-in functions designed to ease common software
+repository mining tasks. For reference, these functions are described in this
+section.
+</p>
+<ul>
+	<li><h3><a href="dsl-functions.php.html#Basic+Functions">Basic Functions</a></h3><ul>
+		<li><a href="dsl-functions.php.html#getast">getast</a></li>
+		<li><a href="dsl-functions.php.html#getsnapshot">getsnapshot</a></li>
+		<li><a href="dsl-functions.php.html#hasfiletype">hasfiletype</a></li>
+		<li><a href="dsl-functions.php.html#isfixingrevision">isfixingrevision</a></li>
+		<li><a href="dsl-functions.php.html#iskind">iskind</a></li>
+		<li><a href="dsl-functions.php.html#isliteral">isliteral</a></li>
+	</ul></li>
+	<li><h3><a href="dsl-functions.php.html#Graph+Functions">Graph Functions</a></h3><ul>
+		<li><a href="dsl-functions.php.html#dot">dot</a></li>
+		<li><a href="dsl-functions.php.html#getcdg">getcdg</a></li>
+		<li><a href="dsl-functions.php.html#getcfg">getcfg</a></li>
+		<li><a href="dsl-functions.php.html#getddg">getddg</a></li>
+		<li><a href="dsl-functions.php.html#getinedge">getinedge</a></li>
+		<li><a href="dsl-functions.php.html#getoutedge">getoutedge</a></li>
+		<li><a href="dsl-functions.php.html#getpdg">getpdg</a></li>
+		<li><a href="dsl-functions.php.html#getvalue">getvalue</a></li>
+	</ul></li>
+</ul>
+<h2 id="Basic+Functions">Basic Functions</h2>
+<div id="getast" class="function"><div class="funcname"><b>getast</b> (file: <a href="dsl-types.php.html#ChangedFile">ChangedFile</a>) : <a href="dsl-types.php.html#ASTRoot">ASTRoot</a></div>
+<div class="funcdesc"><p>Returns the <a href="dsl-types.php.html#ASTRoot">ASTRoot</a> of the specified <code>file</code>, if it exists. Otherwise returns an empty <a href="dsl-types.php.html#ASTRoot">ASTRoot</a>.</p></div>
+</div>
+<div id="getsnapshot" class="function"><div class="funcname"><b>getsnapshot</b> (cr: <a href="dsl-types.php.html#CodeRepository">CodeRepository</a> [, t: <a href="types.php.html#Basic+Types">time</a>]  [, filters: <a href="types.php.html#Basic+Types">string</a>...] ) : <a href="types.php.html#Array+Types">array</a> of <a href="dsl-types.php.html#ChangedFile">ChangedFile</a></div>
+<div class="funcdesc"><p>Returns a snapshot of <a href="dsl-types.php.html#ChangedFile">ChangedFile</a>s.  A snapshot is the last version of a file before a given time <code>t</code> (if no time is given, <code>now()</code> is used).  If any <code>filters</code> are given, they are used to filter out files.  The file kind is checked against each string and must match one or more filters.  Matches are performed by comparing the filter against the start of the file kind.</p></div>
+<div class="sourcecode" id="code_1" style="position: relative; width: 60em;">getsnapshot := function(cr: CodeRepository, t: time, filters: array of string) : array of ChangedFile {
+    snapshot: map[string] of ChangedFile;
+
+    visit(cr, visitor {
+        before node: Revision ->
+            if (node.commit_date > t)
+                stop;
+        before node: ChangedFile -> {
+            if (node.change == ChangeKind.DELETED) {
+                remove(snapshot, node.name);
+            } else {
+                filter := len(filters) > 0;
+
+                exists (i: int; iskind(filters[i], node.kind))
+                    filter = false;
+
+                if (!filter)
+                    snapshot[node.name] = node;
+            }
+            stop;
+        }
+    });
+
+    return values(snapshot);
+};</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_1");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script></div>
+<div id="hasfiletype" class="function"><div class="funcname"><b>hasfiletype</b> (data: dsl_type, extension: <a href="types.php.html#Basic+Types">string</a>) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Does the <code>data</code> contain a file of the specified type? This compares based on the given file <code>extension</code>. Valid <code>dsl_type</code>s are: <a href="dsl-types.php.html#Project">Project</a>, <a href="dsl-types.php.html#CodeRepository">CodeRepository</a>, and <a href="dsl-types.php.html#Revision">Revision</a>.</p></div>
+<div class="sourcecode" id="code_2" style="position: relative; width: 60em;">hasfiletype := function(rev: Revision, ext: string) : bool {
+    exists (i: int; match(format(`\.%s$`, ext), lowercase(rev.files[i].name)))
+        return true;
+    return false;
+};</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_2");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script></div>
+<div id="isfixingrevision" class="function"><div class="funcname"><b>isfixingrevision</b> (log: <a href="types.php.html#Basic+Types">string</a>) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Is the given <code>log</code> message indicating it is a fixing revision? A message is considered indicating a bug fix if it matches a set of regular expressions.</p></div>
+<div class="sourcecode" id="code_3" style="position: relative; width: 60em;">isfixingrevision := function(log: string) : bool {
+    if (match(`\bfix(s|es|ing|ed)?\b`, log)) return true;
+    if (match(`\b(error|bug|issue)(s)\b`, log)) return true;
+    return false;
+};</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_3");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script></div>
+<div id="isfixingrevision" class="function"><div class="funcname"><b>isfixingrevision</b> (rev: <a href="dsl-types.php.html#Revision">Revision</a>) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Is the given revision <code>rev</code>'s log message indicating it is a fixing revision? A message is considered indicating a bug fix if it matches a set of regular expressions.</p></div>
+<div class="sourcecode" id="code_4" style="position: relative; width: 60em;">isfixingrevision := function(rev: Revision) : bool {
+    return isfixingrevision(rev.log);
+};</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_4");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script></div>
+<div id="iskind" class="function"><div class="funcname"><b>iskind</b> (s: <a href="types.php.html#Basic+Types">string</a>, k: dsl_type) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Returns <code>true</code> if the kind <code>k</code> starts with the string <code>s</code>. Valid <code>dsl_type</code>s are: <a href="dsl-types.php.html#FileKind">FileKind</a>.</p></div>
+<div class="sourcecode" id="code_5" style="position: relative; width: 60em;">iskind := function(s: string, k: FileKind) : bool {
+    return match(format(`^%s`, s), string(k));
+};</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_5");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script></div>
+<div id="isliteral" class="function"><div class="funcname"><b>isliteral</b> (e: <a href="dsl-types.php.html#Expression">Expression</a>, s: <a href="types.php.html#Basic+Types">string</a>) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Returns <code>true</code> if the expression <code>e</code> is of kind LITERAL and the literal matches the string <code>s</code>.</p></div>
+<div class="sourcecode" id="code_6" style="position: relative; width: 60em;">isliteral := function(e: Expression, s: string) : bool {
+    return e.kind == ExpressionKind.LITERAL && def(e.literal) && e.literal == s;
+};</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_6");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script></div>
+<h2 id="Graph+Functions">Graph Functions</h2>
+<div id="dot" class="function"><div class="funcname"><b>dot</b> (g: graph) : <a href="types.php.html#Basic+Types">string</a></div>
+<div class="funcdesc"><p><em>@since 2019-10</em><br/>Returns a string representation of the graph <code>g</code>, in Graphviz DOT format.</p></div>
+</div>
+<div id="getcdg" class="function"><div class="funcname"><b>getcdg</b> (m: <a href="dsl-types.php.html#Method">Method</a>) : <a href="dsl-types.php.html#CDG">CDG</a></div>
+<div class="funcdesc"><p><em>@since 2019-10</em><br/>Returns a control-dependence graph (<a href="dsl-types.php.html#CDG">CDG</a>) for the given Method <code>m</code>.</p></div>
+</div>
+<div id="getcfg" class="function"><div class="funcname"><b>getcfg</b> (m: <a href="dsl-types.php.html#Method">Method</a>) : <a href="dsl-types.php.html#CFG">CFG</a></div>
+<div class="funcdesc"><p><em>@since 2019-10</em><br/>Returns a control-flow graph (<a href="dsl-types.php.html#CFG">CFG</a>) for the given Method <code>m</code>.</p></div>
+</div>
+<div id="getddg" class="function"><div class="funcname"><b>getddg</b> (m: <a href="dsl-types.php.html#Method">Method</a>) : <a href="dsl-types.php.html#DDG">DDG</a></div>
+<div class="funcdesc"><p><em>@since 2019-10</em><br/>Returns a data-dependence graph (<a href="dsl-types.php.html#DDG">DDG</a>) for the given Method <code>m</code>.</p></div>
+</div>
+<div id="getinedge" class="function"><div class="funcname"><b>getinedge</b> (node1: graph_node, node2: graph_node) : graph_edge</div>
+<div class="funcdesc"><p><em>@since 2019-10</em><br/>Returns a graph edge (<a href="dsl-types.php.html#CFGEdge">CFGEdge</a>, <a href="dsl-types.php.html#CDGEdge">CDGEdge</a>, <a href="dsl-types.php.html#DDGEdge">DDGEdge</a>, or <a href="dsl-types.php.html#PDGEdge">PDGEdge</a>) from <code>node2</code> to <code>node1</code>, if such edge exists. If no such edge exists it returns a <code>NIL</code> edge. The two nodes <code>node1</code> and <code>node2</code> must be the same type of node.</p></div>
+</div>
+<div id="getoutedge" class="function"><div class="funcname"><b>getoutedge</b> (node1: graph_node, node2: graph_node) : graph_edge</div>
+<div class="funcdesc"><p><em>@since 2019-10</em><br/>Returns a graph edge (<a href="dsl-types.php.html#CFGEdge">CFGEdge</a>, <a href="dsl-types.php.html#CDGEdge">CDGEdge</a>, <a href="dsl-types.php.html#DDGEdge">DDGEdge</a>, or <a href="dsl-types.php.html#PDGEdge">PDGEdge</a>) from <code>node1</code> to <code>node2</code>, if such edge exists. If no such edge exists it returns a <code>NIL</code> edge. The two nodes <code>node1</code> and <code>node2</code> must be the same type of node.</p></div>
+</div>
+<div id="getpdg" class="function"><div class="funcname"><b>getpdg</b> (m: <a href="dsl-types.php.html#Method">Method</a>) : <a href="dsl-types.php.html#PDG">PDG</a></div>
+<div class="funcdesc"><p><em>@since 2019-10</em><br/>Returns a program-dependence graph (<a href="dsl-types.php.html#PDG">PDG</a>) for the given Method <code>m</code>.</p></div>
+</div>
+<div id="getvalue" class="function"><div class="funcname"><b>getvalue</b> (n: graph_node [, t: traversal] ) : T</div>
+<div class="funcdesc"><p><em>@since 2019-10</em><br/>Returns the value associated with the graph node <code>n</code> for the current traversal, or the optional traversal <code>t</code>. The type of the value returned depends on the return type of the traversal.</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fwrapper grids-24">
+<div class="grids-24" id="footer">
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1547227-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<div class="grid-3 first"><a class="nameplate" href="http://www.iastate.edu/"><img alt="Iowa State University" src="../img/sprite.png"></a></div>
+<div class="grid-21 last">
+<span><a href="http://design.cs.iastate.edu/">Laboratory of Software Design</a>, <a href="http://www.cs.iastate.edu/">Department of Computer Science</a>, </span><script type="text/javascript"><!--
+	document.write('<a href="mailto:' + (['hridesh', 'iastate.edu'].join('@'))
+			+ '">' + (['hridesh', 'iastate.edu'].join('@')) + '<\/a>');
+// --></script>
+<ins><noscript><div><code>hridesh (at) iastate (dot) edu</code></div></noscript></ins>
+<p>Copyright &#169; 2012&ndash;2015, Iowa State University of Science and Technology. All rights reserved.</p>
+<p>
+&nbsp;
+</p>
+<p>
+This material is based upon work supported by the US National Science
+Foundation (NSF) under grants CCF-19-34884, CNS-15-13263, CNS-15-12947,
+CCF-14-23370, CCF-13-49153, CCF-11-17937, CCF-10-17334, and CCF-10-18600.
+</p>
+<p>
+Any opinions, findings, and conclusions or recommendations expressed in this
+material are those of the author(s) and do not necessarily reflect the views of
+the National Science Foundation.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

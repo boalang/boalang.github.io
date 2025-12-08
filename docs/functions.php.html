@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Boa Programming Guide - Built-In Functions - Boa - Iowa State University</title>
+<link href="../css/base.css" media="all" rel="stylesheet">
+<link href="../css/style.css" media="all" rel="stylesheet">
+<!--[if lt IE 9]>
+		<style>
+			ul.left > li, ul.right > li{ *display: inline; }
+			#ribbon form > input[type="submit"]{ *vertical-align: baseline; }
+		</style>
+	<![endif]-->
+<!-- SYNTAX HIGHLIGHTING -->
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/ace.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/theme-crimson_editor.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-boa.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-java.js"></script>
+<link href="https://boa.cs.iastate.edu/boa/sites/all/themes/boa/css/boa-style.css" media="screen" rel="stylesheet" type="text/css"/>
+<!-- END SYTNAX HIGHLIGHTING -->
+</head>
+<body>
+<div class="skip"><a accesskey="2" href="functions.php.html#container">Skip
+Navigation</a></div>
+<div class="hwrapper" id="header">
+<div id="top-strip">
+<div class="grids-24">
+<div class="grid-8">
+&nbsp;
+</div>
+<div class="grid-16">
+&nbsp;
+</div>
+</div>
+</div>
+<div id="ribbon">
+<div class="grids-24">
+<div class="grid-16">
+<h1 class="nameplate"><a accesskey="1" href="../index.html"><img src="../img/boa-white.png"></a></h1>
+</div>
+<div class="grid-8">
+<form action="http://www.google.com/search" method="GET">
+	<input name="as_sitesearch" type="hidden" value="boa.cs.iastate.edu" />
+	<input accesskey="s" name="as_q" placeholder="Search" tabindex="1" type="text" />
+	<input name="btnG" title="Search" type="submit" value="" />
+</form>
+</div>
+</div>
+<div class="grids-24">
+<div class="grid-12">
+<h2 class="site-title">Mining Ultra-Large-Scale Software Repositories</h2>
+</div>
+<div class="grid-12">
+<h2 style="text-align: right;" class="site-title"><a href="mailto:boasupport@iastate.edu">Contact Us</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div id="container">
+<div class="grids-24">
+<div class="grid-5 sidebar" id="left-sidebar">
+<ul class="navigation"><li><a href="../examples/index.php.html">Examples</a></li>
+<li class="selected"><a href="index.php.html">Programming Guide</a><ul><li><a href="dsl-types.php.html">Domain-Specific Types</a></li>
+<li><a href="types.php.html">Other Built-In Types</a></li>
+<li><a href="dsl-functions.php.html">Domain-Specific Functions</a></li>
+<li class="selected"><a href="functions.php.html">Other Built-In Functions</a><ul><li><a href="functions.php.html#Array+Functions">Array Functions</a></li>
+<li><a href="functions.php.html#Date+%26amp%3B+Time+Functions">Date &amp; Time Functions</a></li>
+<li><a href="functions.php.html#Map+Functions">Map Functions</a></li>
+<li><a href="functions.php.html#Math+Functions">Math Functions</a></li>
+<li><a href="functions.php.html#Other+Functions">Other Functions</a></li>
+<li><a href="functions.php.html#Queue+Functions">Queue Functions</a></li>
+<li><a href="functions.php.html#Set+Functions">Set Functions</a></li>
+<li><a href="functions.php.html#Stack+Functions">Stack Functions</a></li>
+<li><a href="functions.php.html#String+Functions">String Functions</a></li>
+<li><a href="functions.php.html#Type+Conversion+Functions">Type Conversion Functions</a></li>
+</ul></li>
+<li><a href="user-functions.php.html">User-Defined Functions</a></li>
+<li><a href="aggregators.php.html">Output Aggregators</a></li>
+<li><a href="vars.php.html">Built-In Variables</a></li>
+<li><a href="consts.php.html">Constants</a></li>
+<li><a href="quantifiers.php.html">Using Quantifiers</a></li>
+<li><a href="visitors.php.html">Using Visitors</a></li>
+<li><a href="program-analysis.php.html">Program Analysis</a></li>
+</ul></li>
+<li><a href="../stats/index.php.html">Dataset Statistics</a></li>
+<li><a href="../papers/index.php.html">Publications</a></li>
+<li><a href="https://groups.google.com/g/boa-user">User Forum</a></li>
+<li><a href="../ide/index.php.html">IDE Support</a></li>
+<li><a href="../api/index.php.html">Client API</a></li>
+<li><a href="https://boa.cs.iastate.edu/boa/index.php">User Login (MSR)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boac/index.php">User Login (COVID-19)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boag/index.php">User Login (Genomics)</a></li>
+<li><a href="../index.php.html">About</a></li>
+<li><a href="../policies/index.php.html">Privacy &amp; Terms</a></li>
+</ul>
+<div id="news-widget" class="sidebar-item"><h4 class="title">News</h4>
+<b>Aug '22</b>: New <a href="../ide/vscode/index.html">VSCode extension</a> available<br />
+<b>Jun '22</b>: New <a href="https://www.npmjs.com/package/@boalang/boa-api">Boa API for JavaScript</a> available<br />
+<b>Mar '20</b>: New Boa site for CORD-19 available<br />
+<b>Sep '19</b>: New <a href="https://pypi.org/project/boa-api/">Boa API for Python</a> available<br />
+</div>
+</div>
+<div class="grid-19" id="content">
+<div class="header gutter"><h1>The Boa Programming Guide - Built-In Functions</h1>
+<p>
+Boa provides several useful built-in functions. For reference, these functions
+are described in this section.
+</p>
+<ul>
+	<li><h3><a href="functions.php.html#Array+Functions">Array Functions</a></h3><ul>
+		<li><a href="functions.php.html#new">new</a></li>
+		<li><a href="functions.php.html#sort">sort</a></li>
+	</ul></li>
+	<li><h3><a href="functions.php.html#Date+%26amp%3B+Time+Functions">Date &amp; Time Functions</a></h3><ul>
+		<li><a href="functions.php.html#addday">addday</a></li>
+		<li><a href="functions.php.html#addmonth">addmonth</a></li>
+		<li><a href="functions.php.html#addweek">addweek</a></li>
+		<li><a href="functions.php.html#addyear">addyear</a></li>
+		<li><a href="functions.php.html#dayofmonth">dayofmonth</a></li>
+		<li><a href="functions.php.html#dayofweek">dayofweek</a></li>
+		<li><a href="functions.php.html#dayofyear">dayofyear</a></li>
+		<li><a href="functions.php.html#formattime">formattime</a></li>
+		<li><a href="functions.php.html#hourof">hourof</a></li>
+		<li><a href="functions.php.html#minuteof">minuteof</a></li>
+		<li><a href="functions.php.html#monthof">monthof</a></li>
+		<li><a href="functions.php.html#now">now</a></li>
+		<li><a href="functions.php.html#secondof">secondof</a></li>
+		<li><a href="functions.php.html#trunctoday">trunctoday</a></li>
+		<li><a href="functions.php.html#trunctohour">trunctohour</a></li>
+		<li><a href="functions.php.html#trunctominute">trunctominute</a></li>
+		<li><a href="functions.php.html#trunctomonth">trunctomonth</a></li>
+		<li><a href="functions.php.html#trunctosecond">trunctosecond</a></li>
+		<li><a href="functions.php.html#trunctoyear">trunctoyear</a></li>
+		<li><a href="functions.php.html#yearof">yearof</a></li>
+	</ul></li>
+	<li><h3><a href="functions.php.html#Map+Functions">Map Functions</a></h3><ul>
+		<li><a href="functions.php.html#clear">clear</a></li>
+		<li><a href="functions.php.html#clone">clone</a></li>
+		<li><a href="functions.php.html#haskey">haskey</a></li>
+		<li><a href="functions.php.html#keys">keys</a></li>
+		<li><a href="functions.php.html#lookup">lookup</a></li>
+		<li><a href="functions.php.html#remove">remove</a></li>
+		<li><a href="functions.php.html#values">values</a></li>
+	</ul></li>
+	<li><h3><a href="functions.php.html#Math+Functions">Math Functions</a></h3><ul>
+		<li><a href="functions.php.html#abs">abs</a></li>
+		<li><a href="functions.php.html#acos">acos</a></li>
+		<li><a href="functions.php.html#acosh">acosh</a></li>
+		<li><a href="functions.php.html#asin">asin</a></li>
+		<li><a href="functions.php.html#asinh">asinh</a></li>
+		<li><a href="functions.php.html#atan">atan</a></li>
+		<li><a href="functions.php.html#atan2">atan2</a></li>
+		<li><a href="functions.php.html#atanh">atanh</a></li>
+		<li><a href="functions.php.html#ceil">ceil</a></li>
+		<li><a href="functions.php.html#cos">cos</a></li>
+		<li><a href="functions.php.html#cosh">cosh</a></li>
+		<li><a href="functions.php.html#exp">exp</a></li>
+		<li><a href="functions.php.html#floor">floor</a></li>
+		<li><a href="functions.php.html#highbit">highbit</a></li>
+		<li><a href="functions.php.html#isfinite">isfinite</a></li>
+		<li><a href="functions.php.html#isinf">isinf</a></li>
+		<li><a href="functions.php.html#isnan">isnan</a></li>
+		<li><a href="functions.php.html#isnormal">isnormal</a></li>
+		<li><a href="functions.php.html#log">log</a></li>
+		<li><a href="functions.php.html#log10">log10</a></li>
+		<li><a href="functions.php.html#max">max</a></li>
+		<li><a href="functions.php.html#min">min</a></li>
+		<li><a href="functions.php.html#nrand">nrand</a></li>
+		<li><a href="functions.php.html#pow">pow</a></li>
+		<li><a href="functions.php.html#rand">rand</a></li>
+		<li><a href="functions.php.html#round">round</a></li>
+		<li><a href="functions.php.html#sin">sin</a></li>
+		<li><a href="functions.php.html#sinh">sinh</a></li>
+		<li><a href="functions.php.html#sqrt">sqrt</a></li>
+		<li><a href="functions.php.html#tan">tan</a></li>
+		<li><a href="functions.php.html#tanh">tanh</a></li>
+		<li><a href="functions.php.html#trunc">trunc</a></li>
+	</ul></li>
+	<li><h3><a href="functions.php.html#Other+Functions">Other Functions</a></h3><ul>
+		<li><a href="functions.php.html#def">def</a></li>
+		<li><a href="functions.php.html#hash">hash</a></li>
+		<li><a href="functions.php.html#len">len</a></li>
+	</ul></li>
+	<li><h3><a href="functions.php.html#Queue+Functions">Queue Functions</a></h3><ul>
+		<li><a href="functions.php.html#clear">clear</a></li>
+		<li><a href="functions.php.html#offer">offer</a></li>
+		<li><a href="functions.php.html#peek">peek</a></li>
+		<li><a href="functions.php.html#poll">poll</a></li>
+		<li><a href="functions.php.html#values">values</a></li>
+	</ul></li>
+	<li><h3><a href="functions.php.html#Set+Functions">Set Functions</a></h3><ul>
+		<li><a href="functions.php.html#add">add</a></li>
+		<li><a href="functions.php.html#clear">clear</a></li>
+		<li><a href="functions.php.html#clone">clone</a></li>
+		<li><a href="functions.php.html#contains">contains</a></li>
+		<li><a href="functions.php.html#containsall">containsall</a></li>
+		<li><a href="functions.php.html#difference">difference</a></li>
+		<li><a href="functions.php.html#intersect">intersect</a></li>
+		<li><a href="functions.php.html#remove">remove</a></li>
+		<li><a href="functions.php.html#symdiff">symdiff</a></li>
+		<li><a href="functions.php.html#union">union</a></li>
+		<li><a href="functions.php.html#values">values</a></li>
+	</ul></li>
+	<li><h3><a href="functions.php.html#Stack+Functions">Stack Functions</a></h3><ul>
+		<li><a href="functions.php.html#clear">clear</a></li>
+		<li><a href="functions.php.html#peek">peek</a></li>
+		<li><a href="functions.php.html#pop">pop</a></li>
+		<li><a href="functions.php.html#push">push</a></li>
+		<li><a href="functions.php.html#values">values</a></li>
+	</ul></li>
+	<li><h3><a href="functions.php.html#String+Functions">String Functions</a></h3><ul>
+		<li><a href="functions.php.html#format">format</a></li>
+		<li><a href="functions.php.html#lowercase">lowercase</a></li>
+		<li><a href="functions.php.html#match">match</a></li>
+		<li><a href="functions.php.html#matchposns">matchposns</a></li>
+		<li><a href="functions.php.html#matchstrs">matchstrs</a></li>
+		<li><a href="functions.php.html#regex">regex</a></li>
+		<li><a href="functions.php.html#split">split</a></li>
+		<li><a href="functions.php.html#splitall">splitall</a></li>
+		<li><a href="functions.php.html#splitn">splitn</a></li>
+		<li><a href="functions.php.html#strfind">strfind</a></li>
+		<li><a href="functions.php.html#strreplace">strreplace</a></li>
+		<li><a href="functions.php.html#strrfind">strrfind</a></li>
+		<li><a href="functions.php.html#substring">substring</a></li>
+		<li><a href="functions.php.html#trim">trim</a></li>
+		<li><a href="functions.php.html#uppercase">uppercase</a></li>
+	</ul></li>
+	<li><h3><a href="functions.php.html#Type+Conversion+Functions">Type Conversion Functions</a></h3><ul>
+		<li><a href="functions.php.html#bool">bool</a></li>
+		<li><a href="functions.php.html#float">float</a></li>
+		<li><a href="functions.php.html#int">int</a></li>
+		<li><a href="functions.php.html#string">string</a></li>
+		<li><a href="functions.php.html#time">time</a></li>
+	</ul></li>
+</ul>
+<h2 id="Array+Functions">Array Functions</h2>
+<div id="new" class="function"><div class="funcname"><b>new</b> (a: <a href="types.php.html#Array+Types">array</a> of <a href="types.php.html#Basic+Types">basic_type</a>, n: <a href="types.php.html#Basic+Types">int</a>, v: <a href="types.php.html#Basic+Types">basic_type</a>) : <a href="types.php.html#Array+Types">array</a> of <a href="types.php.html#Basic+Types">basic_type</a></div>
+<div class="funcdesc"><p>Returns a new array of the same type as <code>a</code>, of size <code>n</code>, and with all elements initialized to the value <code>v</code>.</p></div>
+</div>
+<div id="sort" class="function"><div class="funcname"><b>sort</b> (a: <a href="types.php.html#Array+Types">array</a> of <a href="types.php.html#Basic+Types">basic_type</a>) : <a href="types.php.html#Array+Types">array</a> of <a href="types.php.html#Basic+Types">basic_type</a></div>
+<div class="funcdesc"><p>Returns the sorted version of an array. Only scalar values can be sorted. Values will be arranged in increasing order.</p></div>
+</div>
+<h2 id="Date+%26amp%3B+Time+Functions">Date &amp; Time Functions</h2>
+<div id="addday" class="function"><div class="funcname"><b>addday</b> (t: <a href="types.php.html#Basic+Types">time</a>, n: <a href="types.php.html#Basic+Types">int</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">time</a></div>
+<div class="funcdesc"><p>Return the time, <code>n</code> days after the given time <code>t</code>. The value of <code>n</code> may be negative, or <code>n</code> may be absent altogether, in which case <code>n</code> defaults to 1. An optional third argument gives the <code>timezone</code>.</p></div>
+</div>
+<div id="addmonth" class="function"><div class="funcname"><b>addmonth</b> (t: <a href="types.php.html#Basic+Types">time</a>, n: <a href="types.php.html#Basic+Types">int</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">time</a></div>
+<div class="funcdesc"><p>Return the time, <code>n</code> months after the given time <code>t</code>. The value of <code>n</code> may be negative, or <code>n</code> may be absent altogether, in which case <code>n</code> defaults to 1. An optional third argument gives the <code>timezone</code>.</p></div>
+</div>
+<div id="addweek" class="function"><div class="funcname"><b>addweek</b> (t: <a href="types.php.html#Basic+Types">time</a>, n: <a href="types.php.html#Basic+Types">int</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">time</a></div>
+<div class="funcdesc"><p>Return the time, <code>n</code> weeks after the given time <code>t</code>. The value of <code>n</code> may be negative, or <code>n</code> may be absent altogether, in which case <code>n</code> defaults to 1. An optional third argument gives the <code>timezone</code>.</p></div>
+</div>
+<div id="addyear" class="function"><div class="funcname"><b>addyear</b> (t: <a href="types.php.html#Basic+Types">time</a>, n: <a href="types.php.html#Basic+Types">int</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">time</a></div>
+<div class="funcdesc"><p>Return the time, <code>n</code> years after the given time <code>t</code>. The value of <code>n</code> may be negative, or <code>n</code> may be absent altogether, in which case <code>n</code> defaults to 1. An optional third argument gives the <code>timezone</code>.</p></div>
+</div>
+<div id="dayofmonth" class="function"><div class="funcname"><b>dayofmonth</b> (t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>The numeric day of the month; for January 17, return 17, etc. An optional second argument names a <code>timezone</code>.</p></div>
+</div>
+<div id="dayofweek" class="function"><div class="funcname"><b>dayofweek</b> (t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>The numeric day of the week, from Monday=1 to Sunday=7. An optional second argument names a <code>timezone</code>.</p></div>
+</div>
+<div id="dayofyear" class="function"><div class="funcname"><b>dayofyear</b> (t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>The numeric day of the year. January 1 is day 1. An optional second argument names a <code>timezone</code>.</p></div>
+</div>
+<div id="formattime" class="function"><div class="funcname"><b>formattime</b> (format: <a href="types.php.html#Basic+Types">string</a>, t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">string</a></div>
+<div class="funcdesc"><p>Return a string containing the time argument formatted according to the <code>format</code> string. The syntax of the format string is the same as in ANSI C strftime. An optional third argument names a <code>timezone</code>.</p></div>
+</div>
+<div id="hourof" class="function"><div class="funcname"><b>hourof</b> (t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>The numeric hour of the day, from 0 to 23. Midnight is 0, 1AM is 1, etc. An optional second argument names a <code>timezone</code>.</p></div>
+</div>
+<div id="minuteof" class="function"><div class="funcname"><b>minuteof</b> (t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>The numeric minute of the hour, from 0 to 59. An optional second argument names a <code>timezone</code>.</p></div>
+</div>
+<div id="monthof" class="function"><div class="funcname"><b>monthof</b> (t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>The numeric month of the year. January is 1. An optional second argument names a <code>timezone</code>.</p></div>
+</div>
+<div id="now" class="function"><div class="funcname"><b>now</b> () : <a href="types.php.html#Basic+Types">time</a></div>
+<div class="funcdesc"><p>Return the current time at the moment of execution. Note that the time value returned does not depend on a timezone.</p></div>
+</div>
+<div id="secondof" class="function"><div class="funcname"><b>secondof</b> (t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>The numeric second of the minute, from 0 to 59. An optional second argument names a <code>timezone</code>.</p></div>
+</div>
+<div id="trunctoday" class="function"><div class="funcname"><b>trunctoday</b> (t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">time</a></div>
+<div class="funcdesc"><p>Truncate <code>t</code> to the zeroth microsecond of the day. Useful when creating variables indexed to a particular day, since all times in the day truncated with trunctoday will fold to the same value, which is the first time value in that day. An optional second argument names a <code>timezone</code>.</p></div>
+</div>
+<div id="trunctohour" class="function"><div class="funcname"><b>trunctohour</b> (t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">time</a></div>
+<div class="funcdesc"><p>Truncate <code>t</code> to the zeroth microsecond of the hour. An optional second argument names a <code>timezone</code>.</p></div>
+</div>
+<div id="trunctominute" class="function"><div class="funcname"><b>trunctominute</b> (t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">time</a></div>
+<div class="funcdesc"><p>Truncate <code>t</code> to the zeroth microsecond of the minute. An optional second argument names a <code>timezone</code>.</p></div>
+</div>
+<div id="trunctomonth" class="function"><div class="funcname"><b>trunctomonth</b> (t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">time</a></div>
+<div class="funcdesc"><p>Truncate <code>t</code> to the zeroth microsecond of the month. An optional second argument names a <code>timezone</code>.</p></div>
+</div>
+<div id="trunctosecond" class="function"><div class="funcname"><b>trunctosecond</b> (t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">time</a></div>
+<div class="funcdesc"><p>Truncate <code>t</code> to the zeroth microsecond of the second. An optional second argument names a <code>timezone</code>.</p></div>
+</div>
+<div id="trunctoyear" class="function"><div class="funcname"><b>trunctoyear</b> (t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">time</a></div>
+<div class="funcdesc"><p>Truncate <code>t</code> to the zeroth microsecond of the year. An optional second argument names a <code>timezone</code>.</p></div>
+</div>
+<div id="yearof" class="function"><div class="funcname"><b>yearof</b> (t: <a href="types.php.html#Basic+Types">time</a> [, timezone: <a href="types.php.html#Basic+Types">string</a>] ) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>The numeric year value, such as 2003. An optional second argument names a <code>timezone</code>.</p></div>
+</div>
+<h2 id="Map+Functions">Map Functions</h2>
+<div id="clear" class="function"><div class="funcname"><b>clear</b> (m: <a href="types.php.html#Map+Types">map</a>[key_type] of val_type)</div>
+<div class="funcdesc"><p>Clears all values from the map <code>m</code>.</p></div>
+</div>
+<div id="clone" class="function"><div class="funcname"><b>clone</b> (m: <a href="types.php.html#Map+Types">map</a>[key_type] of val_type)</div>
+<div class="funcdesc"><p><em>@since 2019-10</em><br/>Creates a clone of the map <code>m</code>.</p></div>
+</div>
+<div id="haskey" class="function"><div class="funcname"><b>haskey</b> (m: <a href="types.php.html#Map+Types">map</a>[key_type] of val_type, key: key_type) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Return a boolean reporting whether the <code>key</code> is present in the map <code>m</code>.</p></div>
+</div>
+<div id="keys" class="function"><div class="funcname"><b>keys</b> (m: <a href="types.php.html#Map+Types">map</a>[key_type] of val_type) : <a href="types.php.html#Array+Types">array</a> of key_type</div>
+<div class="funcdesc"><p>Return an array holding, in no particular order, the set of keys present in the map <code>m</code>.</p></div>
+</div>
+<div id="lookup" class="function"><div class="funcname"><b>lookup</b> (m: <a href="types.php.html#Map+Types">map</a>[key_type] of val_type, key: key_type, value: val_type) : val_type</div>
+<div class="funcdesc"><p>Return the element of the map <code>m</code> indexed by the <code>key</code> or, if there is no such element, the specified default <code>value</code>. Assuming the map, key, and value are defined, equivalent to: <code>def(m[key]) ? m[key] : value</code></p></div>
+</div>
+<div id="remove" class="function"><div class="funcname"><b>remove</b> (m: <a href="types.php.html#Map+Types">map</a>[key_type] of val_type, k: key_type)</div>
+<div class="funcdesc"><p>Removes the entry for the key <code>k</code>, if it exists in themap.</p></div>
+</div>
+<div id="values" class="function"><div class="funcname"><b>values</b> (m: <a href="types.php.html#Map+Types">map</a>[key_type] of val_type) : <a href="types.php.html#Array+Types">array</a> of val_type</div>
+<div class="funcdesc"><p>Return an array holding, in no particular order, the set of values present in the map <code>m</code>.</p></div>
+</div>
+<h2 id="Math+Functions">Math Functions</h2>
+<div id="abs" class="function"><div class="funcname"><b>abs</b> (x: type) : type</div>
+<div class="funcdesc"><p>Return the absolute value of the argument. The type must be one of <a href="types.php.html#Basic+Types">int</a> or <a href="types.php.html#Basic+Types">float</a>.</p></div>
+</div>
+<div id="acos" class="function"><div class="funcname"><b>acos</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The arc cosine of <code>x</code>.</p></div>
+</div>
+<div id="acosh" class="function"><div class="funcname"><b>acosh</b> (d: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The hyperbolic arc cosine function.</p></div>
+</div>
+<div id="asin" class="function"><div class="funcname"><b>asin</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The arc sine of <code>x</code>.</p></div>
+</div>
+<div id="asinh" class="function"><div class="funcname"><b>asinh</b> (d: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The hyperbolic arc sine function.</p></div>
+</div>
+<div id="atan" class="function"><div class="funcname"><b>atan</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The arc tangent of <code>x</code>.</p></div>
+</div>
+<div id="atan2" class="function"><div class="funcname"><b>atan2</b> (x: <a href="types.php.html#Basic+Types">float</a>, y: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The arc tangent of <code>y</code>/<code>x</code>.</p></div>
+</div>
+<div id="atanh" class="function"><div class="funcname"><b>atanh</b> (d: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The hyperbolic arc tangent function.</p></div>
+</div>
+<div id="ceil" class="function"><div class="funcname"><b>ceil</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>Round <code>x</code> up to the nearest integer.</p></div>
+</div>
+<div id="cos" class="function"><div class="funcname"><b>cos</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The cosine of <code>x</code>.</p></div>
+</div>
+<div id="cosh" class="function"><div class="funcname"><b>cosh</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The hyperbolic cosine of <code>x</code>.</p></div>
+</div>
+<div id="exp" class="function"><div class="funcname"><b>exp</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The exponential, base <code>e</code>, of <code>x</code>.</p></div>
+</div>
+<div id="floor" class="function"><div class="funcname"><b>floor</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>Round <code>x</code> down to the nearest integer.</p></div>
+</div>
+<div id="highbit" class="function"><div class="funcname"><b>highbit</b> (n: <a href="types.php.html#Basic+Types">int</a>) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>Return an integer representing the bit position of the highest one bit in <code>n</code>. If <code>n</code> is zero, the result is 0; if <code>n</code> is 1, the result is 1, if <code>n</code> is 15, the result is 4, etc.</p></div>
+</div>
+<div id="isfinite" class="function"><div class="funcname"><b>isfinite</b> (n: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Tests if the value <code>n</code> is not <code>Inf</code> and not <code>NaN</code>.</p></div>
+</div>
+<div id="isinf" class="function"><div class="funcname"><b>isinf</b> (n: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Tests if the value <code>n</code> is <code>Inf</code>.</p></div>
+</div>
+<div id="isnan" class="function"><div class="funcname"><b>isnan</b> (n: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Tests if the value <code>n</code> is <code>NaN</code>.</p></div>
+</div>
+<div id="isnormal" class="function"><div class="funcname"><b>isnormal</b> (n: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Tests if the value <code>n</code> is neither 0, subnormal, <code>Inf</code>, or <code>NaN</code>.</p></div>
+</div>
+<div id="log" class="function"><div class="funcname"><b>log</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The natural logarithm of <code>x</code>.</p></div>
+</div>
+<div id="log10" class="function"><div class="funcname"><b>log10</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The logarithm base 10 of <code>x</code>.</p></div>
+</div>
+<div id="max" class="function"><div class="funcname"><b>max</b> (v1: type, v2: type) : type</div>
+<div class="funcdesc"><p>Return the maximum of <code>v1</code> and <code>v2</code>. The type must be one of <a href="types.php.html#Basic+Types">int</a>, <a href="types.php.html#Basic+Types">time</a>, <a href="types.php.html#Basic+Types">string</a>, or <a href="types.php.html#Basic+Types">float</a>.</p></div>
+</div>
+<div id="min" class="function"><div class="funcname"><b>min</b> (v1: type, v2: type) : type</div>
+<div class="funcdesc"><p>Return the minimum of <code>v1</code> and <code>v2</code>. The type must be one of <a href="types.php.html#Basic+Types">int</a>, <a href="types.php.html#Basic+Types">time</a>, <a href="types.php.html#Basic+Types">string</a>, or <a href="types.php.html#Basic+Types">float</a>.</p></div>
+</div>
+<div id="nrand" class="function"><div class="funcname"><b>nrand</b> (n: <a href="types.php.html#Basic+Types">int</a>) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>Return a random integer <code>x</code> in the range 0 &lt;= <code>x</code> &lt; <code>n</code>.</p></div>
+</div>
+<div id="pow" class="function"><div class="funcname"><b>pow</b> (x: <a href="types.php.html#Basic+Types">float</a>, y: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The exponential, base <code>x</code>, of <code>y</code>.</p></div>
+</div>
+<div id="rand" class="function"><div class="funcname"><b>rand</b> () : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>Return a random floating point number <code>x</code> in the range 0.0 &lt; <code>x</code> &lt; 1.0.</p></div>
+</div>
+<div id="round" class="function"><div class="funcname"><b>round</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>Round <code>x</code> to the nearest integer, but round halfway cases away from zero.</p></div>
+</div>
+<div id="sin" class="function"><div class="funcname"><b>sin</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The sine of <code>x</code>.</p></div>
+</div>
+<div id="sinh" class="function"><div class="funcname"><b>sinh</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The hyperbolic sine of <code>x</code>.</p></div>
+</div>
+<div id="sqrt" class="function"><div class="funcname"><b>sqrt</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The square root of <code>x</code>.</p></div>
+</div>
+<div id="tan" class="function"><div class="funcname"><b>tan</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The tangent of <code>x</code>.</p></div>
+</div>
+<div id="tanh" class="function"><div class="funcname"><b>tanh</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>The hyperbolic tangent of <code>x</code>.</p></div>
+</div>
+<div id="trunc" class="function"><div class="funcname"><b>trunc</b> (x: <a href="types.php.html#Basic+Types">float</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>Round to the nearest integer not larger in absolute value than <code>x</code>.</p></div>
+</div>
+<h2 id="Other+Functions">Other Functions</h2>
+<div id="def" class="function"><div class="funcname"><b>def</b> (v: any_type) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Returns a boolean value according to whether <code>v</code> has a defined value.</p></div>
+</div>
+<div id="hash" class="function"><div class="funcname"><b>hash</b> (v: any_type) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>The hash function returns a hash of the argument <code>v</code>, which may be of any type.</p></div>
+</div>
+<div id="len" class="function"><div class="funcname"><b>len</b> (v: any_type) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>Return the number of elements in <code>v</code>, which must be an <a href="types.php.html#Array+Types">array</a> or <a href="types.php.html#Map+Types">map</a> or of type <a href="types.php.html#Basic+Types">string</a>.</p><ul><li>If <a href="types.php.html#Basic+Types">string</a>, the value is the number of Unicode characters in the string.</li><li>If a <a href="types.php.html#Map+Types">map</a>, the value is the number of distinct keys present.</li></ul><p></p></div>
+</div>
+<h2 id="Queue+Functions">Queue Functions</h2>
+<div id="clear" class="function"><div class="funcname"><b>clear</b> (q: <a href="types.php.html#Queue+Types">queue</a> of val_type)</div>
+<div class="funcdesc"><p>Clears all values from the queue <code>q</code>.</p></div>
+</div>
+<div id="offer" class="function"><div class="funcname"><b>offer</b> (q: <a href="types.php.html#Queue+Types">queue</a> of val_type, val: val_type)</div>
+<div class="funcdesc"><p>Offers the value <code>val</code> to the queue <code>q</code>.</p></div>
+</div>
+<div id="peek" class="function"><div class="funcname"><b>peek</b> (q: <a href="types.php.html#Queue+Types">queue</a> of val_type) : val_type</div>
+<div class="funcdesc"><p>Returns the latest value on the queue <code>q</code> without removing it from the queue.</p></div>
+</div>
+<div id="poll" class="function"><div class="funcname"><b>poll</b> (q: <a href="types.php.html#Queue+Types">queue</a> of val_type) : val_type</div>
+<div class="funcdesc"><p>Polls the queue <code>q</code> and removes the oldest value and returns it.</p></div>
+</div>
+<div id="values" class="function"><div class="funcname"><b>values</b> (q: <a href="types.php.html#Queue+Types">queue</a> of val_type) : <a href="types.php.html#Array+Types">array</a> of val_type</div>
+<div class="funcdesc"><p>Return an array holding the values present in the queue <code>q</code>.</p></div>
+</div>
+<h2 id="Set+Functions">Set Functions</h2>
+<div id="add" class="function"><div class="funcname"><b>add</b> (s: <a href="types.php.html#Set+Types">set</a> of val_type, v: val_type)</div>
+<div class="funcdesc"><p>Adds the value <code>v</code> to the set.</p></div>
+</div>
+<div id="clear" class="function"><div class="funcname"><b>clear</b> (s: <a href="types.php.html#Set+Types">set</a> of val_type)</div>
+<div class="funcdesc"><p>Clears all values from the set <code>s</code>.</p></div>
+</div>
+<div id="clone" class="function"><div class="funcname"><b>clone</b> (s: <a href="types.php.html#Set+Types">set</a> of val_type)</div>
+<div class="funcdesc"><p><em>@since 2019-10</em><br/>Creates a clone of the set <code>s</code>.</p></div>
+</div>
+<div id="contains" class="function"><div class="funcname"><b>contains</b> (s: <a href="types.php.html#Set+Types">set</a> of val_type, v: val_type) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Returns if the set contains the value <code>v</code>.</p></div>
+</div>
+<div id="containsall" class="function"><div class="funcname"><b>containsall</b> (s1: <a href="types.php.html#Set+Types">set</a> of val_type, s2: <a href="types.php.html#Set+Types">set</a> of val_type) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Returns if the set <code>s1</code> contains all of the values in set <code>s2</code>.</p></div>
+</div>
+<div id="difference" class="function"><div class="funcname"><b>difference</b> (s1: <a href="types.php.html#Set+Types">set</a> of val_type, s2: <a href="types.php.html#Set+Types">set</a> of val_type) : <a href="types.php.html#Set+Types">set</a> of val_type</div>
+<div class="funcdesc"><p>Returns the set <code>s1</code> with all values from <code>s2</code> removed.</p></div>
+</div>
+<div id="intersect" class="function"><div class="funcname"><b>intersect</b> (s1: <a href="types.php.html#Set+Types">set</a> of val_type, s2: <a href="types.php.html#Set+Types">set</a> of val_type) : <a href="types.php.html#Set+Types">set</a> of val_type</div>
+<div class="funcdesc"><p>Returns a set containing all values in both the sets <code>s1</code> and <code>s2</code>.</p></div>
+</div>
+<div id="remove" class="function"><div class="funcname"><b>remove</b> (s: <a href="types.php.html#Set+Types">set</a> of val_type, v: val_type)</div>
+<div class="funcdesc"><p>Removes the value <code>v</code> from the set, if it contains it.</p></div>
+</div>
+<div id="symdiff" class="function"><div class="funcname"><b>symdiff</b> (s1: <a href="types.php.html#Set+Types">set</a> of val_type, s2: <a href="types.php.html#Set+Types">set</a> of val_type) : <a href="types.php.html#Set+Types">set</a> of val_type</div>
+<div class="funcdesc"><p>Equivalent to <code>union(difference(s1, s2), difference(s2, s1))</code>.</p></div>
+</div>
+<div id="union" class="function"><div class="funcname"><b>union</b> (s1: <a href="types.php.html#Set+Types">set</a> of val_type, s2: <a href="types.php.html#Set+Types">set</a> of val_type) : <a href="types.php.html#Set+Types">set</a> of val_type</div>
+<div class="funcdesc"><p>Returns a set containing all values in either the set <code>s1</code> or the set <code>s2</code>.</p></div>
+</div>
+<div id="values" class="function"><div class="funcname"><b>values</b> (s: <a href="types.php.html#Set+Types">set</a> of val_type) : <a href="types.php.html#Array+Types">array</a> of val_type</div>
+<div class="funcdesc"><p>Return an array holding the values present in the set <code>s</code>.</p></div>
+</div>
+<h2 id="Stack+Functions">Stack Functions</h2>
+<div id="clear" class="function"><div class="funcname"><b>clear</b> (s: <a href="types.php.html#Stack+Types">stack</a> of val_type)</div>
+<div class="funcdesc"><p>Clears all values from the stack <code>s</code>.</p></div>
+</div>
+<div id="peek" class="function"><div class="funcname"><b>peek</b> (s: <a href="types.php.html#Stack+Types">stack</a> of val_type) : val_type</div>
+<div class="funcdesc"><p>Returns the last value on the stack <code>s</code> without removing it from the stack.</p></div>
+</div>
+<div id="pop" class="function"><div class="funcname"><b>pop</b> (s: <a href="types.php.html#Stack+Types">stack</a> of val_type) : val_type</div>
+<div class="funcdesc"><p>Pops the last value off the stack <code>s</code> and returns it.</p></div>
+</div>
+<div id="push" class="function"><div class="funcname"><b>push</b> (s: <a href="types.php.html#Stack+Types">stack</a> of val_type, val: val_type)</div>
+<div class="funcdesc"><p>Pushes the value <code>val</code> onto the stack <code>s</code>.</p></div>
+</div>
+<div id="values" class="function"><div class="funcname"><b>values</b> (s: <a href="types.php.html#Stack+Types">stack</a> of val_type) : <a href="types.php.html#Array+Types">array</a> of val_type</div>
+<div class="funcdesc"><p>Return an array holding the values present in the stack <code>s</code>.</p></div>
+</div>
+<h2 id="String+Functions">String Functions</h2>
+<div id="format" class="function"><div class="funcname"><b>format</b> (format: <a href="types.php.html#Basic+Types">string</a>, args: <a href="types.php.html#Basic+Types">string</a>, ...) : <a href="types.php.html#Basic+Types">string</a></div>
+<div class="funcdesc"><p>Return a string containing the arguments formatted according to the <code>format</code> string. The syntax of the format string is essentially that of ANSI C with the following differences:  </p><ul><li>%b prints a boolean, "true" or "false".</li><li>%c prints a (u)int as a Unicode character in UTF-8.</li><li>%k like %c with single quotes and backslash escapes for special characters.</li><li>%s prints a string as UTF-8.</li><li>%q like %s with double quotes and backslash escapes for special characters.</li><li>%t prints a time, in the format of the Unix function ctime without a newline.</li><li>%T prints the type of the argument; %#T expands user-defined types.</li><li>%d / %i / %o / %u / %x / %X apply to a (u)int and have no 'l' or 'h' modifiers.</li><li>%e / %f / %g / %E / %G apply to a float and have no 'l' or 'h' modifiers.</li></ul><p>format verbs 'n' and '*' are not supported.</p></div>
+</div>
+<div id="lowercase" class="function"><div class="funcname"><b>lowercase</b> (str: <a href="types.php.html#Basic+Types">string</a>) : <a href="types.php.html#Basic+Types">string</a></div>
+<div class="funcdesc"><p>Returns a copy of the given string <code>str</code> with all characters lower-cased.</p></div>
+</div>
+<div id="match" class="function"><div class="funcname"><b>match</b> (regex: <a href="types.php.html#Basic+Types">string</a>, str: <a href="types.php.html#Basic+Types">string</a>) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Search for a match of the regular expression <code>regex</code> within <code>str</code> , and return a boolean value indicating whether a match was found.</p></div>
+</div>
+<div id="matchposns" class="function"><div class="funcname"><b>matchposns</b> (regex: <a href="types.php.html#Basic+Types">string</a>, str: <a href="types.php.html#Basic+Types">string</a>) : <a href="types.php.html#Array+Types">array</a> of <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>Search for a match of the regular expression <code>regex</code> within <code>str</code>, and return an array consisting of character positions within <code>str</code> defined by the match. Positions 0 and 1 of the array report the location of the match of the entire expression, subsequent pairs report the location of matches of successive parenthesized subexpressions.</p></div>
+</div>
+<div id="matchstrs" class="function"><div class="funcname"><b>matchstrs</b> (regex: <a href="types.php.html#Basic+Types">string</a>, str: <a href="types.php.html#Basic+Types">string</a>) : <a href="types.php.html#Array+Types">array</a> of <a href="types.php.html#Basic+Types">string</a></div>
+<div class="funcdesc"><p>Search for a match of the regular expression <em>regex</em> within <em>str</em>, and return. The 0th string is the entire match; following elements of the array hold matches of successive parenthesized subexpressions. This function is equivalent to using matchposns to find successive locations of matches and created array slices of <em>str</em> with the indices returned.</p></div>
+</div>
+<div id="regex" class="function"><div class="funcname"><b>regex</b> (t: any_type, base: <a href="types.php.html#Basic+Types">int</a>) : <a href="types.php.html#Basic+Types">string</a></div>
+<div class="funcdesc"><p>Returns a <a href="types.php.html#Basic+Types">string</a> holding a regular expression suitable for matching text representing values of the specified type <code>t</code>. For example, <code>regex(int)</code> generates a <a href="types.php.html#Basic+Types">string</a> to match integer constants (-23, 0x1f, etc.).  At the moment, only <a href="types.php.html#Basic+Types">int</a> and <a href="types.php.html#Basic+Types">float</a> types are supported. When the type is <a href="types.php.html#Basic+Types">int</a>, an optional numerical <code>base</code> may be specified for the conversion.</p></div>
+</div>
+<div id="split" class="function"><div class="funcname"><b>split</b> (s: <a href="types.php.html#Basic+Types">string</a>, regex: <a href="types.php.html#Basic+Types">string</a>) : <a href="types.php.html#Array+Types">array</a> of <a href="types.php.html#Basic+Types">string</a></div>
+<div class="funcdesc"><p>Slice string <code>s</code> into pieces according to subsequent matches of the regular expression <code>regex</code>. Runs along the regular expression exactly once.</p></div>
+</div>
+<div id="splitall" class="function"><div class="funcname"><b>splitall</b> (s: <a href="types.php.html#Basic+Types">string</a>, regex: <a href="types.php.html#Basic+Types">string</a>) : <a href="types.php.html#Array+Types">array</a> of <a href="types.php.html#Basic+Types">string</a></div>
+<div class="funcdesc"><p>Slice string <code>s</code> into pieces according to subsequent matches of the regular expression <code>regex</code>. Runs along the regular expression until the input string is exhausted.</p></div>
+</div>
+<div id="splitn" class="function"><div class="funcname"><b>splitn</b> (n: <a href="types.php.html#Basic+Types">int</a>, s: <a href="types.php.html#Basic+Types">string</a>, regex: <a href="types.php.html#Basic+Types">string</a>) : <a href="types.php.html#Array+Types">array</a> of <a href="types.php.html#Basic+Types">string</a></div>
+<div class="funcdesc"><p>Slice string <code>s</code> into pieces according to subsequent matches of the regular expression <code>regex</code>. Runs along the regular expression at most <code>n</code> times.</p></div>
+</div>
+<div id="strfind" class="function"><div class="funcname"><b>strfind</b> (needle: <a href="types.php.html#Basic+Types">string</a>, haystack: <a href="types.php.html#Basic+Types">string</a>) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>Search for the first occurrence of the <code>needle</code> within <code>haystack</code> and return the integer index of its first character, or -1 if it does not occur.</p></div>
+</div>
+<div id="strreplace" class="function"><div class="funcname"><b>strreplace</b> (haystack: <a href="types.php.html#Basic+Types">string</a>, needle: <a href="types.php.html#Basic+Types">string</a>, replacement: <a href="types.php.html#Basic+Types">string</a>, replace_all: <a href="types.php.html#Basic+Types">bool</a>) : <a href="types.php.html#Basic+Types">string</a></div>
+<div class="funcdesc"><p>Return a copy of string <code>haystack</code>, with non-overlapping instances of <code>needle</code> replaced by <code>replacement</code>. If <code>replace_all</code> is false, only the first found instance is replaced.</p></div>
+</div>
+<div id="strrfind" class="function"><div class="funcname"><b>strrfind</b> (needle: <a href="types.php.html#Basic+Types">string</a>, haystack: <a href="types.php.html#Basic+Types">string</a>) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>Search for the last occurrence of the <code>needle</code> within <code>haystack</code> and return the integer index of its first character, or -1 if it does not occur.</p></div>
+</div>
+<div id="substring" class="function"><div class="funcname"><b>substring</b> (str: <a href="types.php.html#Basic+Types">string</a>, start: <a href="types.php.html#Basic+Types">int</a> [, end: <a href="types.php.html#Basic+Types">int</a>] ) : <a href="types.php.html#Basic+Types">string</a></div>
+<div class="funcdesc"><p>Returns a substring of <code>str</code> starting at <code>start</code> (inclusive) and ending at <code>end</code> (exclusive). If <code>end</code> is not specified, the length of the string is used.</p></div>
+</div>
+<div id="trim" class="function"><div class="funcname"><b>trim</b> (str: <a href="types.php.html#Basic+Types">string</a>) : <a href="types.php.html#Basic+Types">string</a></div>
+<div class="funcdesc"><p>Returns a copy of the given string <code>str</code> with all leading and trailing whitespace removed.</p></div>
+</div>
+<div id="uppercase" class="function"><div class="funcname"><b>uppercase</b> (str: <a href="types.php.html#Basic+Types">string</a>) : <a href="types.php.html#Basic+Types">string</a></div>
+<div class="funcdesc"><p>Returns a copy of the given string <code>str</code> with all characters upper-cased.</p></div>
+</div>
+<h2 id="Type+Conversion+Functions">Type Conversion Functions</h2>
+<div id="bool" class="function"><div class="funcname"><b>bool</b> (v: <a href="types.php.html#Basic+Types">basic_type</a>) : <a href="types.php.html#Basic+Types">bool</a></div>
+<div class="funcdesc"><p>Converts the value <code>v</code> into a boolean value.</p></div>
+</div>
+<div id="float" class="function"><div class="funcname"><b>float</b> (v: <a href="types.php.html#Basic+Types">basic_type</a>) : <a href="types.php.html#Basic+Types">float</a></div>
+<div class="funcdesc"><p>Converts the value <code>v</code> into a float value.</p></div>
+</div>
+<div id="int" class="function"><div class="funcname"><b>int</b> (v: <a href="types.php.html#Basic+Types">basic_type</a>) : <a href="types.php.html#Basic+Types">int</a></div>
+<div class="funcdesc"><p>Converts the value <code>v</code> into an int value.</p></div>
+</div>
+<div id="string" class="function"><div class="funcname"><b>string</b> (v: <a href="types.php.html#Basic+Types">basic_type</a>) : <a href="types.php.html#Basic+Types">string</a></div>
+<div class="funcdesc"><p>Converts the value <code>v</code> into a string value.</p></div>
+</div>
+<div id="time" class="function"><div class="funcname"><b>time</b> (v: <a href="types.php.html#Basic+Types">basic_type</a>) : <a href="types.php.html#Basic+Types">time</a></div>
+<div class="funcdesc"><p>Converts the value <code>v</code> into a time value.</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fwrapper grids-24">
+<div class="grids-24" id="footer">
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1547227-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<div class="grid-3 first"><a class="nameplate" href="http://www.iastate.edu/"><img alt="Iowa State University" src="../img/sprite.png"></a></div>
+<div class="grid-21 last">
+<span><a href="http://design.cs.iastate.edu/">Laboratory of Software Design</a>, <a href="http://www.cs.iastate.edu/">Department of Computer Science</a>, </span><script type="text/javascript"><!--
+	document.write('<a href="mailto:' + (['hridesh', 'iastate.edu'].join('@'))
+			+ '">' + (['hridesh', 'iastate.edu'].join('@')) + '<\/a>');
+// --></script>
+<ins><noscript><div><code>hridesh (at) iastate (dot) edu</code></div></noscript></ins>
+<p>Copyright &#169; 2012&ndash;2015, Iowa State University of Science and Technology. All rights reserved.</p>
+<p>
+&nbsp;
+</p>
+<p>
+This material is based upon work supported by the US National Science
+Foundation (NSF) under grants CCF-19-34884, CNS-15-13263, CNS-15-12947,
+CCF-14-23370, CCF-13-49153, CCF-11-17937, CCF-10-17334, and CCF-10-18600.
+</p>
+<p>
+Any opinions, findings, and conclusions or recommendations expressed in this
+material are those of the author(s) and do not necessarily reflect the views of
+the National Science Foundation.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dataset Statistics - Boa - Iowa State University</title>
+<link href="../css/base.css" media="all" rel="stylesheet">
+<link href="../css/style.css" media="all" rel="stylesheet">
+<!--[if lt IE 9]>
+		<style>
+			ul.left > li, ul.right > li{ *display: inline; }
+			#ribbon form > input[type="submit"]{ *vertical-align: baseline; }
+		</style>
+	<![endif]-->
+<!-- SYNTAX HIGHLIGHTING -->
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/ace.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/theme-crimson_editor.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-boa.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-java.js"></script>
+<link href="https://boa.cs.iastate.edu/boa/sites/all/themes/boa/css/boa-style.css" media="screen" rel="stylesheet" type="text/css"/>
+<!-- END SYTNAX HIGHLIGHTING -->
+</head>
+<body>
+<div class="skip"><a accesskey="2" href="index.php.html#container">Skip
+Navigation</a></div>
+<div class="hwrapper" id="header">
+<div id="top-strip">
+<div class="grids-24">
+<div class="grid-8">
+&nbsp;
+</div>
+<div class="grid-16">
+&nbsp;
+</div>
+</div>
+</div>
+<div id="ribbon">
+<div class="grids-24">
+<div class="grid-16">
+<h1 class="nameplate"><a accesskey="1" href="../index.html"><img src="../img/boa-white.png"></a></h1>
+</div>
+<div class="grid-8">
+<form action="http://www.google.com/search" method="GET">
+	<input name="as_sitesearch" type="hidden" value="boa.cs.iastate.edu" />
+	<input accesskey="s" name="as_q" placeholder="Search" tabindex="1" type="text" />
+	<input name="btnG" title="Search" type="submit" value="" />
+</form>
+</div>
+</div>
+<div class="grids-24">
+<div class="grid-12">
+<h2 class="site-title">Mining Ultra-Large-Scale Software Repositories</h2>
+</div>
+<div class="grid-12">
+<h2 style="text-align: right;" class="site-title"><a href="mailto:boasupport@iastate.edu">Contact Us</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div id="container">
+<div class="grids-24">
+<div class="grid-5 sidebar" id="left-sidebar">
+<ul class="navigation"><li><a href="../examples/index.php.html">Examples</a></li>
+<li><a href="../docs/index.php.html">Programming Guide</a></li>
+<li class="selected"><a href="index.php.html">Dataset Statistics</a></li>
+<li><a href="../papers/index.php.html">Publications</a></li>
+<li><a href="https://groups.google.com/g/boa-user">User Forum</a></li>
+<li><a href="../ide/index.php.html">IDE Support</a></li>
+<li><a href="../api/index.php.html">Client API</a></li>
+<li><a href="https://boa.cs.iastate.edu/boa/index.php">User Login (MSR)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boac/index.php">User Login (COVID-19)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boag/index.php">User Login (Genomics)</a></li>
+<li><a href="../index.php.html">About</a></li>
+<li><a href="../policies/index.php.html">Privacy &amp; Terms</a></li>
+</ul>
+<div id="news-widget" class="sidebar-item"><h4 class="title">News</h4>
+<b>Aug '22</b>: New <a href="../ide/vscode/index.html">VSCode extension</a> available<br />
+<b>Jun '22</b>: New <a href="https://www.npmjs.com/package/@boalang/boa-api">Boa API for JavaScript</a> available<br />
+<b>Mar '20</b>: New Boa site for CORD-19 available<br />
+<b>Sep '19</b>: New <a href="https://pypi.org/project/boa-api/">Boa API for Python</a> available<br />
+</div>
+</div>
+<div class="grid-19" id="content">
+<div class="header gutter"><h1>Dataset Statistics</h1>
+<p>
+This page contains statistics on the various datasets available in Boa.
+</p>
+
+<p>
+Note that the latest dataset has smaller versions available (to make algorithm
+design and testing faster) which were created by randomly selecting projects
+from the full dataset.  These <b>small and medium datasets should not be used
+in research results</b>, as they are removed when new datasets are ready!
+</p>
+
+<div class="sidebar-item">
+<h3 class="title">2022 February/Python [<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;input=49">query this dataset</a>] [<a href="https://boa.cs.iastate.edu/boa/?q=content/dataset-notes-february-2022-python">notes</a>]</h3>
+<p>Data source: <b>GitHub</b></p>
+<p>ASTs: <b>Python</b></p>
+<table class="statistics">
+	
+	<tr>
+		<th>Projects</th>
+		<td>102,424</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>102,424</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>32,231,939</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>63,681,580</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>293,231,664</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>105,512,426,611</td>
+	</tr>
+</table><br style="clear: left;"/>
+<br/>
+
+<h3 class="title">2022 January/Java [<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;input=50">query this dataset</a>] [<a href="https://boa.cs.iastate.edu/boa/?q=content/dataset-notes-january-2022-java">notes</a>]</h3>
+<p>Data source: <b>GitHub</b></p>
+<p>ASTs: <b>Java</b></p>
+<table class="statistics">
+		<tr>
+		<th class="title" colspan="2">full (100%)</th>
+	</tr>
+	<tr>
+		<th>Projects</th>
+		<td>91,403</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>91,403</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>44,507,639</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>120,568,900</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>981,426,068</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>nan</td>
+	</tr>
+</table><table class="statistics">
+		<tr>
+		<th class="title" colspan="2">small (1%)</th>
+	</tr>
+	<tr>
+		<th>Projects</th>
+		<td>1,218</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>1,218</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>487,291</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>1,357,835</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>11,501,230</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>nan</td>
+	</tr>
+</table><br style="clear: left;"/>
+<br/>
+
+<div class="sidebar-item">
+<h3 class="title">2021 Method Chains [<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;input=48">query this dataset</a>] [<a href="https://boa.cs.iastate.edu/boa/?q=content/dataset-notes-2021-method-chains">notes</a>]</h3>
+<p>Data source: <b>GitHub</b></p>
+<p>ASTs: <b>Java</b></p>
+<table class="statistics">
+	
+	<tr>
+		<th>Projects</th>
+		<td>2,661</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>2,661</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>5,517,870</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>9,487,607</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>80,198,257</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>nan</td>
+	</tr>
+</table><br style="clear: left;"/>
+<br/>
+
+<div class="sidebar-item">
+<h3 class="title">2021 August/Python [<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;input=47">query this dataset</a>] [<a href="https://boa.cs.iastate.edu/boa/?q=content/dataset-notes-august-2021-python">notes</a>]</h3>
+<p>Data source: <b>GitHub</b></p>
+<p>ASTs: <b>Python</b></p>
+<table class="statistics">
+	
+	<tr>
+		<th>Projects</th>
+		<td>100,940</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>100,940</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>5,627,215</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>5,621,120</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>13,507,722</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>14,375,240,348</td>
+	</tr>
+</table><br style="clear: left;"/>
+<br/>
+
+<h3 class="title">2021 August/Kotlin [<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;input=45">query this dataset</a>] [<a href="https://boa.cs.iastate.edu/boa/?q=content/dataset-notes-august-2021-kotlin">notes</a>]</h3>
+<p>Data source: <b>GitHub</b></p>
+<p>ASTs: <b>Kotlin</b></p>
+<table class="statistics">
+		<tr>
+		<th class="title" colspan="2">full (100%)</th>
+	</tr>
+	<tr>
+		<th>Projects</th>
+		<td>499,645</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>499,645</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>11,022,118</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>61,882,618</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>135,288,717</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>10,918,079,302</td>
+	</tr>
+</table><table class="statistics">
+		<tr>
+		<th class="title" colspan="2">small (0.2%)</th>
+	</tr>
+	<tr>
+		<th>Projects</th>
+		<td>1,214</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>1,214</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>32,119</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>141,927</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>326,938</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>33,556,934</td>
+	</tr>
+</table><br style="clear: left;"/>
+<br/>
+
+<h3 class="title">2021 Jan/ML-Verse [<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;input=43">query this dataset</a>] [<a href="https://boa.cs.iastate.edu/boa/?q=content/dataset-notes-january-2021-mlverse">notes</a>]</h3>
+<p>Data source: <b>GitHub</b></p>
+<p>ASTs: <b>Python</b></p>
+<table class="statistics">
+	
+	<tr>
+		<th>Projects</th>
+		<td>2,641</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>2,641</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>1,465,477</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>3,443,388</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>10,919,048</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>nan</td>
+	</tr>
+</table><br style="clear: left;"/>
+<br/>
+
+<h3 class="title">2020 August/Python-DS [<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;input=42">query this dataset</a>] [<a href="https://boa.cs.iastate.edu/boa/?q=content/dataset-notes-august-2020">notes</a>]</h3>
+<p>Data source: <b>GitHub</b></p>
+<p>ASTs: <b>Python</b></p>
+<table class="statistics">
+	
+	<tr>
+		<th>Projects</th>
+		<td>1,549</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>1,549</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>730,052</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>1,392,671</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>7,974,155</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>3,218,714,917</td>
+	</tr>
+</table><br style="clear: left;"/>
+<br/>
+
+<h3 class="title">2019 October/GitHub [<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;input=31">query this dataset</a>] [<a href="https://boa.cs.iastate.edu/boa/?q=content/dataset-notes-october-2019">notes</a>]</h3>
+<p>Data source: <b>GitHub</b></p>
+<p>ASTs: <b>Java</b></p>
+<table class="statistics">
+		<tr>
+		<th class="title" colspan="2">full (100%)</th>
+	</tr>
+	<tr>
+		<th>Projects</th>
+		<td>7,830,023</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>380,125</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>23,229,406</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>146,398,339</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>484,947,086</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>71,810,106,868</td>
+	</tr>
+</table><table class="statistics">
+		<tr>
+		<th class="title" colspan="2">medium (10%)</th>
+	</tr>
+	<tr>
+		<th>Projects</th>
+		<td>783,982</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>38,276</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>2,278,806</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>14,767,153</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>51,025,158</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>8,157,785,278</td>
+	</tr>
+</table><table class="statistics">
+		<tr>
+		<th class="title" colspan="2">small (0.1%)</th>
+	</tr>
+	<tr>
+		<th>Projects</th>
+		<td>7,988</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>431</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>31,645</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>191,945</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>622,613</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>92,311,223</td>
+	</tr>
+</table><br style="clear: left;"/>
+<br/>
+
+<h3 class="title">2015 September/GitHub [<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;input=13">query this dataset</a>] [<a href="https://boa.cs.iastate.edu/boa/?q=content/dataset-notes-september-2015">notes</a>]</h3>
+<p>Data source: <b>GitHub</b></p>
+<p>ASTs: <b>Java</b></p>
+<table class="statistics">
+	
+	<tr>
+		<th>Projects</th>
+		<td>7,830,023</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>380,125</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>23,229,406</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>146,398,339</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>484,947,086</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>71,810,106,868</td>
+	</tr>
+</table><br style="clear: left;"/>
+<br/>
+
+<h3 class="title">2013 September/SF [<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;input=7">query this dataset</a>] [<a href="https://boa.cs.iastate.edu/boa/?q=content/dataset-notes-september-2013">notes</a>]</h3>
+<p>Data source: <b>SourceForge</b></p>
+<p>ASTs: <b>Java</b></p>
+<table class="statistics">
+		<tr>
+		<th class="title" colspan="2">full (100%)</th>
+	</tr>
+	<tr>
+		<th>Projects</th>
+		<td>699,331</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>494,158</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>15,063,073</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>69,863,970</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>147,074,540</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>18,651,043,238</td>
+	</tr>
+</table><table class="statistics">
+		<tr>
+		<th class="title" colspan="2">medium (10%)</th>
+	</tr>
+	<tr>
+		<th>Projects</th>
+		<td>69,735</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>49,237</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>558,138</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>2,595,766</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>5,090,988</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>1,351,914,950</td>
+	</tr>
+</table><table class="statistics">
+		<tr>
+		<th class="title" colspan="2">small (1%)</th>
+	</tr>
+	<tr>
+		<th>Projects</th>
+		<td>7,029</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>4,938</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>47,903</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>237,916</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>419,554</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>74,162,079</td>
+	</tr>
+</table><br style="clear: left;"/>
+<br/>
+
+<h3 class="title">2013 May/SF [<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;input=4">query this dataset</a>] [<a href="https://boa.cs.iastate.edu/boa/?q=content/dataset-notes-may-2013">notes</a>]</h3>
+<p>Data source: <b>SourceForge</b></p>
+<p>ASTs: <b>Java</b></p>
+<table class="statistics">
+	
+	<tr>
+		<th>Projects</th>
+		<td>699,332</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>494,159</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>5,874,219</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>25,041,813</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>52,294,812</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>13,274,787,402</td>
+	</tr>
+</table><br style="clear: left;"/>
+<br/>
+
+<h3 class="title">2013 February/SF [<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;input=3">query this dataset</a>] [<a href="https://boa.cs.iastate.edu/boa/?q=content/dataset-notes-february-2013">notes</a>]</h3>
+<p>Data source: <b>SourceForge</b></p>
+<p>ASTs: <b>Java</b></p>
+<table class="statistics">
+	
+	<tr>
+		<th>Projects</th>
+		<td>699,332</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>494,159</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>6,385,666</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>27,541,566</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>57,304,233</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>14,584,722,885</td>
+	</tr>
+</table><br style="clear: left;"/>
+<br/>
+
+<h3 class="title">2012 July/SF [<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;input=2">query this dataset</a>] [<a href="https://boa.cs.iastate.edu/boa/?q=content/dataset-notes-july-2012">notes</a>]</h3>
+<p>Data source: <b>SourceForge</b></p>
+<p>ASTs: <b>none</b></p>
+<table class="statistics">
+	
+	<tr>
+		<th>Projects</th>
+		<td>621,671</td>
+	</tr>
+	<tr>
+		<th>Code Repositories</th>
+		<td>370,554</td>
+	</tr>
+	<tr>
+		<th>Revisions</th>
+		<td>4,137,763</td>
+	</tr>
+	<tr>
+		<th>Unique Files</th>
+		<td>20,404,356</td>
+	</tr>
+	<tr>
+		<th>File Snapshots</th>
+		<td>39,629,911</td>
+	</tr>
+	<tr>
+		<th>AST Nodes</th>
+		<td>0</td>
+	</tr>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="fwrapper grids-24">
+<div class="grids-24" id="footer">
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1547227-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<div class="grid-3 first"><a class="nameplate" href="http://www.iastate.edu/"><img alt="Iowa State University" src="../img/sprite.png"></a></div>
+<div class="grid-21 last">
+<span><a href="http://design.cs.iastate.edu/">Laboratory of Software Design</a>, <a href="http://www.cs.iastate.edu/">Department of Computer Science</a>, </span><script type="text/javascript"><!--
+	document.write('<a href="mailto:' + (['hridesh', 'iastate.edu'].join('@'))
+			+ '">' + (['hridesh', 'iastate.edu'].join('@')) + '<\/a>');
+// --></script>
+<ins><noscript><div><code>hridesh (at) iastate (dot) edu</code></div></noscript></ins>
+<p>Copyright &#169; 2012&ndash;2015, Iowa State University of Science and Technology. All rights reserved.</p>
+<p>
+&nbsp;
+</p>
+<p>
+This material is based upon work supported by the US National Science
+Foundation (NSF) under grants CCF-19-34884, CNS-15-13263, CNS-15-12947,
+CCF-14-23370, CCF-13-49153, CCF-11-17937, CCF-10-17334, and CCF-10-18600.
+</p>
+<p>
+Any opinions, findings, and conclusions or recommendations expressed in this
+material are those of the author(s) and do not necessarily reflect the views of
+the National Science Foundation.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

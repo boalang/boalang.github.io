@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The BoaC Programming Guide - Domain-Specific Types - Boa - Iowa State University</title>
+<link href="../../css/base.css" media="all" rel="stylesheet">
+<link href="../../css/style.css" media="all" rel="stylesheet">
+<!--[if lt IE 9]>
+		<style>
+			ul.left > li, ul.right > li{ *display: inline; }
+			#ribbon form > input[type="submit"]{ *vertical-align: baseline; }
+		</style>
+	<![endif]-->
+<!-- SYNTAX HIGHLIGHTING -->
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/ace.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/theme-crimson_editor.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-boa.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-java.js"></script>
+<link href="https://boa.cs.iastate.edu/boa/sites/all/themes/boa/css/boa-style.css" media="screen" rel="stylesheet" type="text/css"/>
+<!-- END SYTNAX HIGHLIGHTING -->
+</head>
+<body>
+<div class="skip"><a accesskey="2" href="dsl-types.php.html#container">Skip
+Navigation</a></div>
+<div class="hwrapper" id="header">
+<div id="top-strip">
+<div class="grids-24">
+<div class="grid-8">
+&nbsp;
+</div>
+<div class="grid-16">
+&nbsp;
+</div>
+</div>
+</div>
+<div id="ribbon">
+<div class="grids-24">
+<div class="grid-16">
+<h1 class="nameplate"><a accesskey="1" href="../../index.html"><img src="../../img/boa-white.png"></a></h1>
+</div>
+<div class="grid-8">
+<form action="http://www.google.com/search" method="GET">
+	<input name="as_sitesearch" type="hidden" value="boa.cs.iastate.edu" />
+	<input accesskey="s" name="as_q" placeholder="Search" tabindex="1" type="text" />
+	<input name="btnG" title="Search" type="submit" value="" />
+</form>
+</div>
+</div>
+<div class="grids-24">
+<div class="grid-12">
+<h2 class="site-title">SARS-CoV-2/COVID-19 Open Research Dataset (CORD-19)</h2>
+</div>
+<div class="grid-12">
+<h2 style="text-align: right;" class="site-title"><a href="mailto:boasupport@iastate.edu">Contact Us</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div id="container">
+<div class="grids-24">
+<div class="grid-5 sidebar" id="left-sidebar">
+<ul class="navigation"><li><a href="../../examples/boac/index.php.html">Examples</a></li>
+<li class="selected"><a href="index.php.html">Programming Guide</a><ul><li class="selected"><a href="dsl-types.php.html">Domain-Specific Types</a><ul><li><a href="dsl-types.php.html#Paper">Paper</a></li>
+<li><a href="dsl-types.php.html#Metadata">Metadata</a></li>
+<li><a href="dsl-types.php.html#Author">Author</a></li>
+<li><a href="dsl-types.php.html#Affiliation">Affiliation</a></li>
+<li><a href="dsl-types.php.html#Section">Section</a></li>
+<li><a href="dsl-types.php.html#Paragraph">Paragraph</a></li>
+<li><a href="dsl-types.php.html#Citation">Citation</a></li>
+<li><a href="dsl-types.php.html#Location">Location</a></li>
+<li><a href="dsl-types.php.html#Reference">Reference</a></li>
+<li><a href="dsl-types.php.html#ReferenceType">Reference Type</a></li>
+</ul></li>
+<li><a href="types.php.html">Other Built-In Types</a></li>
+<li><a href="dsl-functions.php.html">Domain-Specific Functions</a></li>
+<li><a href="functions.php.html">Other Built-In Functions</a></li>
+<li><a href="user-functions.php.html">User-Defined Functions</a></li>
+<li><a href="aggregators.php.html">Output Aggregators</a></li>
+<li><a href="vars.php.html">Built-In Variables</a></li>
+<li><a href="consts.php.html">Constants</a></li>
+<li><a href="quantifiers.php.html">Using Quantifiers</a></li>
+<li><a href="visitors.php.html">Using Visitors</a></li>
+</ul></li>
+<li><a href="../../papers/index.php.html">Publications</a></li>
+<li><a href="https://groups.google.com/g/boa-user">User Forum</a></li>
+<li><a href="../../ide/index.php.html">IDE Support</a></li>
+<li><a href="../../api/index.php.html">Client API</a></li>
+<li><a href="https://boa.cs.iastate.edu/boa/index.php">User Login (MSR)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boac/index.php">User Login (COVID-19)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boag/index.php">User Login (Genomics)</a></li>
+<li><a href="../../index.php.html">About</a></li>
+<li><a href="../../policies/index.php.html">Privacy &amp; Terms</a></li>
+</ul>
+<div id="news-widget" class="sidebar-item"><h4 class="title">News</h4>
+<b>Aug '22</b>: New <a href="../../ide/vscode/index.html">VSCode extension</a> available<br />
+<b>Jun '22</b>: New <a href="https://www.npmjs.com/package/@boalang/boa-api">Boa API for JavaScript</a> available<br />
+<b>Mar '20</b>: New Boa site for CORD-19 available<br />
+<b>Sep '19</b>: New <a href="https://pypi.org/project/boa-api/">Boa API for Python</a> available<br />
+</div>
+</div>
+<div class="grid-19" id="content">
+<div class="header gutter"><h1>The BoaC Programming Guide - Domain-Specific Types</h1>
+<p>
+Custom domain-specific types for BoaC are described in this section.  Note that
+when a type is shown for an attribute, the type might contain a question mark
+("?").  This indicates that field may or may not be defined.  When accessing
+these fields, be sure to first check if the given <code>attr</code> exists for
+a given object <code>o</code>: <code>if (def(o.attr))</code>
+</p>
+<!-- DO NOT EDIT -->
+<!-- This file automatically generated -->
+<table id="Paper" class="types">
+    <tr><td colspan="3"><span class="typename">Paper</span> <span class="typedesc">A research paper</span></td></tr>
+    <tr><th class="fieldname">Attribute</th><th class="fieldtype">Type</th><th class="fielddesc">Description</th></tr>
+    <tr class="field"><td class="fieldname">abstract</td><td class="fieldtype"><a href="../types.php.html">array</a> of <a href="dsl-types.php.html#Paragraph">Paragraph</a></td><td class="fielddesc">A list of paragraphs in the abstract</td></tr>
+    <tr class="field"><td class="fieldname">bib_entries</td><td class="fieldtype"><a href="../types.php.html">array</a> of <a href="dsl-types.php.html#Reference">Reference</a></td><td class="fielddesc">A list of paper refereneces in the paper</td></tr>
+    <tr class="field"><td class="fieldname">body_text</td><td class="fieldtype"><a href="../types.php.html">array</a> of <a href="dsl-types.php.html#Section">Section</a></td><td class="fielddesc">A list of sections in the body text</td></tr>
+    <tr class="field"><td class="fieldname">id</td><td class="fieldtype"><a href="../types.php.html">string</a></td><td class="fielddesc">The 40-character sha1 of the paper</td></tr>
+    <tr class="field"><td class="fieldname">metadata</td><td class="fieldtype"><a href="dsl-types.php.html#Metadata">Metadata</a>?</td><td class="fielddesc">The metatdata of the paper</td></tr>
+    <tr class="field"><td class="fieldname">ref_entries</td><td class="fieldtype"><a href="../types.php.html">array</a> of <a href="dsl-types.php.html#Reference">Reference</a></td><td class="fielddesc">A list of figure/table references in the paper</td></tr>
+</table>
+<table id="Metadata" class="types">
+    <tr><td colspan="3"><span class="typename">Metadata</span> <span class="typedesc">A metadata of a research paper</span></td></tr>
+    <tr><th class="fieldname">Attribute</th><th class="fieldtype">Type</th><th class="fielddesc">Description</th></tr>
+    <tr class="field"><td class="fieldname">authors</td><td class="fieldtype"><a href="../types.php.html">array</a> of <a href="dsl-types.php.html#Author">Author</a></td><td class="fielddesc">A list of authors of the paper</td></tr>
+    <tr class="field"><td class="fieldname">doi_url</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The DOI (Digital Object Identifier) URL of the paper</td></tr>
+    <tr class="field"><td class="fieldname">journal</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The journal where the paper was published</td></tr>
+    <tr class="field"><td class="fieldname">license_type</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The license type of the paper</td></tr>
+    <tr class="field"><td class="fieldname">publish_time</td><td class="fieldtype"><a href="../types.php.html">int</a>?</td><td class="fielddesc">The time when the paper was published</td></tr>
+    <tr class="field"><td class="fieldname">pubmed_id</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The PubMed identifier of the paper</td></tr>
+    <tr class="field"><td class="fieldname">source</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The source of the paper</td></tr>
+    <tr class="field"><td class="fieldname">title</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The title of the paper</td></tr>
+</table>
+<table id="Author" class="types">
+    <tr><td colspan="3"><span class="typename">Author</span> <span class="typedesc">An author of a research paper</span></td></tr>
+    <tr><th class="fieldname">Attribute</th><th class="fieldtype">Type</th><th class="fielddesc">Description</th></tr>
+    <tr class="field"><td class="fieldname">affiliation</td><td class="fieldtype"><a href="dsl-types.php.html#Affiliation">Affiliation</a>?</td><td class="fielddesc">The affiliation of the author</td></tr>
+    <tr class="field"><td class="fieldname">email</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The email of the author</td></tr>
+    <tr class="field"><td class="fieldname">first</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The first name of the author</td></tr>
+    <tr class="field"><td class="fieldname">last</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The last name of the author</td></tr>
+    <tr class="field"><td class="fieldname">middle</td><td class="fieldtype"><a href="../types.php.html">array</a> of <a href="../types.php.html">string</a></td><td class="fielddesc">The middle name of the author</td></tr>
+    <tr class="field"><td class="fieldname">suffix</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The suffix of the author</td></tr>
+</table>
+<table id="Affiliation" class="types">
+    <tr><td colspan="3"><span class="typename">Affiliation</span> <span class="typedesc">A Affiliation of an author</span></td></tr>
+    <tr><th class="fieldname">Attribute</th><th class="fieldtype">Type</th><th class="fielddesc">Description</th></tr>
+    <tr class="field"><td class="fieldname">institution</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">Institution name</td></tr>
+    <tr class="field"><td class="fieldname">laboratory</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">Laboratory name</td></tr>
+    <tr class="field"><td class="fieldname">location</td><td class="fieldtype"><a href="dsl-types.php.html#Location">Location</a>?</td><td class="fielddesc">Location information</td></tr>
+</table>
+<table id="Section" class="types">
+    <tr><td colspan="3"><span class="typename">Section</span> <span class="typedesc">A section inside a body text</span></td></tr>
+    <tr><th class="fieldname">Attribute</th><th class="fieldtype">Type</th><th class="fielddesc">Description</th></tr>
+    <tr class="field"><td class="fieldname">body</td><td class="fieldtype"><a href="../types.php.html">array</a> of <a href="dsl-types.php.html#Paragraph">Paragraph</a></td><td class="fielddesc">A list of paragraphs in the section</td></tr>
+    <tr class="field"><td class="fieldname">title</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The title of the section</td></tr>
+</table>
+<table id="Paragraph" class="types">
+    <tr><td colspan="3"><span class="typename">Paragraph</span> <span class="typedesc">A paragraph inside a research paper</span></td></tr>
+    <tr><th class="fieldname">Attribute</th><th class="fieldtype">Type</th><th class="fielddesc">Description</th></tr>
+    <tr class="field"><td class="fieldname">cite_spans</td><td class="fieldtype"><a href="../types.php.html">array</a> of <a href="dsl-types.php.html#Citation">Citation</a></td><td class="fielddesc">A list of paper citations in the paragraph</td></tr>
+    <tr class="field"><td class="fieldname">ref_spans</td><td class="fieldtype"><a href="../types.php.html">array</a> of <a href="dsl-types.php.html#Citation">Citation</a></td><td class="fielddesc">A list of figure/table citations in the paragraph</td></tr>
+    <tr class="field"><td class="fieldname">text</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The text of the paragraph</td></tr>
+</table>
+<table id="Citation" class="types">
+    <tr><td colspan="3"><span class="typename">Citation</span> <span class="typedesc">A citation inside a paragraph</span></td></tr>
+    <tr><th class="fieldname">Attribute</th><th class="fieldtype">Type</th><th class="fielddesc">Description</th></tr>
+    <tr class="field"><td class="fieldname">ref_id</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The id of the reference the citation, e.g. linked to Reference BIBREF0</td></tr>
+    <tr class="field"><td class="fieldname">text</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The character repesentation of the citation, e.g. citation "[7]"</td></tr>
+</table>
+<table id="Location" class="types">
+    <tr><td colspan="3"><span class="typename">Location</span> <span class="typedesc">A location of an affiliation</span></td></tr>
+    <tr><th class="fieldname">Attribute</th><th class="fieldtype">Type</th><th class="fielddesc">Description</th></tr>
+    <tr class="field"><td class="fieldname">addrLine</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The address of the location</td></tr>
+    <tr class="field"><td class="fieldname">country</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The country of the location</td></tr>
+    <tr class="field"><td class="fieldname">postCode</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The postcode of the location</td></tr>
+    <tr class="field"><td class="fieldname">region</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The region of the location</td></tr>
+    <tr class="field"><td class="fieldname">settlement</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The settlement of the location</td></tr>
+</table>
+<table id="Reference" class="types">
+    <tr><td colspan="3"><span class="typename">Reference</span> <span class="typedesc">A reference of a reaserch paper</span></td></tr>
+    <tr><th class="fieldname">Attribute</th><th class="fieldtype">Type</th><th class="fielddesc">Description</th></tr>
+    <tr class="field"><td class="fieldname">authors</td><td class="fieldtype"><a href="../types.php.html">array</a> of <a href="dsl-types.php.html#Author">Author</a></td><td class="fielddesc">A list of authors of the refered paper</td></tr>
+    <tr class="field"><td class="fieldname">issn</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The ISSN (International Standard Serial Number) of the refered paper</td></tr>
+    <tr class="field"><td class="fieldname">pages</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The pages of the refered paper</td></tr>
+    <tr class="field"><td class="fieldname">ref_id</td><td class="fieldtype"><a href="../types.php.html">string</a></td><td class="fielddesc">The id of the reference for all kinds</td></tr>
+    <tr class="field"><td class="fieldname">text</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The caption text of the figure/table</td></tr>
+    <tr class="field"><td class="fieldname">title</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The title of the refered paper</td></tr>
+    <tr class="field"><td class="fieldname">kind</td><td class="fieldtype"><a href="dsl-types.php.html#ReferenceKind">ReferenceKind</a>?</td><td class="fielddesc">The kind of the reference</td></tr>
+    <tr class="field"><td class="fieldname">venue</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The venue of the refered paper</td></tr>
+    <tr class="field"><td class="fieldname">volume</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The volume of the refered paper</td></tr>
+    <tr class="field"><td class="fieldname">year</td><td class="fieldtype"><a href="../types.php.html">string</a>?</td><td class="fielddesc">The publish year of the referd paper</td></tr>
+</table>
+<table id="ReferenceKind" class="types enum">
+    <tr><td colspan="2"><span class="typename">enum ReferenceKind</span> <span class="typedesc">Describes the kind of Reference</span></td></tr>
+    <tr><th class="fieldname">Attribute</th><th class="fielddesc">Description</th></tr>
+    <tr class="field"><td class="fieldname">BIB</td><td class="fielddesc">For paper reference</td></tr>
+    <tr class="field"><td class="fieldname">FIGURE</td><td class="fielddesc">For figure reference</td></tr>
+    <tr class="field"><td class="fieldname">TABLE</td><td class="fielddesc">For table reference</td></tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="fwrapper grids-24">
+<div class="grids-24" id="footer">
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1547227-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<div class="grid-3 first"><a class="nameplate" href="http://www.iastate.edu/"><img alt="Iowa State University" src="../../img/sprite.png"></a></div>
+<div class="grid-21 last">
+<span><a href="http://design.cs.iastate.edu/">Laboratory of Software Design</a>, <a href="http://www.cs.iastate.edu/">Department of Computer Science</a>, </span><script type="text/javascript"><!--
+	document.write('<a href="mailto:' + (['hridesh', 'iastate.edu'].join('@'))
+			+ '">' + (['hridesh', 'iastate.edu'].join('@')) + '<\/a>');
+// --></script>
+<ins><noscript><div><code>hridesh (at) iastate (dot) edu</code></div></noscript></ins>
+<p>Copyright &#169; 2012&ndash;2015, Iowa State University of Science and Technology. All rights reserved.</p>
+<p>
+&nbsp;
+</p>
+<p>
+This material is based upon work supported by the US National Science
+Foundation (NSF) under grants CCF-19-34884, CNS-15-13263, CNS-15-12947,
+CCF-14-23370, CCF-13-49153, CCF-11-17937, CCF-10-17334, and CCF-10-18600.
+</p>
+<p>
+Any opinions, findings, and conclusions or recommendations expressed in this
+material are those of the author(s) and do not necessarily reflect the views of
+the National Science Foundation.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

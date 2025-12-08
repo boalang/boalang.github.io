@@ -1,0 +1,179 @@
+.bibtex {
+	margin-left: 20px;
+	font-size: 0.8em;
+}
+
+.statistics {
+	float: left;
+	margin-left: 20px;
+}
+
+.statistics .title {
+	font-weight: bold;
+	text-align: center;
+	background-color: #eee;
+}
+
+.statistics th {
+	min-width: 120px;
+	font-weight: normal;
+	text-align: left;
+}
+
+.statistics td {
+	min-width: 80px;
+	font-weight: bold;
+	text-align: right;
+}
+
+.lastmod {
+	font-style: italic;
+	font-size: 90%;
+}
+
+.sourcecode {
+	margin-bottom: 12px;
+}
+
+.types {
+	width: 100%;
+	margin-bottom: 24px;
+}
+
+.types td {
+	padding: 0px;
+}
+
+.types .typename {
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.types .typedesc {
+	font-style: italic;
+	margin-left: 8px;
+}
+
+.field:nth-child(odd) {
+	background-color: #eee;
+}
+
+.types .field td {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.types th.fieldname {
+	width: 25%;
+	white-space: nowrap;
+}
+
+.types th.fieldtype {
+	width: 25%;
+	white-space: nowrap;
+}
+
+.types th.fielddesc {
+	width: 50%;
+}
+
+.constant th.fieldname {
+	width: 20%;
+}
+
+.constant th.fieldtype {
+	width: 20%;
+}
+
+.constant th.fielddesc {
+	width: 60%;
+}
+
+.enum th.fieldname {
+	width: 25%;
+}
+
+.enum th.fielddesc {
+	width: 75%;
+}
+
+.variable td.fielddesc {
+	padding-bottom: 12px;
+}
+
+.variable th.fieldtype {
+	width: 75%;
+}
+
+.aggregator th.fieldtype {
+	width: 75%;
+}
+
+.types .fieldname {
+	font-weight: bold;
+}
+
+.types .fieldtype {
+	font-family: courier new;
+}
+
+.funcname {
+	background-color: #eee;
+	width: 98%;
+	font-family: courier new;
+	padding: 4px 8px 4px 8px;
+	margin-bottom: 8px;
+}
+
+.function {
+	margin-bottom: 22px;
+}
+
+.pubs li {
+	padding-bottom: 8px;
+}
+
+#footer span {
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 16px;
+	margin-left: 9px;
+}
+
+#footer a {
+	font-size: 11px;
+	font-weight: bold;
+}
+
+#footer span:first-child{
+	margin-bottom: 1px;
+}
+
+.java-features .section {
+	margin-bottom: 0;
+	border-bottom: 1px solid #000;
+}
+
+.java-features table {
+	margin: 0 auto;
+}
+
+.java-features table td, .java-features table th {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.java-features tr:nth-child(odd) {
+	background-color: #eee;
+}
+
+.java-features th {
+	background-color: #ccc;
+}
+
+h2 em {
+	font-style: italic;
+    font-weight: normal;
+	margin-left: 8px;
+    font-size: 0.8em;
+}

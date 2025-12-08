@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Example Boa Programs - Boa - Iowa State University</title>
+<link href="../css/base.css" media="all" rel="stylesheet">
+<link href="../css/style.css" media="all" rel="stylesheet">
+<!--[if lt IE 9]>
+		<style>
+			ul.left > li, ul.right > li{ *display: inline; }
+			#ribbon form > input[type="submit"]{ *vertical-align: baseline; }
+		</style>
+	<![endif]-->
+<!-- SYNTAX HIGHLIGHTING -->
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/ace.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/theme-crimson_editor.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-boa.js"></script>
+<script type="text/javascript" src="https://boa.cs.iastate.edu/boa/sites/all/libraries/ace/src/mode-java.js"></script>
+<link href="https://boa.cs.iastate.edu/boa/sites/all/themes/boa/css/boa-style.css" media="screen" rel="stylesheet" type="text/css"/>
+<!-- END SYTNAX HIGHLIGHTING -->
+</head>
+<body>
+<div class="skip"><a accesskey="2" href="index.html#container">Skip
+Navigation</a></div>
+<div class="hwrapper" id="header">
+<div id="top-strip">
+<div class="grids-24">
+<div class="grid-8">
+&nbsp;
+</div>
+<div class="grid-16">
+&nbsp;
+</div>
+</div>
+</div>
+<div id="ribbon">
+<div class="grids-24">
+<div class="grid-16">
+<h1 class="nameplate"><a accesskey="1" href="../index.html"><img src="../img/boa-white.png"></a></h1>
+</div>
+<div class="grid-8">
+<form action="http://www.google.com/search" method="GET">
+	<input name="as_sitesearch" type="hidden" value="boa.cs.iastate.edu" />
+	<input accesskey="s" name="as_q" placeholder="Search" tabindex="1" type="text" />
+	<input name="btnG" title="Search" type="submit" value="" />
+</form>
+</div>
+</div>
+<div class="grids-24">
+<div class="grid-12">
+<h2 class="site-title">Mining Ultra-Large-Scale Software Repositories</h2>
+</div>
+<div class="grid-12">
+<h2 style="text-align: right;" class="site-title"><a href="mailto:boasupport@iastate.edu">Contact Us</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div id="container">
+<div class="grids-24">
+<div class="grid-5 sidebar" id="left-sidebar">
+<ul class="navigation"><li class="selected"><a href="index.php.html">Examples</a><ul><li><a href="index.php.html#Programming+Languages">Programming Languages</a></li>
+<li><a href="index.php.html#Project+Management">Project Management</a></li>
+<li><a href="index.php.html#Legal">Legal</a></li>
+<li><a href="index.php.html#Platform%2FEnvironment">Platform/Environment</a></li>
+<li><a href="index.php.html#Source+Code">Source Code</a></li>
+<li><a href="index.php.html#Software+Engineering+Metrics">Software Engineering Metrics</a></li>
+</ul></li>
+<li><a href="../docs/index.php.html">Programming Guide</a></li>
+<li><a href="../stats/index.php.html">Dataset Statistics</a></li>
+<li><a href="../papers/index.php.html">Publications</a></li>
+<li><a href="https://groups.google.com/g/boa-user">User Forum</a></li>
+<li><a href="../ide/index.php.html">IDE Support</a></li>
+<li><a href="../api/index.php.html">Client API</a></li>
+<li><a href="https://boa.cs.iastate.edu/boa/index.php">User Login (MSR)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boac/index.php">User Login (COVID-19)</a></li>
+<li><a href="https://boa.cs.iastate.edu/boag/index.php">User Login (Genomics)</a></li>
+<li><a href="../index.php.html">About</a></li>
+<li><a href="../policies/index.php.html">Privacy &amp; Terms</a></li>
+</ul>
+<div id="news-widget" class="sidebar-item"><h4 class="title">News</h4>
+<b>Aug '22</b>: New <a href="../ide/vscode/index.html">VSCode extension</a> available<br />
+<b>Jun '22</b>: New <a href="https://www.npmjs.com/package/@boalang/boa-api">Boa API for JavaScript</a> available<br />
+<b>Mar '20</b>: New Boa site for CORD-19 available<br />
+<b>Sep '19</b>: New <a href="https://pypi.org/project/boa-api/">Boa API for Python</a> available<br />
+</div>
+</div>
+<div class="grid-19" id="content">
+<div class="header gutter"><h1>Example Boa Programs</h1>
+<p>
+Boa is a flexible language, capable of answering a wide variety of software
+repository mining questions.  Here we provide several example questions and Boa
+programs to answer those questions.
+</p>
+<ol type="A">
+<li><b>0</b>
+<ol>
+</ol>
+</li>
+<li><b>Programming Languages</b>
+<ol>
+<li><a href="index.html#top-langs">What are the ten most used programming languages?</a></li>
+<li><a href="index.html#mult-langs">How many projects use more than one programming language?</a></li>
+<li><a href="index.html#scheme-use">How many projects use the Scheme programming language?</a></li>
+</ol>
+</li>
+<li><b>Project Management</b>
+<ol>
+<li><a href="index.html#proj-created">How many projects are created each year?</a></li>
+<li><a href="index.html#proj-topics">How many projects self-classify into each topic provided by SourceForge?</a></li>
+<li><a href="index.html#active-proj">How many Java projects using SVN were active in 2011?</a></li>
+<li><a href="index.html#svn-added">In which year was SVN added to Java projects the most?</a></li>
+<li><a href="index.html#num-revisions">How many revisions are there in all Java projects using SVN?</a></li>
+<li><a href="index.html#fix-bugs">How many revisions fix bugs in all Java projects using SVN?</a></li>
+<li><a href="index.html#committers-proj">How many committers are there for each project?</a></li>
+<li><a href="index.html#churn-rate">What are the churn rates for all projects?</a></li>
+<li><a href="index.html#commits-years">How did the number of commits for Java projects using SVN change over years?</a></li>
+<li><a href="index.html#java-build">How often are popular Java build systems used?</a></li>
+</ol>
+</li>
+<li><b>Legal</b>
+<ol>
+<li><a href="index.html#top-license">What are the five most used licenses?</a></li>
+<li><a href="index.html#mult-license">How many projects use more than one license?</a></li>
+</ol>
+</li>
+<li><b>Platform/Environment</b>
+<ol>
+<li><a href="index.html#top-os">What are the five most supported operating systems?</a></li>
+<li><a href="index.html#mult-os">Which projects support multiple operating systems?</a></li>
+<li><a href="index.html#top-db">What are the five most popular databases?</a></li>
+<li><a href="index.html#mult-db">What are the projects that support multiple databases?</a></li>
+<li><a href="index.html#db-pl">How often is each database used in each programming language?</a></li>
+</ol>
+</li>
+<li><b>Source Code</b>
+<ol>
+<li><a href="index.html#ast-count">What are the five largest projects, in terms of AST nodes?</a></li>
+<li><a href="index.html#java-count">How many valid Java files in latest snapshot?</a></li>
+<li><a href="index.html#null-check">How many fixing revisions added null checks?</a></li>
+<li><a href="index.html#dead-code">What files have unreachable statements?</a></li>
+<li><a href="index.html#gen-fields">How many generic fields are declared in each project?</a></li>
+<li><a href="index.html#varargs">How is varargs used over time?</a></li>
+<li><a href="index.html#transient">How is transient keyword used in Java?</a></li>
+</ol>
+</li>
+<li><b>Software Engineering Metrics</b>
+<ol>
+<li><a href="index.html#noa">What are the number of attributes (NOA), per-project and per-type?</a></li>
+<li><a href="index.html#npm">What are the number of public methods (NPM), per-project and per-type?</a></li>
+</ol>
+</li>
+<li><b>Program Analysis</b>
+<ol>
+<li><a href="index.html#dominator">Dominator Analysis</a></li>
+<li><a href="index.html#livevars">Live Variables</a></li>
+<li><a href="index.html#reaching">Reaching Definitions</a></li>
+</ol>
+</li>
+</ol>
+<h2 id="0">0</h2>
+<h2 id="Programming+Languages">Programming Languages</h2>
+<h3 id="top-langs">What are the ten most used programming languages?</h3>
+<div class="sourcecode" id="code_1" style="position: relative; width: 60em;"># Counting the 10 most used programming languages
+p: Project = input;
+counts: output top(10) of string weight int;
+
+foreach (i: int; def(p.programming_languages[i]))
+	counts &lt;&lt; p.programming_languages[i] weight 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_1");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=545&amp;example=top-langs">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/545">Published Results</a>
+</p><h3 id="mult-langs">How many projects use more than one programming language?</h3>
+<div class="sourcecode" id="code_2" style="position: relative; width: 60em;"># Counting the number of projects written in more than one languages
+p: Project = input;
+counts: output sum of int;
+
+if (len(p.programming_languages) &gt; 1)
+	counts &lt;&lt; 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_2");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=546&amp;example=mult-langs">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/546">Published Results</a>
+</p><h3 id="scheme-use">How many projects use the Scheme programming language?</h3>
+<div class="sourcecode" id="code_3" style="position: relative; width: 60em;"># Counting projects using Scheme
+p: Project = input;
+counts: output sum of int;
+
+foreach (i: int; match(`^scheme$`, lowercase(p.programming_languages[i])))
+	counts &lt;&lt; 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_3");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=547&amp;example=scheme-use">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/547">Published Results</a>
+</p><h2 id="Project+Management">Project Management</h2>
+<h3 id="proj-created">How many projects are created each year?</h3>
+<div class="sourcecode" id="code_4" style="position: relative; width: 60em;"># How many projects created each year?
+p: Project = input;
+counts: output sum[int] of int;
+
+counts[yearof(p.created_date)] &lt;&lt; 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_4");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=548&amp;example=proj-created">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/548">Published Results</a>
+</p><h3 id="proj-topics">How many projects self-classify into each topic provided by SourceForge?</h3>
+<div class="sourcecode" id="code_5" style="position: relative; width: 60em;"># how many projects self-classify into each topic?
+p: Project = input;
+values: output sum[string] of int;
+
+foreach (i: int; def(p.topics[i]))
+	values[lowercase(p.topics[i])] &lt;&lt; 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_5");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=549&amp;example=proj-topics">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/549">Published Results</a>
+</p><h3 id="active-proj">How many Java projects using SVN were active in 2011?</h3>
+<div class="sourcecode" id="code_6" style="position: relative; width: 60em;"># Counting the number of active Java projects with SVN
+p: Project = input;
+counts: output sum of int;
+
+visit(p, visitor {
+	before n: Project -&gt; ifall (i: int; !match(`^java$`, lowercase(n.programming_languages[i]))) stop;
+	before node: CodeRepository -&gt;
+		if (node.kind == RepositoryKind.SVN)
+			exists (j: int; yearof(node.revisions[j].commit_date) == 2011)
+				counts &lt;&lt; 1;
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_6");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=551&amp;example=active-proj">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/551">Published Results</a>
+</p><h3 id="svn-added">In which year was SVN added to Java projects the most?</h3>
+<div class="sourcecode" id="code_7" style="position: relative; width: 60em;"># which year were SVN projects added most
+p: Project = input;
+counts: output top(1) of int weight int;
+
+visit(p, visitor {
+	before n: Project -&gt; ifall (i: int; !match(`^java$`, lowercase(n.programming_languages[i]))) stop;
+	before node: CodeRepository -&gt;
+		if (node.kind == RepositoryKind.SVN && len(node.revisions) &gt; 0)
+			counts &lt;&lt; yearof(node.revisions[0].commit_date) weight 1;
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_7");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=550&amp;example=svn-added">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/550">Published Results</a>
+</p><h3 id="num-revisions">How many revisions are there in all Java projects using SVN?</h3>
+<div class="sourcecode" id="code_8" style="position: relative; width: 60em;"># Counting the number of revisions for all Java projects with SVN
+p: Project = input;
+counts: output sum of int;
+
+visit(p, visitor {
+	before n: Project -&gt; ifall (i: int; !match(`^java$`, lowercase(n.programming_languages[i]))) stop;
+	before node: CodeRepository -&gt; if (node.kind == RepositoryKind.SVN) counts &lt;&lt; len(node.revisions);
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_8");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=552&amp;example=num-revisions">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/552">Published Results</a>
+</p><h3 id="fix-bugs">How many revisions fix bugs in all Java projects using SVN?</h3>
+<div class="sourcecode" id="code_9" style="position: relative; width: 60em;"># Counting the number of fixing revisons for all Java projects with SVN
+p: Project = input;
+counts: output sum of int;
+
+visit(p, visitor {
+	before n: Project -&gt; ifall (i: int; !match(`^java$`, lowercase(n.programming_languages[i]))) stop;
+	before node: CodeRepository -&gt; if (node.kind != RepositoryKind.SVN) stop;
+	before node: Revision -&gt; if (isfixingrevision(node.log)) counts &lt;&lt; 1;
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_9");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=553&amp;example=fix-bugs">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/553">Published Results</a>
+</p><h3 id="committers-proj">How many committers are there for each project?</h3>
+<div class="sourcecode" id="code_10" style="position: relative; width: 60em;"># How many committers are in each project?
+p: Project = input;
+counts: output sum[string] of int;
+
+committers: map[string] of bool;
+
+visit(p, visitor {
+	before node: Revision -&gt;
+		if (!haskey(committers, node.committer.username)) {
+			committers[node.committer.username] = true;
+			counts[p.id] &lt;&lt; 1;
+		}
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_10");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=695&amp;example=committers-proj">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/695">Published Results</a>
+</p><h3 id="churn-rate">What are the churn rates for all projects?</h3>
+<div class="sourcecode" id="code_11" style="position: relative; width: 60em;"># what are the churn rates for all projects
+p: Project = input;
+counts: output mean[string] of int;
+
+visit(p, visitor {
+	before node: Revision -&gt; counts[p.id] &lt;&lt; len(node.files);
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_11");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=555&amp;example=churn-rate">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/555">Published Results</a>
+</p><h3 id="commits-years">How did the number of commits for Java projects using SVN change over years?</h3>
+<div class="sourcecode" id="code_12" style="position: relative; width: 60em;"># how did # of commits for Java/SVN change over time?
+p: Project = input;
+counts: output sum[int] of int;
+
+visit(p, visitor {
+	before n: Project -&gt; ifall (i: int; !match(`^java$`, lowercase(n.programming_languages[i]))) stop;
+	before n: CodeRepository -&gt; if (n.kind != RepositoryKind.SVN) stop;
+	before n: Revision -&gt; counts[yearof(n.commit_date)] &lt;&lt; 1;
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_12");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=556&amp;example=commits-years">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/556">Published Results</a>
+</p><h3 id="java-build">How often are popular Java build systems used?</h3>
+<div class="sourcecode" id="code_13" style="position: relative; width: 60em;"># How often are popular Java build systems used?
+TOTAL: output sum of int;
+
+ANT: output sum of int;
+GRADLE: output sum of int;
+MAVEN: output sum of int;
+MAKE: output sum of int;
+
+NONE: output sum of int;
+
+hasAnt := false;
+hasGradle := false;
+hasMvn := false;
+hasMake := false;
+
+exists (i: int; lowercase(input.programming_languages[i]) == "java")
+	visit(input, visitor {
+		before Project -&gt; TOTAL &lt;&lt; 1;
+		after Project -&gt; {
+			if (hasAnt) ANT &lt;&lt; 1;
+			if (hasGradle) GRADLE &lt;&lt; 1;
+			if (hasMvn) MAVEN &lt;&lt; 1;
+			if (hasMake) MAKE &lt;&lt; 1;
+			if (!(hasAnt || hasGradle || hasMvn || hasMake)) NONE &lt;&lt; 1;
+		}
+		before node: CodeRepository -&gt; {
+			snapshot := getsnapshot(node);
+			for (j := 0; j &lt; len(snapshot); j++) {
+				if (match(`/build.xml$`, snapshot[j].name))
+					hasAnt = true;
+				else if (match(`/build.gradle$`, snapshot[j].name))
+					hasGradle = true;
+				else if (match(`/pom.xml$`, snapshot[j].name))
+					hasMvn = true;
+				else if (match(`/makefile$`, lowercase(snapshot[j].name)))
+					hasMake = true;
+			}
+			stop;
+		}
+	});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_13");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=63197&amp;example=java-build">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/63197">Published Results</a>
+</p><h2 id="Legal">Legal</h2>
+<h3 id="top-license">What are the five most used licenses?</h3>
+<div class="sourcecode" id="code_14" style="position: relative; width: 60em;"># Counting the 5 most frequently used licenses
+p: Project = input;
+counts: output top(5) of string weight int;
+
+foreach (i: int; def(p.licenses[i]))
+	counts &lt;&lt; p.licenses[i] weight 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_14");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=557&amp;example=top-license">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/557">Published Results</a>
+</p><h3 id="mult-license">How many projects use more than one license?</h3>
+<div class="sourcecode" id="code_15" style="position: relative; width: 60em;"># Counting the number of projects using more than 1 license
+p: Project = input;
+counts: output sum of int;
+
+if (len(p.licenses) &gt; 1)
+	counts &lt;&lt; 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_15");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=558&amp;example=mult-license">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/558">Published Results</a>
+</p><h2 id="Platform%2FEnvironment">Platform/Environment</h2>
+<h3 id="top-os">What are the five most supported operating systems?</h3>
+<div class="sourcecode" id="code_16" style="position: relative; width: 60em;"># what are the 5 most supported OSes?
+p: Project = input;
+counts: output top(5) of string weight int;
+
+foreach (i: int; def(p.operating_systems[i]))
+	counts &lt;&lt; p.operating_systems[i] weight 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_16");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=559&amp;example=top-os">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/559">Published Results</a>
+</p><h3 id="mult-os">Which projects support multiple operating systems?</h3>
+<div class="sourcecode" id="code_17" style="position: relative; width: 60em;"># which projects support multiple OSes?
+p: Project = input;
+counts: output collection[string] of string;
+
+if (len(p.operating_systems) &gt; 1)
+	counts[p.id] &lt;&lt; p.project_url;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_17");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=560&amp;example=mult-os">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/560">Published Results</a>
+</p><h3 id="top-db">What are the five most popular databases?</h3>
+<div class="sourcecode" id="code_18" style="position: relative; width: 60em;"># what are the 5 most popular databases?
+p: Project = input;
+counts: output top(5) of string weight int;
+
+foreach (i: int; def(p.databases[i]))
+	counts &lt;&lt; p.databases[i] weight 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_18");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=561&amp;example=top-db">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/561">Published Results</a>
+</p><h3 id="mult-db">What are the projects that support multiple databases?</h3>
+<div class="sourcecode" id="code_19" style="position: relative; width: 60em;"># which projects support multiple databases?
+p: Project = input;
+counts: output collection[string] of string;
+
+if (len(p.databases) &gt; 1)
+	counts[p.id] &lt;&lt; p.name;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_19");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=562&amp;example=mult-db">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/562">Published Results</a>
+</p><h3 id="db-pl">How often is each database used in each programming language?</h3>
+<div class="sourcecode" id="code_20" style="position: relative; width: 60em;"># pairs of programming language/database
+p: Project = input;
+counts: output sum[string][string] of int;
+
+foreach (i: int; def(p.programming_languages[i]))
+	foreach (j: int; def(p.databases[j]))
+		counts[p.programming_languages[i]][p.databases[j]] &lt;&lt; 1;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_20");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=563&amp;example=db-pl">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/563">Published Results</a>
+</p><h2 id="Source+Code">Source Code</h2>
+<h3 id="ast-count">What are the five largest projects, in terms of AST nodes?</h3>
+<div class="sourcecode" id="code_21" style="position: relative; width: 60em;"># What are the 5 largest projects, in terms of AST nodes?
+# Output is in Millions of AST nodes.
+p: Project = input;
+top5: output top(5) of string weight int;
+
+astCount := 0;
+
+visit(p, visitor {
+	# only look at the latest snapshot
+	before n: CodeRepository -&gt; {
+		snapshot := getsnapshot(n);
+		foreach (i: int; def(snapshot[i]))
+			visit(snapshot[i]);
+		stop;
+	}
+	# by default, count all visited nodes
+	before _ -&gt; astCount++;
+	# these nodes are not part of the AST, so do nothing when visiting
+	before Project, ChangedFile -&gt; ;
+});
+
+top5 &lt;&lt; p.project_url weight astCount / 1000000;</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_21");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=564&amp;example=ast-count">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/564">Published Results</a>
+</p><h3 id="java-count">How many valid Java files in latest snapshot?</h3>
+<div class="sourcecode" id="code_22" style="position: relative; width: 60em;"># count how many valid Java files are in the latest snapshot
+p: Project = input;
+counts: output sum of int;
+
+visit(p, visitor {
+	before node: CodeRepository -&gt;
+		counts &lt;&lt; len(getsnapshot(node, "SOURCE_JAVA_JLS"));
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_22");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=565&amp;example=java-count">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/565">Published Results</a>
+</p><h3 id="null-check">How many fixing revisions added null checks?</h3>
+<div class="sourcecode" id="code_23" style="position: relative; width: 60em;"># How many fixing revisions added null checks?
+AddedNullCheck: output sum of int;
+p: Project = input;
+
+isfixing := false;
+count := 0;
+# map of file names to the last revision of that file
+files: map[string] of ChangedFile;
+
+visit(p, visitor {
+	before node: Revision -&gt; isfixing = isfixingrevision(node.log);
+	before node: ChangedFile -&gt; {
+		# if this is a fixing revision and
+		# there was a previous version of the file
+		if (isfixing && haskey(files, node.name)) {
+			# count how many null checks were previously in the file
+			count = 0;
+			visit(getast(files[node.name]));
+			last := count;
+
+			# count how many null checks are currently in the file
+			count = 0;
+			visit(getast(node));
+
+			# if there are more null checks, output
+			if (count &gt; last)
+				AddedNullCheck &lt;&lt; 1;
+		}
+		if (node.change == ChangeKind.DELETED)
+			remove(files, node.name);
+		else
+			files[node.name] = node;
+		stop;
+	}
+	before node: Statement -&gt;
+		# increase the counter if there is an IF statement
+		# where the boolean condition is of the form:
+		#   null == expr OR expr == null OR null != expr OR expr != null
+		if (node.kind == StatementKind.IF)
+			visit(node.expression, visitor {
+				before node: Expression -&gt;
+					if (node.kind == ExpressionKind.EQ || node.kind == ExpressionKind.NEQ)
+						exists (i: int; isliteral(node.expressions[i], "null"))
+							count++;
+			});
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_23");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=63199&amp;example=null-check">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/63199">Published Results</a>
+</p><h3 id="dead-code">What files have unreachable statements?</h3>
+<div class="sourcecode" id="code_24" style="position: relative; width: 60em;"># looking for dead code
+DEAD: output top(1000000) of string weight int;
+
+cur_file: string;
+cur_method: string;
+s: stack of bool;
+alive := true;
+
+visit(input, visitor {
+	before _ -&gt; if (!alive) stop;
+	before node: CodeRepository -&gt; {
+		snapshot := getsnapshot(node);
+		foreach (i: int; def(snapshot[i]))
+			visit(snapshot[i]);
+		stop;
+	}
+	before node: ChangedFile -&gt; cur_file = string(node);
+	before node: Method -&gt; {
+		cur_method = node.name;
+		push(s, alive);
+		alive = true;
+	}
+	after node: Method -&gt; alive = pop(s);
+	before node: Statement -&gt; {
+		if (!alive) {
+			DEAD &lt;&lt; format("%s - %s", cur_file, cur_method) weight 1;
+			stop;
+		}
+		switch (node.kind) {
+			case StatementKind.BREAK: if (def(node.expression)) break;
+			case StatementKind.RETURN, StatementKind.THROW, StatementKind.CONTINUE:
+				alive = false;
+				break;
+			case StatementKind.IF, StatementKind.LABEL: stop;
+			case StatementKind.FOR, StatementKind.DO, StatementKind.WHILE,
+					StatementKind.SWITCH, StatementKind.TRY:
+				foreach (i: int; def(node.statements[i])) {
+					push(s, alive);
+					visit(node.statements[i]);
+					alive = pop(s);
+				}
+				stop;
+			default:
+				break;
+		}
+	}
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_24");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=3148&amp;example=dead-code">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/3148">Published Results</a>
+</p><h3 id="gen-fields">How many generic fields are declared in each project?</h3>
+<div class="sourcecode" id="code_25" style="position: relative; width: 60em;"># How many generic fields are declared in each project?
+p: Project = input;
+GenericFields: output sum[string] of int;
+
+visit(p, visitor {
+	before node: Type -&gt;
+		if (strfind("&lt;", node.name) &gt; -1)
+			GenericFields[p.project_url] &lt;&lt; 1;
+
+	before node: Declaration -&gt; {
+		# check all fields
+		foreach (i: int; node.fields[i])
+			visit(node.fields[i]);
+
+		# also look at nested declarations
+		foreach (i: int; node.methods[i])
+			visit(node.methods[i]);
+		foreach (i: int; node.nested_declarations[i])
+			visit(node.nested_declarations[i]);
+		stop;
+	}
+	before node: Method -&gt; {
+		foreach (i: int; node.statements[i])
+			visit(node.statements[i]);
+		stop;
+	}
+	before node: Statement -&gt; {
+		foreach (i: int; node.statements[i])
+			visit(node.statements[i]);
+		if (def(node.type_declaration))
+			visit(node.type_declaration);
+		stop;
+	}
+
+	# fields cant be below expressions or modifiers
+	before Expression, Modifier -&gt; stop;
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_25");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=600&amp;example=gen-fields">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/600">Published Results</a>
+</p><h3 id="varargs">How is varargs used over time?</h3>
+<div class="sourcecode" id="code_26" style="position: relative; width: 60em;"># How is varargs used over time?
+p: Project = input;
+Varargs: output collection[string][string][time] of int;
+
+file_name: string;
+commit_date: time;
+
+visit(p, visitor {
+	before node: ChangedFile -&gt; file_name = node.name;
+	before node: Revision -&gt; commit_date = node.commit_date;
+	before node: Method -&gt;
+		if (len(node.arguments) &gt; 0
+				&& strfind("...", node.arguments[len(node.arguments) - 1].variable_type.name) &gt; -1)
+			Varargs[p.project_url][file_name][commit_date] &lt;&lt; 1;
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_26");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=601&amp;example=varargs">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/601">Published Results</a>
+</p><h3 id="transient">How is transient keyword used in Java?</h3>
+<div class="sourcecode" id="code_27" style="position: relative; width: 60em;"># How is transient keyword used in Java?
+p: Project = input;
+TransientTotal: output sum of int;
+TransientMax: output maximum(1) of string weight int;
+TransientMin: output minimum(1) of string weight int;
+TransientMean: output mean of int;
+
+count := 0;
+s: stack of int;
+
+visit(p, visitor {
+	before node: CodeRepository -&gt; {
+		# only look at the latest snapshot
+		# and only include Java files
+		snapshot := getsnapshot(node, "SOURCE_JAVA_JLS");
+		foreach (i: int; def(snapshot[i]))
+			visit(snapshot[i]);
+		stop;
+	}
+	before node: Declaration -&gt; {
+		# only interested in fields, which only occur inside (anonymous) classes
+		if (node.kind == TypeKind.CLASS || node.kind == TypeKind.ANONYMOUS) {
+			# store old value
+			push(s, count);
+			count = 0;
+
+			# find uses and increment counter
+			foreach (i: int; def(node.fields[i]))
+				foreach (j: int; node.fields[i].modifiers[j].kind == ModifierKind.OTHER
+								&& node.fields[i].modifiers[j].other == "transient")
+					count++;
+		} else
+			stop;
+	}
+	after node: Declaration -&gt; {
+		# output result
+		TransientTotal &lt;&lt; count;
+		TransientMax &lt;&lt; p.id weight count;
+		TransientMin &lt;&lt; p.id weight count;
+		TransientMean &lt;&lt; count;
+
+		# restore previous value
+		count = pop(s);
+	}
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_27");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=602&amp;example=transient">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/602">Published Results</a>
+</p><h2 id="Software+Engineering+Metrics">Software Engineering Metrics</h2>
+<h3 id="noa">What are the number of attributes (NOA), per-project and per-type?</h3>
+<div class="sourcecode" id="code_28" style="position: relative; width: 60em;"># Computes Number of Attributes (NOA) for each project, per-type
+# Output is: NOA[ProjectID][TypeName] = NOA value
+p: Project = input;
+NOA: output sum[string][string] of int;
+
+visit(p, visitor {
+	# only look at the latest snapshot
+	before n: CodeRepository -&gt; {
+		snapshot := getsnapshot(n);
+		foreach (i: int; def(snapshot[i]))
+			visit(snapshot[i]);
+		stop;
+	}
+	before node: Declaration -&gt;
+		if (node.kind == TypeKind.CLASS)
+			NOA[p.id][node.name] &lt;&lt; len(node.fields);
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_28");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=1599&amp;example=noa">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/1599">Published Results</a>
+</p><h3 id="npm">What are the number of public methods (NPM), per-project and per-type?</h3>
+<div class="sourcecode" id="code_29" style="position: relative; width: 60em;"># Computes Number of Public Methods (NPM) for each project, per-type
+# Output is: NPM[ProjectID][TypeName] = NPM value
+p: Project = input;
+NPM: output sum[string][string] of int;
+
+visit(p, visitor {
+	# only look at the latest snapshot
+	before n: CodeRepository -&gt; {
+		snapshot := getsnapshot(n);
+		foreach (i: int; def(snapshot[i]))
+			visit(snapshot[i]);
+		stop;
+	}
+	before node: Declaration -&gt;
+		if (node.kind == TypeKind.CLASS)
+			foreach (i: int; has_modifier_public(node.methods[i]))
+				NPM[p.id][node.name] &lt;&lt; 1;
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_29");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=1598&amp;example=npm">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/1598">Published Results</a>
+</p><h2 id="Program+Analysis">Program Analysis</h2>
+<h3 id="dominator">Dominator Analysis</h3>
+<div class="sourcecode" id="code_30" style="position: relative; width: 60em;">op: output collection[string][string][string] of string;
+
+type T = set of string;
+allNodeIds: T;
+
+dominators := traversal(node: CFGNode): T {
+	doms: T;
+
+	if (def(getvalue(node))) {
+		doms = getvalue(node);
+	} else {
+		if (node.id == 0)
+			add(doms, string(node.id));
+		else
+			doms = clone(allNodeIds);
+	}
+
+	foreach(i: int; def(getvalue(node.predecessors[i])))
+		doms = intersect(doms, getvalue(node.predecessors[i]));
+	add(doms, string(node.id));
+
+	return doms;
+};
+
+fp := fixp(curr, prev: T): bool {
+	return curr == prev;
+};
+
+doms: map[string] of T;
+
+collect := traversal(node: CFGNode) {
+	if (def(getvalue(node, dominators)))
+		doms[string(node.id)] = getvalue(node, dominators);
+};
+
+visit(input, visitor {
+	before node: CodeRepository -&gt; {
+		snapshot := getsnapshot(node);
+		foreach (i: int; def(snapshot[i]))
+			visit(snapshot[i]);
+		stop;
+	}
+	before method: Method -&gt; {
+		cfg := getcfg(method);
+
+		if (def(cfg))
+			for (i := 0; i &lt; len(cfg.nodes); i++)
+				add(allNodeIds, string(i));
+
+		traverse(cfg, TraversalDirection.FORWARD, TraversalKind.REVERSEPOSTORDER, dominators, fp);
+		traverse(cfg, TraversalDirection.FORWARD, TraversalKind.ITERATIVE, collect);
+
+		op[input.project_url][current(ChangedFile).name][method.name] &lt;&lt; string(doms);
+
+		clear(dominators);
+		clear(collect);
+		clear(doms);
+		clear(allNodeIds);
+	}
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_30");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=86426&amp;example=dominator">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/86426">Published Results</a>
+</p><h3 id="livevars">Live Variables</h3>
+<div class="sourcecode" id="code_31" style="position: relative; width: 60em;">m: output collection[string][string][int] of string;
+
+# program analysis output
+type T = set of string;
+type T_gen_kill = { gen: T, kill: string };
+type T_inout = { in: T, out: T };
+
+m_name: string;
+
+# traversal that gets all variable uses in a method
+init := traversal(node: CFGNode) : T_gen_kill {
+	cur_value: T_gen_kill;
+	cur_value = { node.useVariables, node.defVariables };
+	return cur_value;
+};
+
+# cfg live variable analysis
+live := traversal(node: CFGNode) : T_inout {
+	cur_val: T_inout;
+	if (def(getvalue(node))) {
+		cur_val = getvalue(node);
+	} else {
+		in_set: T;
+		out_set: T;
+		cur_val = { in_set, out_set };
+	}
+
+	succs := node.successors;
+	foreach(i:int; def(succs[i])) {
+		succ := getvalue(succs[i]);
+		if (def(succ)) {
+			cur_val.out = union(cur_val.out,succ.in);
+		}
+	}
+	gen_kill := getvalue(node, init);
+	if (def(gen_kill)) {
+		remove(cur_val.out, gen_kill.kill);
+		cur_val.in = union(gen_kill.gen, cur_val.out);
+	}
+	return cur_val;
+};
+
+result := traversal(node: CFGNode) {
+	if (def(getvalue(node, live))) {
+		m[input.project_url][m_name][node.id] &lt;&lt; string(getvalue(node, live).in);
+	}
+};
+
+# user-defined fix point function that is used for analysis termination.
+fixp1 := fixp(curr, prev: T_inout) : bool {
+	if (len(difference(curr.in, prev.in)) == 0)
+		return true;
+	return false;
+};
+
+visit(input, visitor {
+	before node: CodeRepository -&gt; {
+		snapshot := getsnapshot(node, "SOURCE_JAVA_JLS");
+		foreach (i: int; def(snapshot[i]))
+			visit(snapshot[i]);
+		stop;
+	}
+	before node: Method -&gt; {
+		cfg := getcfg(node);
+		m_name = current(Declaration).name + "::" + node.name;
+
+		traverse(cfg, TraversalDirection.BACKWARD, TraversalKind.HYBRID, init);
+		traverse(cfg, TraversalDirection.BACKWARD, TraversalKind.HYBRID, live, fixp1);
+		traverse(cfg, TraversalDirection.BACKWARD, TraversalKind.HYBRID, result);
+
+		clear(init);
+		clear(live);
+	}
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_31");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=86423&amp;example=livevars">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/86423">Published Results</a>
+</p><h3 id="reaching">Reaching Definitions</h3>
+<div class="sourcecode" id="code_32" style="position: relative; width: 60em;">m: output collection[string][string][int] of string;
+
+# program analysis output
+type T = set of string;
+type T_gen_kill = { gen: string, kill: string };
+type T_inout = { in: T, out: T };
+
+m_name: string;
+
+# traversal that accumulates generated values
+cfg_def := traversal(node: CFGNode) : T_gen_kill {
+	cur_val: T_gen_kill = { "", "" };
+	if (node.defVariables != "") {
+		cur_val.gen = node.defVariables + "@" + string(node.id);
+		cur_val.kill = node.defVariables;
+	}
+	return cur_val;
+};
+
+# cfg reaching definition analysis
+cfg_reach_def := traversal(n: CFGNode): T_inout {
+	cur_val: T_inout;
+	if (def(getvalue(n))) {
+		cur_val = getvalue(n);
+	} else {
+		in_set: T;
+		out_set: T;
+		cur_val = { in_set, out_set };
+	}
+
+	preds := n.predecessors;
+	foreach (i: int; def(preds[i])) {
+		pred := getvalue(preds[i]);
+		if (def(pred))
+			cur_val.in = union(cur_val.in, pred.out);
+	}
+
+	cur_val.out = clone(cur_val.in);
+	genkill := getvalue(n, cfg_def);
+
+	if (genkill.kill != "") {
+		tmp_out := values(cur_val.out);
+
+		foreach (i: int; def(tmp_out[i])) {
+			tmp1 := clone(tmp_out[i]);
+			str_array := splitall(tmp1, "@");
+
+			if (str_array[0] == genkill.kill)
+				remove(cur_val.out, tmp1);
+		}
+		add(cur_val.out, genkill.gen);
+	}
+	return cur_val;
+};
+
+result := traversal(node: CFGNode) {
+	if (def(getvalue(node, cfg_reach_def)))
+		m[input.project_url][m_name][node.id] &lt;&lt; string(getvalue(node, cfg_reach_def).out);
+};
+
+# user-defined fix point function that is used for analysis termination.
+fixp1 := fixp(curr, prev: T_inout) : bool {
+	if (len(difference(curr.out, prev.out)) == 0)
+		return true;
+	return false;
+};
+
+visit(input, visitor {
+	before node: CodeRepository -&gt; {
+		snapshot := getsnapshot(node, "SOURCE_JAVA_JLS");
+		foreach (i: int; def(snapshot[i]))
+			visit(snapshot[i]);
+		stop;
+	}
+	before node: Method -&gt; {
+		cfg := getcfg(node);
+		m_name = current(Declaration).name + "::" + node.name;
+
+		traverse(cfg, TraversalDirection.FORWARD, TraversalKind.HYBRID, cfg_def);
+		traverse(cfg, TraversalDirection.FORWARD, TraversalKind.HYBRID, cfg_reach_def, fixp1);
+		traverse(cfg, TraversalDirection.FORWARD, TraversalKind.HYBRID, result);
+
+		clear(cfg_def);
+		clear(cfg_reach_def);
+	}
+});</div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var BoaMode = require("ace/mode/boa").Mode;
+var Range = require("ace/range").Range;
+var editor = ace.edit("code_32");
+editor.getSession().setMode(new BoaMode());
+editor.setTheme("ace/theme/crimson_editor");
+editor.renderer.setShowGutter(true);
+editor.setShowPrintMargin(false);
+editor.setShowInvisibles(false);
+editor.setHighlightActiveLine(false);
+editor.setReadOnly(true);
+editor.setOptions({
+	maxLines: 500
+});
+//--><!]]>
+</script><p>
+<a href="https://boa.cs.iastate.edu/boa/?q=boa/run&amp;edit=86424&amp;example=reaching">Run Example</a>
+| <a href="https://boa.cs.iastate.edu/boa/?q=boa/job/public/86424">Published Results</a>
+</p></div>
+</div>
+</div>
+</div>
+<div class="fwrapper grids-24">
+<div class="grids-24" id="footer">
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1547227-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<div class="grid-3 first"><a class="nameplate" href="http://www.iastate.edu/"><img alt="Iowa State University" src="../img/sprite.png"></a></div>
+<div class="grid-21 last">
+<span><a href="http://design.cs.iastate.edu/">Laboratory of Software Design</a>, <a href="http://www.cs.iastate.edu/">Department of Computer Science</a>, </span><script type="text/javascript"><!--
+	document.write('<a href="mailto:' + (['hridesh', 'iastate.edu'].join('@'))
+			+ '">' + (['hridesh', 'iastate.edu'].join('@')) + '<\/a>');
+// --></script>
+<ins><noscript><div><code>hridesh (at) iastate (dot) edu</code></div></noscript></ins>
+<p>Copyright &#169; 2012&ndash;2015, Iowa State University of Science and Technology. All rights reserved.</p>
+<p>
+&nbsp;
+</p>
+<p>
+This material is based upon work supported by the US National Science
+Foundation (NSF) under grants CCF-19-34884, CNS-15-13263, CNS-15-12947,
+CCF-14-23370, CCF-13-49153, CCF-11-17937, CCF-10-17334, and CCF-10-18600.
+</p>
+<p>
+Any opinions, findings, and conclusions or recommendations expressed in this
+material are those of the author(s) and do not necessarily reflect the views of
+the National Science Foundation.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>
